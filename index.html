@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ✅ Meta Description for SEO -->
+    <meta name="description"
+        content="Play a fun and interactive Tic Tac Toe game! Challenge a friend or play against the computer, enjoy confetti effects, dark/light mode, and a clean modern UI.">
+
+    <title>Tic-Tac-Toe Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <div class="msg-container hide">
+        <p id="msg">Winner</p>
+        <button id="new-btn">New Game</button>
+    </div>
+    <main>
+        <h1>Tic Tac Toe</h1>
+        <p id="turn-indicator">O's Turn</p>
+        <div class="container">
+            <div class="game" id="game-board">
+                <button class="box"></button>
+                <button class="box"></button>
+                <button class="box"></button>
+                <button class="box"></button>
+                <button class="box"></button>
+                <button class="box"></button>
+                <button class="box"></button>
+                <button class="box"></button>
+                <button class="box"></button>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="reset-btn">Reset</button>
+            <button id="mode-toggle">Play vs Computer: OFF</button>
+            <button id="theme-toggle">Toggle Theme</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
