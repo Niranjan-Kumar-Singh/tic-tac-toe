@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Tic Tac Toe Game 🎮
 
 A modern and responsive web-based implementation of the classic Tic Tac Toe game using HTML, CSS, and JavaScript. Play against a friend or test your skills against a simple computer AI!
@@ -91,5 +90,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ---
 
->>>>>>> 9433f7c2baa0b2a128771f46f22ad0f43d66d49d
 > Built with ❤️ by Niranjan Kumar Singh
