@@ -84,6 +84,7 @@ body.dark .box {
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .controls button:hover {
@@ -97,6 +98,7 @@ body.dark .box {
     color: #fff;
     border-radius: 1rem;
     border: 1px solid white;
+    -webkit-tap-highlight-color: transparent;
 }
 
 #msg {
@@ -117,6 +119,7 @@ body.dark .box {
     flex-direction: column;
     gap: 2rem;
     z-index: 100;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .hide {
