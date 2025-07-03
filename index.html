@@ -8,17 +8,20 @@
     <!-- ✅ Meta Description for SEO -->
     <meta name="description"
         content="Play a fun and interactive Tic Tac Toe game! Challenge a friend or play against the computer, enjoy confetti effects, dark/light mode, a clean modern UI, and enjoy confetti celebrations for every win!">
-        
+
     <!-- ✅ Theme Color -->
     <meta name="theme-color" content="#819A91">
 
     <!-- ✅ Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-4208665414964925">
 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4208665414964925"
+        crossorigin="anonymous"></script>
+
     <!-- ✅ Google Verification -->
     <meta name="google-site-verification" content="KKxnRIS1ajvXZobsLsOcPIogecH-EXAqO1SbS430nac" />
 
-     <!-- ✅ Open Graph for Social Sharing -->
+    <!-- ✅ Open Graph for Social Sharing -->
     <meta property="og:title" content="Tic Tac Toe - Play Online" />
     <meta property="og:description"
         content="A fun, interactive Tic Tac Toe game with multiplayer, computer mode, dark theme, and confetti effects." />
@@ -43,15 +46,41 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <!-- ✅ Favicon and Fonts -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" alt="Tic Tac Toe Icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net;">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net;">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Game",
+  "name": "Tic Tac Toe - Play Online",
+  "description": "A fun, interactive Tic Tac Toe game with multiplayer, dark mode, AI opponent, confetti effects, and offline support.",
+  "author": {
+    "@type": "Person",
+    "name": "Niranjan Kumar Singh",
+    "url": "https://github.com/Niranjan-Kumar-Singh"
+  },
+  "applicationCategory": "GameApplication",
+  "genre": "Strategy",
+  "operatingSystem": "Web",
+  "image": "https://tic-tac-toe-niranjan.vercel.app/tic-tac-toe.png",
+  "url": "https://tic-tac-toe-niranjan.vercel.app/",
+  "inLanguage": "en",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Niranjan Kumar Singh",
+    "url": "https://github.com/Niranjan-Kumar-Singh"
+  }
+}
+</script>
 
 </head>
 
 <body>
-     <!-- ✅ Game Over Modal -->
+    <!-- ✅ Game Over Modal -->
     <div class="msg-container hide">
         <p id="msg">Winner</p>
         <button id="new-btn">New Game</button>
@@ -83,20 +112,76 @@
         </div>
     </main>
 
+    <section class="game-info">
+        <h2>About the Game</h2>
+        <p>
+            Welcome to <strong>Tic Tac Toe - Play Online</strong>! This is a clean, fun, and interactive version of the
+            classic game built using HTML, CSS, and JavaScript. Whether you want to challenge a friend or test your
+            skills against a smart computer opponent, this game is designed for endless fun.
+        </p>
+
+        <h3>✨ Features</h3>
+        <ul>
+            <li>🎮 Play against a friend or AI (computer)</li>
+            <li>🌗 Toggle between Dark and Light Mode</li>
+            <li>🎉 Confetti celebration on winning</li>
+            <li>📊 Scoreboard to keep track of wins</li>
+            <li>📴 Works offline (PWA supported)</li>
+            <li>💻 Fully responsive and mobile-friendly</li>
+        </ul>
+
+        <h3>🕹️ How to Play</h3>
+        <p>
+            Take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a
+            horizontal, vertical, or diagonal row wins the round. Switch between single-player and two-player modes
+            anytime.
+        </p>
+
+        <h3>🔧 Built With</h3>
+        <p>
+            This game was developed using:
+        <ul>
+            <li>💡 HTML5 for structure</li>
+            <li>🎨 CSS3 for styling and themes</li>
+            <li>⚙️ JavaScript for interactivity and AI logic</li>
+            <li>🛠️ Service Workers for offline support</li>
+        </ul>
+        </p>
+
+        <h3>📣 Help Us Grow</h3>
+        <p>
+            Share the game with your friends and bookmark this page! If you like it, give the project a ⭐ on
+            <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a>.
+        </p>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 <strong>Tic Tac Toe - Niranjan Kumar Singh</strong>. All rights reserved.</p>
+            <nav>
+                <a href="/privacy.html">Privacy Policy</a>
+                |
+                <a href="/terms.html">Terms & Conditions</a>
+                |
+                <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a>
+            </nav>
+        </div>
+    </footer>
+
     <!-- ✅ Game Script -->
     <script src="script.js"></script>
 
     <!-- ✅ Register Service Worker -->
-  <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker
-          .register("/service-worker.js")
-          .then((reg) => console.log("✅ Service Worker registered:", reg.scope))
-          .catch((err) => console.error("❌ Service Worker registration failed:", err));
-      });
-    }
-  </script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker
+                    .register("/service-worker.js")
+                    .then((reg) => console.log("✅ Service Worker registered:", reg.scope))
+                    .catch((err) => console.error("❌ Service Worker registration failed:", err));
+            });
+        }
+    </script>
 </body>
 
 </html>
