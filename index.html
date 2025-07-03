@@ -6,22 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- ✅ Meta Description for SEO -->
-    <meta name="description" content="Play a fun and interactive Tic Tac Toe game! Challenge a friend or play against the computer, enjoy confetti effects, dark/light mode, and a clean modern UI.">
+    <meta name="description"
+        content="Play a fun and interactive Tic Tac Toe game! Challenge a friend or play against the computer, enjoy confetti effects, dark/light mode, a clean modern UI, and enjoy confetti celebrations for every win!">
+        
+    <!-- ✅ Theme Color -->
+    <meta name="theme-color" content="#819A91">
+
+    <!-- ✅ Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-4208665414964925">
+
+    <!-- ✅ Google Verification -->
     <meta name="google-site-verification" content="KKxnRIS1ajvXZobsLsOcPIogecH-EXAqO1SbS430nac" />
 
+     <!-- ✅ Open Graph for Social Sharing -->
+    <meta property="og:title" content="Tic Tac Toe - Play Online" />
+    <meta property="og:description"
+        content="A fun, interactive Tic Tac Toe game with multiplayer, computer mode, dark theme, and confetti effects." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tic-tac-toe-niranjan.vercel.app/" />
+    <meta property="og:image" content="https://tic-tac-toe-niranjan.vercel.app/preview.png" />
+
+    <!-- ✅ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tic Tac Toe - Play Online" />
+    <meta name="twitter:description"
+        content="Fun online Tic Tac Toe game with dark mode, AI opponent, confetti effect!" />
+    <meta name="twitter:image" content="https://tic-tac-toe-niranjan.vercel.app/preview.png" />
+
+    <!-- ✅ PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
     <title>Tic-Tac-Toe Game</title>
+
+    <!-- ✅ CSS & Confetti Library -->
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- ✅ Favicon and Fonts -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 
 <body>
+     <!-- ✅ Game Over Modal -->
     <div class="msg-container hide">
         <p id="msg">Winner</p>
         <button id="new-btn">New Game</button>
     </div>
+
+    <!-- ✅ Main Game UI -->
     <main>
         <h1>Tic Tac Toe</h1>
         <p id="turn-indicator">O's Turn</p>
@@ -38,13 +71,29 @@
                 <button class="box"></button>
             </div>
         </div>
+
+        <!-- ✅ Controls -->
         <div class="controls">
             <button id="reset-btn">Reset</button>
             <button id="mode-toggle">Play vs Computer: OFF</button>
             <button id="theme-toggle">Toggle Theme</button>
         </div>
     </main>
+
+    <!-- ✅ Game Script -->
     <script src="script.js"></script>
+
+    <!-- ✅ Register Service Worker -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then((reg) => console.log("✅ Service Worker registered:", reg.scope))
+          .catch((err) => console.error("❌ Service Worker registration failed:", err));
+      });
+    }
+  </script>
 </body>
 
 </html>
