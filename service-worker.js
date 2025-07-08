@@ -2,12 +2,16 @@ const CACHE_NAME = "tic-tac-toe-cache-v1";
 const urlsToCache = [
   "/",
   "/index.html",
+  "/privacy.html",
+  "/terms.html",
+  "/legal.css",
   "/style.css",
   "/script.js",
   "/favicon.ico",
   "/preview.png",
+  "/tic-tac-toe.png",
   "/offline.html",
-  "/tic-tac-toe.png"
+  "/ads.txt"
 ];
 
 self.addEventListener("install", (event) => {
