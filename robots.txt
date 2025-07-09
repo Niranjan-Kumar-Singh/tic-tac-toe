@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tic-tac-toe-niranjan.vercel.app/sitemap.xml
+Sitemap: https://tic-tac-toe-niranjan.vercel.app/sitemap-2025.xml

@@ -7,11 +7,18 @@ const urlsToCache = [
   "/legal.css",
   "/style.css",
   "/script.js",
-  "/favicon.ico",
-  "/preview.png",
-  "/tic-tac-toe.png",
+  "/images/favicon.ico",
+  "/images/favicon-16x16.png",
+  "/images/favicon-32x32.png",
+  "/images/tic-tac-toe-192x192.png",
+  "/images/tic-tac-toe-512x512.png",
+  "/images/preview.png",
+  "/images/tic-tac-toe.png",
   "/offline.html",
-  "/ads.txt"
+  "/ads.txt",
+  "/manifest.json",
+  "/offline.html",
+  "/sitemap-2025.xml",
 ];
 
 self.addEventListener("install", (event) => {
