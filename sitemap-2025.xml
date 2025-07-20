@@ -1,25 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Version 2.0 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
+
   <url>
     <loc>https://tic-tac-toe-niranjan.vercel.app/</loc>
-    <lastmod>2025-07-09</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2025-07-20</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://tic-tac-toe-niranjan.vercel.app/privacy.html</loc>
-    <lastmod>2025-07-09</lastmod>
+    <loc>https://tic-tac-toe-niranjan.vercel.app/about.html</loc>
+    <lastmod>2025-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tic-tac-toe-niranjan.vercel.app/beginner-guide.html</loc>
+    <lastmod>2025-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tic-tac-toe-niranjan.vercel.app/advanced-tactics.html</loc>
+    <lastmod>2025-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tic-tac-toe-niranjan.vercel.app/community.html</loc>
+    <lastmod>2025-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://tic-tac-toe-niranjan.vercel.app/game-theory.html</loc>
+    <lastmod>2025-07-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://tic-tac-toe-niranjan.vercel.app/mobile-app.html</loc>
+    <lastmod>2025-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://tic-tac-toe-niranjan.vercel.app/offline.html</loc>
+    <lastmod>2025-07-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://tic-tac-toe-niranjan.vercel.app/terms.html</loc>
-    <lastmod>2025-07-09</lastmod>
+    <loc>https://tic-tac-toe-niranjan.vercel.app/printable-boards.html</loc>
+    <lastmod>2025-07-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://tic-tac-toe-niranjan.vercel.app/privacy.html</loc>
+    <lastmod>2025-07-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://tic-tac-toe-niranjan.vercel.app/terms.html</loc>
+    <lastmod>2025-07-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://tic-tac-toe-niranjan.vercel.app/tips.html</loc>
+    <lastmod>2025-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://tic-tac-toe-niranjan.vercel.app/updates.html</loc>
+    <lastmod>2025-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://tic-tac-toe-niranjan.vercel.app/strategy-guide.html</loc>
+    <lastmod>2025-07-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://tic-tac-toe-niranjan.vercel.app/variations.html</loc>
+    <lastmod>2025-07-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 
 </urlset>

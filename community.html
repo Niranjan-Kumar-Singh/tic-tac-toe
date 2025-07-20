@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Community - Tic Tac Toe</title>
+    <meta name="description"
+        content="Join the Tic Tac Toe community. Share your tactics, compete with others, and grow your skills!" />
+    <meta name="keywords"
+        content="Tic Tac Toe community, share strategies, play with others, tactics, leaderboard, multiplayer" />
+    <meta name="author" content="Niranjan Kumar Singh" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- ✅ Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/favicon-32x32.png" />
+
+    <!-- ✅ Theme Color -->
+    <meta name="theme-color" content="#587C8F" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
+
+    <!-- ✅ Open Graph for Social Sharing -->
+    <meta property="og:title" content="Tic Tac Toe Community" />
+    <meta property="og:description"
+        content="Join the Tic Tac Toe community — compete, share strategies, and improve your gameplay." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tic-tac-toe-niranjan.vercel.app/community.html" />
+    <meta property="og:image" content="images/community-banner.png" />
+
+    <!-- ✅ Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet" />
+
+    <!-- ✅ Main CSS -->
+    <link rel="stylesheet" href="layout.css" />
+
+    <style>
+        /* Community-specific enhancements */
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .community-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .community-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .community-card:hover::before {
+            left: 100%;
+        }
+
+        .community-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 210, 255, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            text-align: center;
+            filter: drop-shadow(0 0 10px currentColor);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .forums-card .card-icon {
+            color: #00d2ff;
+            animation-delay: 0s;
+        }
+
+        .tournaments-card .card-icon {
+            color: #f5576c;
+            animation-delay: 1s;
+        }
+
+        .showcase-card .card-icon {
+            color: #667eea;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(5deg);
+            }
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .card-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .feature-icon {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .feature-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .card-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        .tournaments-card .card-action {
+            background: var(--secondary-gradient);
+        }
+
+        .showcase-card .card-action {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-action::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .card-action:hover::before {
+            left: 100%;
+        }
+
+        .card-action:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .stats-section {
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            background: var(--glass-border);
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+            animation: countUp 2s ease-out;
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        .coming-soon {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--secondary-gradient);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.9;
+            }
+        }
+
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .hero-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: heroFloat 8s linear infinite;
+        }
+
+        @keyframes heroFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.7;
+            }
+
+            90% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .join-cta {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .join-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, var(--accent), transparent);
+            animation: rotate 6s linear infinite;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .join-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .join-cta p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .join-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .join-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 2.5rem;
+            background: var(--secondary-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            cursor: pointer;
+        }
+
+        .join-button.secondary {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .join-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(245, 87, 108, 0.4);
+        }
+
+        .join-button.secondary:hover {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 15px 30px rgba(0, 210, 255, 0.4);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .community-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .community-card {
+                padding: 2rem;
+            }
+
+            .card-icon {
+                font-size: 3rem;
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+            }
+
+            .join-cta {
+                padding: 2rem;
+            }
+
+            .join-cta h2 {
+                font-size: 2rem;
+            }
+
+            .join-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .join-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .community-card {
+                padding: 1.5rem;
+            }
+
+            .join-cta {
+                padding: 1.5rem;
+            }
+
+            .join-cta h2 {
+                font-size: 1.8rem;
+            }
+
+            .join-cta p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-particles" id="particles"></div>
+
+    <header class="site-header">
+        <div class="header-content">
+            <a href="/index.html" class="site-title">Tic Tac Toe</a>
+            <button class="menu-toggle" aria-label="Toggle navigation" id="menuToggle">&#9776;</button>
+            <nav class="site-nav" id="siteNav">
+                <a href="/index.html">Home</a>
+                <a href="/tips.html">Tips</a>
+                <a href="/updates.html">Updates</a>
+                <a href="/about.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-particles" id="heroParticles"></div>
+            <h1 class="hero-title">🌟 Join Our Community</h1>
+            <p class="hero-subtitle">Connect, Compete, and Collaborate with Fellow Tic Tac Toe Masters</p>
+        </section>
+
+        <section class="stats-section">
+            <h2 class="section-title">Community Stats</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">1.2k+</div>
+                    <div class="stat-label">Active Players</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Daily Games</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Countries</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Online Support</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="community-grid">
+            <div class="community-card forums-card">
+                <div class="coming-soon">Coming Soon</div>
+                <span class="card-icon">💬</span>
+                <h2 class="card-title">Forums & Discussions</h2>
+                <p class="card-description">Join vibrant discussions about strategies, tips, and everything Tic Tac Toe!
+                </p>
+
+                <div class="card-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">🎯</span>
+                        <span class="feature-text">Strategy discussions with experts</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">💡</span>
+                        <span class="feature-text">Tips and tricks from pros</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🤝</span>
+                        <span class="feature-text">Friendly community support</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📚</span>
+                        <span class="feature-text">Learning resources library</span>
+                    </div>
+                </div>
+
+                <button class="card-action" onclick="showComingSoon()">
+                    <span>Join Discussions</span>
+                    <span>→</span>
+                </button>
+            </div>
+
+            <div class="community-card tournaments-card">
+                <div class="coming-soon">Coming Soon</div>
+                <span class="card-icon">🏆</span>
+                <h2 class="card-title">Tournaments</h2>
+                <p class="card-description">Compete in exciting tournaments and climb the leaderboards!</p>
+
+                <div class="card-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">⚡</span>
+                        <span class="feature-text">Weekly speed tournaments</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🎖️</span>
+                        <span class="feature-text">Ranked competitive play</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🏅</span>
+                        <span class="feature-text">Exclusive badges & rewards</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📊</span>
+                        <span class="feature-text">Detailed match statistics</span>
+                    </div>
+                </div>
+
+                <button class="card-action" onclick="showComingSoon()">
+                    <span>Enter Tournament</span>
+                    <span>⚔️</span>
+                </button>
+            </div>
+
+            <div class="community-card showcase-card">
+                <div class="coming-soon">Coming Soon</div>
+                <span class="card-icon">📸</span>
+                <h2 class="card-title">Community Showcase</h2>
+                <p class="card-description">Share your best plays and creative moments with the community!</p>
+
+                <div class="card-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">✨</span>
+                        <span class="feature-text">Featured play highlights</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🎨</span>
+                        <span class="feature-text">Custom board designs</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📱</span>
+                        <span class="feature-text">Screenshot sharing</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">👏</span>
+                        <span class="feature-text">Community voting & likes</span>
+                    </div>
+                </div>
+
+                <button class="card-action" onclick="showComingSoon()">
+                    <span>Share Your Play</span>
+                    <span>📤</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="join-cta">
+            <h2>Ready to Join?</h2>
+            <p>Be part of our growing community and take your Tic Tac Toe skills to the next level!</p>
+
+            <div class="join-buttons">
+                <button class="join-button" onclick="showComingSoon()">
+                    <span>🚀</span>
+                    <span>Get Started</span>
+                </button>
+                <button class="join-button secondary" onclick="showComingSoon()">
+                    <span>📬</span>
+                    <span>Stay Updated</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Ad Container -->
+    <div class="ad-container" style="margin: 20px auto; text-align: center;">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4208665414964925"
+            data-ad-slot="1712602490" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Tic Tac Toe Game. All rights reserved.</p>
+            <nav class="footer-nav">
+                <a href="privacy.html">Privacy Policy</a> |
+                <a href="terms.html">Terms of Service</a> |
+                <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="layout.js"></script>
+    <script>
+        // Enhanced animations and interactions
+        function createHeroParticles() {
+            const container = document.getElementById('heroParticles');
+            const particleCount = 15;
+
+            for (let i = 0; i < particleCount; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'hero-particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 8 + 's';
+                    particle.style.animationDuration = (8 + Math.random() * 4) + 's';
+                    container.appendChild(particle);
+
+                    // Remove particle after animation
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    }, 12000);
+                }, i * 500);
+            }
+        }
+
+        function showComingSoon() {
+            // Create a stylish modal-like notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 2rem;
+                border-radius: 20px;
+                text-align: center;
+                z-index: 10000;
+                box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255,255,255,0.2);
+                animation: slideInScale 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            `;
+
+            notification.innerHTML = `
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🚧</div>
+                <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Coming Soon!</h3>
+                <p style="margin-bottom: 2rem; opacity: 0.9;">This feature is currently in development. Stay tuned for updates!</p>
+                <button onclick="this.parentElement.remove()" style="
+                    background: rgba(255,255,255,0.2);
+                    border: none;
+                    color: white;
+                    padding: 0.8rem 2rem;
+                    border-radius: 25px;
+                    cursor: pointer;
+                    font-weight: 600;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+                    Got it! 👍
+                </button>
+            `;
+
+            // Add animation keyframes
+            if (!document.getElementById('modal-animation')) {
+                const style = document.createElement('style');
+                style.id = 'modal-animation';
+                style.textContent = `
+                    @keyframes slideInScale {
+                        0% {
+                            opacity: 0;
+                            transform: translate(-50%, -50%) scale(0.8);
+                        }
+                        100% {
+                            opacity: 1;
+                            transform: translate(-50%, -50%) scale(1);
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+
+            document.body.appendChild(notification);
+
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.style.animation = 'slideInScale 0.3s reverse';
+                    setTimeout(() => notification.remove(), 300);
+                }
+            }, 5000);
+        }
+
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            createHeroParticles();
+
+            // Continue creating particles periodically
+            setInterval(createHeroParticles, 10000);
+
+            // Add scroll-triggered animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'slideInUp 0.8s ease-out both';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all community cards
+            document.querySelectorAll('.community-card, .stat-card, .join-cta').forEach(card => {
+                observer.observe(card);
+            });
+        });
+
+        // Enhanced card hover effects
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.community-card');
+
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    const icon = card.querySelector('.card-icon');
+                    if (icon) {
+                        icon.style.transform = 'scale(1.1) rotate(10deg)';
+                        icon.style.filter = 'drop-shadow(0 0 20px currentColor)';
+                    }
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    const icon = card.querySelector('.card-icon');
+                    if (icon) {
+                        icon.style.transform = 'scale(1) rotate(0deg)';
+                        icon.style.filter = 'drop-shadow(0 0 10px currentColor)';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

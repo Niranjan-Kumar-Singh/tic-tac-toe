@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Tips and strategies to improve your Tic Tac Toe game. Learn winning strategies and game logic.">
+    <meta name="keywords" content="tic tac toe tips, winning strategies, how to win tic tac toe, tic tac toe logic">
+    <meta name="author" content="Niranjan Kumar Singh">
+    <meta name="robots" content="index, follow">
+
+    <title>Tips - Tic Tac Toe</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="layout.css">
+
+    <!-- Theme Colors for Light/Dark Mode -->
+    <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content="Tips - Tic Tac Toe">
+    <meta property="og:description"
+        content="Master Tic Tac Toe with proven strategies, logic-based play, and game-winning techniques.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:url" content="https://yourdomain.com/tips.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Google AdSense (optional) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" crossorigin="anonymous"
+        data-ad-client="ca-pub-4208665414964925"></script>
+</head>
+
+<body>
+    <div class="bg-particles" id="particles"></div>
+
+    <header class="site-header">
+        <div class="header-content">
+            <a href="/index.html" class="site-title">Tic Tac Toe</a>
+            <button class="menu-toggle" aria-label="Toggle navigation" id="menuToggle">&#9776;</button>
+            <nav class="site-nav" id="siteNav">
+                <a href="/index.html">Home</a>
+                <a href="/tips.html">Tips</a>
+                <a href="/updates.html">Updates</a>
+                <a href="/about.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <h1 class="hero-title">Tips & Strategies</h1>
+            <p class="hero-subtitle">Master the art of Tic Tac Toe with these winning strategies</p>
+        </section>
+
+        <div class="content-card">
+            <div class="card-content">
+                <h2 class="section-title">🏆 How to Always Win (or Draw)</h2>
+                <div class="tips-grid">
+                    <div class="tip-item">
+                        <div class="tip-icon">🎯</div>
+                        <div class="tip-content">
+                            <h3>Take the Center</h3>
+                            <p>Always grab the center square if it's available. It gives you the most winning
+                                possibilities.</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-icon">📐</div>
+                        <div class="tip-content">
+                            <h3>Corner Strategy</h3>
+                            <p>If your opponent takes the center, immediately go for any corner. Avoid the sides when
+                                possible.</p>
+                        </div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-icon">🛡️</div>
+                        <div class="tip-content">
+                            <h3>Block Proactively</h3>
+                            <p>Always block your opponent's winning moves. Stay one step ahead by anticipating their
+                                strategy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-content">
+                <h2 class="section-title">🤖 How the AI Works</h2>
+                <div class="ai-explanation">
+                    <div class="ai-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Check for Winning Moves</h3>
+                            <p>The AI first scans for any immediate winning opportunities.</p>
+                        </div>
+                    </div>
+                    <div class="ai-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Block Player Wins</h3>
+                            <p>If no winning move exists, it looks for moves to block your victories.</p>
+                        </div>
+                    </div>
+                    <div class="ai-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Strategic Positioning</h3>
+                            <p>Finally, it follows the optimal strategy: Center → Corners → Sides.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-content">
+                <h2 class="section-title">📱 Offline Support</h2>
+                <div class="feature-highlight">
+                    <div class="feature-icon">🌐</div>
+                    <div class="feature-content">
+                        <p>This game uses advanced web technologies including Service Workers and Web App Manifest to
+                            provide seamless offline gameplay.</p>
+                        <div class="offline-test">
+                            <p><strong>Try it yourself:</strong> Turn off your Wi-Fi or mobile data and reload the page.
+                                The game will still work perfectly!</p>
+                        </div>
+                        <div class="tech-badges">
+                            <span class="tech-badge">PWA Ready</span>
+                            <span class="tech-badge">Service Worker</span>
+                            <span class="tech-badge">Cache API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-content">
+                <h2 class="section-title">🎮 Pro Tips</h2>
+                <div class="pro-tips-grid">
+                    <div class="pro-tip">
+                        <h4>🧠 Think Two Moves Ahead</h4>
+                        <p>Don't just react to your opponent's moves. Plan your strategy and force them into difficult
+                            positions.</p>
+                    </div>
+                    <div class="pro-tip">
+                        <h4>⚡ Speed Advantage</h4>
+                        <p>In fast-paced games, quick decision-making can pressure opponents into mistakes.</p>
+                    </div>
+                    <div class="pro-tip">
+                        <h4>🎯 Pattern Recognition</h4>
+                        <p>Learn to quickly identify winning patterns and threats across rows, columns, and diagonals.
+                        </p>
+                    </div>
+                    <div class="pro-tip">
+                        <h4>🔄 Practice Variations</h4>
+                        <p>Try different opening moves to understand various game flows and outcomes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Ad Container -->
+        <div class="ad-container" style="margin: 20px auto; text-align: center;">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4208665414964925"
+                data-ad-slot="1712602490" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Tic Tac Toe Game. All rights reserved.</p>
+            <nav class="footer-nav">
+                <a href="privacy.html">Privacy Policy</a> |
+                <a href="terms.html">Terms of Service</a> |
+                <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="layout.js"></script>
+</body>
+
+</html>

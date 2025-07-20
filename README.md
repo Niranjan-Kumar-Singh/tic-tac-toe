@@ -8,17 +8,23 @@ A modern and responsive web-based implementation of the classic Tic Tac Toe game
 
 ## 🚀 Features
 - 🔁 Two-player mode
-- 🤖 Single-player (vs Computer)
+- 🤖 Single-player mode (vs Computer AI)
 - 🧠 Smart turn indicator
 - 🎉 Confetti on win
-- 🌙 Dark/Light theme toggle
-- 📱 Mobile responsive
+- 🌙 Dark/Light mode toggle
+- 📱 Fully mobile responsive
+- 💾 Installable as a PWA (works offline!)
+- 🕹️ Scoreboard tracking and reset
+- 🔁 Undo last move
+- 📊 Game rounds (Best of 5)
+- 🧭 Navigation menu with multiple pages (About, Tips, Community)
 
 ## 🛠 Technologies Used
 - HTML5
 - CSS3
 - JavaScript (ES6+)
 - [canvas-confetti](https://github.com/catdad/canvas-confetti)
+- Progressive Web App (PWA)
 
 ## 📦 How to Run
 1. Clone this repo:

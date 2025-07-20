@@ -2,35 +2,32 @@
   "name": "Tic Tac Toe - Play Online",
   "short_name": "Tic Tac Toe",
   "description": "A fun, interactive Tic Tac Toe game with multiplayer, dark mode, and confetti effects!",
-  "start_url": "/",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#819A91",
   "theme_color": "#191913",
   "orientation": "portrait",
+  "scope": "/",
   "icons": [
     {
-      "src": "images/favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "images/favicon-16x16.png",
-      "sizes": "16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "images/favicon-32x32.png",
-      "sizes": "32x32",
-      "type": "image/x-icon"
+      "src": "images/tic-tac-toe-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
     },
     {
       "src": "images/tic-tac-toe-512x512.png",
       "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/favicon-32x32.png",
+      "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "images/tic-tac-toe-192x192.png",
-      "sizes": "192x192",
+      "src": "images/favicon-16x16.png",
+      "sizes": "16x16",
       "type": "image/png"
     }
   ]

@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Strategy Guide - Tic Tac Toe</title>
+    <meta name="description"
+        content="Master Tic Tac Toe with this ultimate strategy guide: winning moves, patterns, and defensive play." />
+    <meta name="keywords"
+        content="tic tac toe, strategy guide, win tic tac toe, game patterns, best moves, unbeatable strategy" />
+    <meta name="author" content="Niranjan Kumar Singh" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- ✅ Theme Colors -->
+    <meta name="theme-color" content="#819A91" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)" />
+
+    <!-- ✅ Open Graph for Social Sharing -->
+    <meta property="og:title" content="Strategy Guide - Tic Tac Toe" />
+    <meta property="og:description"
+        content="Learn to win at Tic Tac Toe with top strategies, attack patterns, and defensive tricks." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="images/preview.png" />
+    <meta property="og:url" content="https://tic-tac-toe-niranjan.vercel.app/strategy-guide.html" />
+
+    <!-- ✅ Favicon & Icons -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/favicon-32x32.png" />
+
+    <!-- ✅ Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet" />
+
+    <!-- ✅ Google AdSense (if applicable across all pages) -->
+    <meta name="google-adsense-account" content="ca-pub-4208665414964925" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4208665414964925"
+        crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --dark-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: #b8bcc8;
+            --accent: #00d2ff;
+            --accent-secondary: #3a7bd5;
+            --gaming-green: #00ff88;
+            --gaming-purple: #8b5cf6;
+            --gaming-orange: #ff8c42;
+            --gaming-blue: #00d2ff;
+            --gaming-pink: #f5576c;
+            --gaming-cyan: #00ffcc;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--dark-gradient);
+            color: var(--text-primary);
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Enhanced animated background particles */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        /* Header styling */
+        .site-header {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .site-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .site-title:hover {
+            transform: scale(1.05);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 0.75rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background: var(--glass-border);
+            transform: scale(1.1);
+        }
+
+        .site-nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .site-nav a {
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid transparent;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .site-nav a.active {
+            color: var(--gaming-green);
+            border-color: var(--glass-border);
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        .site-nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .site-nav a:hover::before {
+            left: 0;
+        }
+
+        .site-nav a:hover {
+            color: var(--text-primary);
+            border-color: var(--glass-border);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Main content */
+        main {
+            flex: 1;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Hero section with gaming theme */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--gaming-green) 0%, var(--gaming-purple) 50%, var(--gaming-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInUp 0.8s ease-out, textShimmer 3s ease-in-out infinite;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: slideInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes textShimmer {
+
+            0%,
+            100% {
+                filter: brightness(1) saturate(1);
+            }
+
+            50% {
+                filter: brightness(1.2) saturate(1.3);
+            }
+        }
+
+        /* Strategy cards with gaming aesthetics */
+        .strategies-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .strategy-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            animation: slideInUp 0.8s ease-out both;
+        }
+
+        .strategy-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .strategy-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .strategy-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .strategy-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .strategy-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .strategy-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, var(--gaming-green), transparent);
+            animation: rotate 4s linear infinite;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .strategy-card::after {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            background: var(--dark-gradient);
+            border-radius: 23px;
+            z-index: -1;
+        }
+
+        .strategy-card:hover::before {
+            opacity: 1;
+        }
+
+        .strategy-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2);
+        }
+
+        .strategy-card.purple:hover {
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+        }
+
+        .strategy-card.purple::before {
+            background: conic-gradient(transparent, var(--gaming-purple), transparent);
+        }
+
+        .strategy-card.orange:hover {
+            box-shadow: 0 20px 40px rgba(255, 140, 66, 0.2);
+        }
+
+        .strategy-card.orange::before {
+            background: conic-gradient(transparent, var(--gaming-orange), transparent);
+        }
+
+        .strategy-card.blue:hover {
+            box-shadow: 0 20px 40px rgba(0, 210, 255, 0.2);
+        }
+
+        .strategy-card.blue::before {
+            background: conic-gradient(transparent, var(--gaming-blue), transparent);
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .strategy-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .strategy-icon {
+            font-size: 3rem;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gaming-green);
+            border-radius: 20px;
+            flex-shrink: 0;
+            position: relative;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .strategy-icon.purple {
+            background: linear-gradient(135deg, var(--gaming-purple) 0%, #a855f7 100%);
+        }
+
+        .strategy-icon.orange {
+            background: linear-gradient(135deg, var(--gaming-orange) 0%, #fb923c 100%);
+        }
+
+        .strategy-icon.blue {
+            background: linear-gradient(135deg, var(--gaming-blue) 0%, var(--accent-secondary) 100%);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+            }
+        }
+
+        .strategy-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .strategy-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(0, 255, 136, 0.15);
+            color: var(--gaming-green);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+
+        .strategy-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* Win conditions section */
+        .win-conditions-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            margin-top: 2rem;
+            animation: slideInUp 0.8s ease-out 0.5s both;
+        }
+
+        .win-conditions-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, var(--gaming-cyan), transparent);
+            animation: rotate 4s linear infinite;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .win-conditions-card::after {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            background: var(--dark-gradient);
+            border-radius: 23px;
+            z-index: -1;
+        }
+
+        .win-conditions-card:hover::before {
+            opacity: 1;
+        }
+
+        .win-conditions-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 255, 204, 0.2);
+        }
+
+        .win-conditions-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .win-conditions-icon {
+            font-size: 3rem;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--gaming-cyan) 0%, #00d4aa 100%);
+            border-radius: 20px;
+            flex-shrink: 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .win-conditions-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .win-conditions-list {
+            list-style: none;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .win-condition-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .win-condition-item::before {
+            content: '✓';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gaming-cyan);
+            font-weight: bold;
+            transition: left 0.3s ease;
+        }
+
+        .win-condition-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
+            border-color: var(--gaming-cyan);
+        }
+
+        .win-condition-item:hover::before {
+            left: 1rem;
+        }
+
+        /* CTA section */
+        .cta-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 3rem 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 0.8s ease-out 0.6s both;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, var(--gaming-pink), transparent);
+            animation: rotate 4s linear infinite;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            background: var(--dark-gradient);
+            border-radius: 23px;
+            z-index: -1;
+        }
+
+        .cta-section:hover::before {
+            opacity: 1;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--gaming-green) 0%, #00d4aa 100%);
+            color: #0c0c0c;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.5);
+        }
+
+        /* Footer styling */
+        .site-footer {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border);
+            padding: 2rem;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: var(--accent);
+            background: var(--glass-bg);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .site-header {
+                padding: 1rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .site-nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: var(--glass-bg);
+                backdrop-filter: blur(20px);
+                border: 1px solid var(--glass-border);
+                border-radius: 16px;
+                margin-top: 1rem;
+                padding: 1rem;
+                flex-direction: column;
+                min-width: 200px;
+            }
+
+            .site-nav.nav-open {
+                display: flex;
+            }
+
+            .site-nav a {
+                margin: 0.25rem 0;
+                text-align: center;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+
+            .strategy-card,
+            .win-conditions-card,
+            .cta-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .strategy-header,
+            .win-conditions-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .strategy-icon,
+            .win-conditions-icon {
+                font-size: 2.5rem;
+                width: 60px;
+                height: 60px;
+            }
+
+            .footer-nav {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .strategy-card,
+            .win-conditions-card,
+            .cta-section {
+                padding: 1.5rem;
+            }
+
+            .strategy-title,
+            .win-conditions-title {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-particles" id="particles"></div>
+
+    <header class="site-header">
+        <div class="header-content">
+            <a href="index.html" class="site-title">Tic Tac Toe</a>
+            <button class="menu-toggle" aria-label="Toggle navigation" id="menuToggle">&#9776;</button>
+            <nav class="site-nav" id="siteNav">
+                <a href="/index.html">Home</a>
+                <a href="/tips.html">Tips</a>
+                <a href="/updates.html">Updates</a>
+                <a href="/about.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <h1 class="hero-title">🎯 Ultimate Strategy Guide</h1>
+            <p class="hero-subtitle">Master the art of Tic Tac Toe with professional tactics and winning strategies!</p>
+        </section>
+
+        <div class="strategies-grid">
+            <div class="strategy-card">
+                <div class="strategy-header">
+                    <div class="strategy-icon">🎯</div>
+                    <div>
+                        <h2 class="strategy-title">Always Start in the Center</h2>
+                        <span class="strategy-badge">Essential</span>
+                    </div>
+                </div>
+                <p class="strategy-description">
+                    The center gives you access to the most winning combinations. It maximizes your control over the
+                    game
+                    board and creates the foundation for multiple winning strategies. This move gives you 4 possible
+                    winning lines!
+                </p>
+            </div>
+
+            <div class="strategy-card purple">
+                <div class="strategy-header">
+                    <div class="strategy-icon purple">🟦</div>
+                    <div>
+                        <h2 class="strategy-title">Prioritize Corners</h2>
+                        <span class="strategy-badge">Tactical</span>
+                    </div>
+                </div>
+                <p class="strategy-description">
+                    If the center is taken, go for a corner. This increases your chance of creating a fork (two ways to
+                    win)
+                    and puts pressure on your opponent's defensive play. Corners offer 3 winning lines each.
+                </p>
+            </div>
+
+            <div class="strategy-card orange">
+                <div class="strategy-header">
+                    <div class="strategy-icon orange">⛔</div>
+                    <div>
+                        <h2 class="strategy-title">Block Forks</h2>
+                        <span class="strategy-badge">Defensive</span>
+                    </div>
+                </div>
+                <p class="strategy-description">
+                    Watch for your opponent's fork setup — stop them early by playing in the middle or forcing them to
+                    block
+                    you. Prevention is better than reaction in Tic Tac Toe. Look for two-in-a-row threats!
+                </p>
+            </div>
+
+            <div class="strategy-card blue">
+                <div class="strategy-header">
+                    <div class="strategy-icon blue">🔁</div>
+                    <div>
+                        <h2 class="strategy-title">Mirror Your Opponent</h2>
+                        <span class="strategy-badge">Advanced</span>
+                    </div>
+                </div>
+                <p class="strategy-description">
+                    In certain cases, mimicking your opponent's moves (especially early) can neutralize their strategy
+                    and
+                    force a draw in perfect play scenarios. This works best when they don't start in the center.
+                </p>
+            </div>
+        </div>
+
+        <div class="win-conditions-card">
+            <div class="win-conditions-header">
+                <div class="win-conditions-icon">🏁</div>
+                <div>
+                    <h2 class="win-conditions-title">Path to Victory</h2>
+                </div>
+            </div>
+            <ul class="win-conditions-list">
+                <li class="win-condition-item">Three in a row (horizontal, vertical, diagonal)</li>
+                <li class="win-condition-item">Opponent misses a critical block</li>
+                <li class="win-condition-item">Successfully execute a fork attack</li>
+                <li class="win-condition-item">Force opponent into defensive mistakes</li>
+            </ul>
+        </div>
+
+        <!-- Ad Container -->
+        <div class="ad-container" style="margin: 20px auto; text-align: center;">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4208665414964925"
+                data-ad-slot="1712602490" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <div class="cta-section">
+            <p>Ready to dominate your opponents with these winning strategies?</p>
+            <button class="cta-button" onclick="alert('Practice mode coming soon!')">
+                🚀 Start Practicing
+            </button>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Tic Tac Toe Game. All rights reserved.</p>
+            <nav class="footer-nav">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle')?.addEventListener('click', function () {
+            const nav = document.getElementById('siteNav');
+            nav.classList.toggle('nav-open');
+        });
+
+        // Animated background particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            if (!particlesContainer) return;
+
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+
+                // Random particle colors
+                const colors = ['#00d2ff', '#00ff88', '#8b5cf6', '#ff8c42', '#f5576c'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Enhanced hover effects for strategy cards
+        const strategyCards = document.querySelectorAll('.strategy-card, .win-conditions-card, .cta-section');
+        strategyCards.forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                if (!this.classList.contains('cta-section')) {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                }
+            });
+
+            card.addEventListener('mouseleave', function () {
+                if (!this.classList.contains('cta-section')) {
+                    this.style.transform = 'translateY(0) scale(1)';
+                }
+            });
+        });
+
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', createParticles);
+
+        // Add click animation to buttons
+        const buttons = document.querySelectorAll('.cta-button');
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+
+</html>

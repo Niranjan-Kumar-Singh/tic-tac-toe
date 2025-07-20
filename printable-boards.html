@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Enhanced Printable Tic Tac Toe Boards</title>
+    <meta name="description"
+        content="Download and print free Tic Tac Toe boards to play offline. Multiple board sizes, colorful themes, and interactive options!" />
+    <meta name="keywords"
+        content="printable tic tac toe, tic tac toe boards, offline game, printable game sheets, free tic tac toe printouts" />
+    <meta name="author" content="Niranjan Kumar Singh" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- ✅ Theme Color -->
+    <meta name="theme-color" content="#ffcc00" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
+
+    <!-- ✅ Open Graph for Social Sharing -->
+    <meta property="og:title" content="Printable Tic Tac Toe Boards - Free Download" />
+    <meta property="og:description"
+        content="Download free printable Tic Tac Toe boards in various styles and sizes. Great for kids and family fun!" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tic-tac-toe-niranjan.vercel.app/printables.html" />
+    <meta property="og:image" content="images/print-preview.png" />
+
+    <!-- ✅ Favicon and Apple Icon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/favicon-32x32.png" />
+
+    <!-- ✅ Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #7209b7 100%);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(30, 144, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .site-header {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 1rem 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            background: linear-gradient(135deg, #ffd700, #ffb347, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .site-nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .site-nav a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .site-nav a:hover {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(138, 43, 226, 0.2));
+            border-color: rgba(255, 215, 0, 0.3);
+            color: #ffd700;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+        }
+
+        main {
+            flex: 1;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffd700, #ffb347, #ff6b6b, #c44569);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .controls-section {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .control-group {
+            color: white;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        select,
+        input[type="number"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        select:focus,
+        input:focus {
+            outline: none;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.95));
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3),
+                inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.5);
+        }
+
+        .theme-preview {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .theme-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .theme-option.active {
+            border-color: white;
+            transform: scale(1.1);
+        }
+
+        .theme-classic {
+            background: linear-gradient(45deg, #1a1a1a, #333333, #000000);
+        }
+
+        .theme-colorful {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f39c12);
+        }
+
+        .theme-pastel {
+            background: linear-gradient(45deg, #ffecd2, #fcb69f, #a8e6cf, #dcedc1);
+        }
+
+        .theme-neon {
+            background: linear-gradient(45deg, #00ff88, #0088ff, #ff0080, #8000ff);
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24, #ff9ff3, #f368e0);
+            color: white;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d, #00d2ff, #3a7bd5);
+            color: white;
+            box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .boards-container {
+            display: grid;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .board-page {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .boards-grid {
+            display: grid;
+            gap: 1.5rem;
+            justify-items: center;
+        }
+
+        .boards-grid.layout-3 {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .boards-grid.layout-6 {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .boards-grid.layout-9 {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .boards-grid.layout-12 {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .board {
+            display: grid;
+            border: 3px solid #333;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .board:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .board.size-3x3 {
+            width: 190px;
+            height: 190px;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+        }
+
+        .board.size-4x4 {
+            width: 190px;
+            height: 190px;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+        }
+
+        .board.size-5x5 {
+            width: 190px;
+            height: 190px;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+        }
+
+        .board-cell {
+            border: 1px solid #333;
+            background: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .board-cell:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Theme variations */
+        .board.theme-colorful {
+            border-color: #ff6b6b;
+        }
+
+        .board.theme-colorful .board-cell {
+            border-color: #4ecdc4;
+        }
+
+        .board.theme-pastel {
+            border-color: #ffecd2;
+        }
+
+        .board.theme-pastel .board-cell {
+            border-color: #fcb69f;
+            background: #fef9f3;
+        }
+
+        .board.theme-neon {
+            border-color: #00ff88;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .board.theme-neon .board-cell {
+            border-color: #0088ff;
+            background: #001122;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat-item {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            padding: 1rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .site-footer {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content nav a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-content nav a:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 1rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .site-nav {
+                display: none;
+            }
+
+            .hero-section h2 {
+                font-size: 2rem;
+            }
+
+            .controls-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .site-header,
+            .site-footer,
+            .controls-section,
+            .stats-section,
+            .hero-section,
+            .btn {
+                display: none !important;
+            }
+
+            .boards-container {
+                margin: 0;
+                gap: 1rem;
+            }
+
+            .board-page {
+                background: white;
+                box-shadow: none;
+                padding: 1rem;
+                page-break-after: always;
+            }
+
+            .board {
+                border-color: #000 !important;
+                box-shadow: none;
+            }
+
+            .board-cell {
+                border-color: #000 !important;
+                background: white !important;
+            }
+
+            .board.theme-neon .board-cell {
+                background: white !important;
+            }
+
+            .page-title {
+                color: #000;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="site-title">Printable Boards</h1>
+            <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+            <nav class="site-nav">
+                <a href="/index.html">Home</a>
+                <a href="/tips.html">Tips</a>
+                <a href="/updates.html">Updates</a>
+                <a href="/about.html">About</a>
+                <a href="/contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <h2>Enhanced Tic Tac Toe Boards</h2>
+            <p>Create custom printable boards with multiple sizes, themes, and layouts!</p>
+        </section>
+
+        <section class="controls-section">
+            <div class="controls-grid">
+                <div class="control-group">
+                    <label for="boardSize">Board Size:</label>
+                    <select id="boardSize">
+                        <option value="3x3">Classic 3x3</option>
+                        <option value="4x4">Challenging 4x4</option>
+                        <option value="5x5">Expert 5x5</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="boardCount">Number of Boards:</label>
+                    <input type="number" id="boardCount" min="1" max="60" value="12">
+                    <small style="display: block; margin-top: 0.5rem; opacity: 0.8;">Max 60 boards (5 pages)</small>
+                </div>
+
+                <div class="control-group">
+                    <label for="boardsPerPage">Boards per Page:</label>
+                    <select id="boardsPerPage">
+                        <option value="3">3 boards (1×3)</option>
+                        <option value="6">6 boards (2×3)</option>
+                        <option value="9">9 boards (3×3)</option>
+                        <option value="12" selected>12 boards (4×3)</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>Theme:</label>
+                    <div class="theme-preview">
+                        <div class="theme-option theme-classic active" data-theme="classic" title="Classic Black"></div>
+                        <div class="theme-option theme-colorful" data-theme="colorful" title="Colorful"></div>
+                        <div class="theme-option theme-pastel" data-theme="pastel" title="Pastel"></div>
+                        <div class="theme-option theme-neon" data-theme="neon" title="Neon"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <!-- <button class="btn btn-primary" onclick="generateBoards()">
+                    🎯 Generate Boards
+                </button> -->
+                <button class="btn btn-secondary" onclick="window.print()">
+                    🖨️ Print Boards
+                </button>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <h3>Board Statistics</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalBoards">12</span>
+                    <span>Total Boards</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalPages">1</span>
+                    <span>Pages</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalGames">36</span>
+                    <span>Estimated Games</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ad Container -->
+        <div class="ad-container" style="margin: 20px auto; text-align: center;">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4208665414964925"
+                data-ad-slot="1712602490" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <div class="boards-container" id="boardsContainer">
+            <!-- Boards will be generated here -->
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Tic Tac Toe Game. All rights reserved.</p>
+            <nav class="footer-nav">
+                <a href="privacy.html">Privacy Policy</a> |
+                <a href="terms.html">Terms of Service</a> |
+                <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        let currentTheme = 'classic';
+
+        // Theme selection
+        document.querySelectorAll('.theme-option').forEach(option => {
+            option.addEventListener('click', function () {
+                document.querySelectorAll('.theme-option').forEach(o => o.classList.remove('active'));
+                this.classList.add('active');
+                currentTheme = this.dataset.theme;
+                generateBoards();
+            });
+        });
+
+        // Control change listeners with validation
+        document.getElementById('boardSize').addEventListener('change', generateBoards);
+        document.getElementById('boardCount').addEventListener('change', function () {
+            const count = parseInt(this.value);
+            if (count > 60) {
+                this.value = 60;
+                alert('Maximum 60 boards allowed (5 pages with 12 boards each)');
+            }
+            updateStats();
+            generateBoards();
+        });
+        document.getElementById('boardsPerPage').addEventListener('change', function () {
+            updateStats();
+            generateBoards();
+        });
+
+        function createBoard(size, theme) {
+            const board = document.createElement('div');
+            board.className = `board size-${size} theme-${theme}`;
+
+            const cellCount = size === '3x3' ? 9 : size === '4x4' ? 16 : 25;
+
+            for (let i = 0; i < cellCount; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'board-cell';
+                board.appendChild(cell);
+            }
+
+            return board;
+        }
+
+        function generateBoards() {
+            const size = document.getElementById('boardSize').value;
+            const count = parseInt(document.getElementById('boardCount').value);
+            const perPage = parseInt(document.getElementById('boardsPerPage').value);
+            const container = document.getElementById('boardsContainer');
+
+            container.innerHTML = '';
+
+            const totalPages = Math.ceil(count / perPage);
+
+            for (let page = 0; page < totalPages; page++) {
+                const pageDiv = document.createElement('div');
+                pageDiv.className = 'board-page';
+
+                const title = document.createElement('h3');
+                title.className = 'page-title';
+                title.textContent = `Tic Tac Toe Boards - Page ${page + 1} of ${totalPages}`;
+                pageDiv.appendChild(title);
+
+                const boardsGrid = document.createElement('div');
+                boardsGrid.className = `boards-grid layout-${perPage}`;
+
+                const startIndex = page * perPage;
+                const endIndex = Math.min(startIndex + perPage, count);
+
+                for (let i = startIndex; i < endIndex; i++) {
+                    const board = createBoard(size, currentTheme);
+                    boardsGrid.appendChild(board);
+                }
+
+                pageDiv.appendChild(boardsGrid);
+                container.appendChild(pageDiv);
+            }
+
+            updateStats();
+        }
+
+        function updateStats() {
+            const count = parseInt(document.getElementById('boardCount').value);
+            const perPage = parseInt(document.getElementById('boardsPerPage').value);
+            const totalPages = Math.ceil(count / perPage);
+            const estimatedGames = count * 3; // Assuming 3 games per board on average
+
+            document.getElementById('totalBoards').textContent = count;
+            document.getElementById('totalPages').textContent = totalPages;
+            document.getElementById('totalGames').textContent = estimatedGames;
+        }
+
+        // Initialize
+        generateBoards();
+    </script>
+</body>
+
+</html>

@@ -1,24 +1,45 @@
-const CACHE_NAME = "tic-tac-toe-cache-v1";
+const CACHE_NAME = "tic-tac-toe-cache-v2"; // incremented version
 const urlsToCache = [
-  "/",
+  "/", // default page
   "/index.html",
+  "/about.html",
   "/privacy.html",
   "/terms.html",
-  "/legal.css",
-  "/style.css",
-  "/script.js",
-  "/images/favicon.ico",
-  "/images/favicon-16x16.png",
-  "/images/favicon-32x32.png",
-  "/images/tic-tac-toe-192x192.png",
-  "/images/tic-tac-toe-512x512.png",
-  "/images/preview.png",
-  "/images/tic-tac-toe.png",
   "/offline.html",
   "/ads.txt",
   "/manifest.json",
-  "/offline.html",
+  "/robots.txt",
   "/sitemap-2025.xml",
+  "/LICENSE",
+  "/README.md",
+
+  // Game-related pages
+  "/advanced-tactics.html",
+  "/beginner-guide.html",
+  "/community.html",
+  "/game-theory.html",
+  "/mobile-app.html",
+  "/printable-boards.html",
+  "/strategy-guide.html",
+  "/tips.html",
+  "/updates.html",
+  "/variations.html",
+
+  // Styles and scripts
+  "/style.css",
+  "/layout.css",
+  "/legal.css",
+  "/script.js",
+  "/layout.js",
+
+  // Images
+  "/images/favicon.ico",
+  "/images/favicon-16x16.png",
+  "/images/favicon-32x32.png",
+  "/images/preview.png",
+  "/images/tic-tac-toe-192x192.png",
+  "/images/tic-tac-toe-512x512.png",
+  "/images/tic-tac-toe.png"
 ];
 
 self.addEventListener("install", (event) => {
@@ -30,6 +51,16 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
+  // Only handle GET requests and skip external/unwanted domains
+  if (
+    event.request.method !== "GET" ||
+    event.request.url.includes("csp.withgoogle.com") ||
+    event.request.url.includes("adtrafficquality.google") ||
+    event.request.url.includes("googlesyndication.com")
+  ) {
+    return;
+  }
+
   event.respondWith(
     fetch(event.request).catch(() =>
       caches.match(event.request).then((response) => {

@@ -7,61 +7,95 @@
 
     <title>Terms & Conditions | Tic Tac Toe - Niranjan</title>
 
-    <!-- ✅ Meta Description for SEO -->
+    <!-- ✅ SEO Meta -->
     <meta name="description"
         content="Read the Terms & Conditions for using the Tic Tac Toe game. Understand the rules and your responsibilities." />
+    <meta name="keywords" content="tic tac toe, terms and conditions, rules, usage policy, tic tac toe game">
+    <meta name="author" content="Niranjan Kumar Singh">
+    <meta name="robots" content="index, follow" />
 
-    <!-- ✅ Theme Color -->
-    <meta name="theme-color" content="#819A91" />
+    <!-- ✅ Theme Colors -->
+    <meta name="theme-color" content="#819A91" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
 
-    <!-- ✅ Google AdSense -->
-    <meta name="google-adsense-account" content="ca-pub-4208665414964925" />
-
-    <!-- ✅ Required for AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4208665414964925"
-        crossorigin="anonymous"></script>
-
-    <!-- ✅ Google Verification (optional, only needed on main page typically) -->
-    <meta name="google-site-verification" content="KKxnRIS1ajvXZobsLsOcPIogecH-EXAqO1SbS430nac" />
-
-    <!-- ✅ Open Graph (Optional) -->
+    <!-- ✅ Open Graph (for social sharing) -->
     <meta property="og:title" content="Terms & Conditions | Tic Tac Toe" />
     <meta property="og:description"
         content="Understand the Terms and Conditions of using the Tic Tac Toe app by Niranjan Kumar Singh." />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content="images/preview.png" />
     <meta property="og:url" content="https://tic-tac-toe-niranjan.vercel.app/terms.html" />
 
-    <!-- ✅ Favicon and Fonts -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet" />
+    <!-- ✅ Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/favicon-32x32.png" />
 
-    <!-- ✅ CSS -->
+    <!-- ✅ Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet" />
+
+    <!-- ✅ Stylesheet -->
     <link rel="stylesheet" href="legal.css" />
+
+    <!-- ✅ Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-4208665414964925" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4208665414964925"
+        crossorigin="anonymous"></script>
+
+    <!-- ✅ Google Site Verification -->
+    <meta name="google-site-verification" content="KKxnRIS1ajvXZobsLsOcPIogecH-EXAqO1SbS430nac" />
 </head>
 
 <body>
-    <main style="max-width: 800px; margin: 2rem auto; padding: 1rem;">
-        <h1>Terms & Conditions</h1>
-        <p>Effective date: July 2, 2025</p>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
 
-        <p>By accessing or using this website, you agree to be bound by these Terms & Conditions.</p>
+    <a href="/" class="back-to-game">← Back to Game</a>
 
-        <h2>Use of the Game</h2>
-        <p>You are permitted to use the Tic Tac Toe game for personal, non-commercial purposes only.</p>
+    <div class="container">
+        <div class="privacy-card">
+            <div class="header">
+                <h1>Terms & Conditions</h1>
+                <p class="effective-date">Effective date: July 2, 2025</p>
+            </div>
 
-        <h2>Content</h2>
-        <p>All content is provided "as is" and may be updated or removed at any time without notice.</p>
+            <div class="intro">
+                By accessing or using this website, you agree to be bound by these Terms & Conditions.
+            </div>
 
-        <h2>Limitation of Liability</h2>
-        <p>We are not liable for any damages arising from the use or inability to use this site or game.</p>
+            <div class="section">
+                <h2>Use of the Game</h2>
+                <p>You are permitted to use the Tic Tac Toe game for personal, non-commercial purposes only.</p>
+            </div>
 
-        <h2>Changes to Terms</h2>
-        <p>We reserve the right to update these Terms at any time. Continued use of the site constitutes acceptance of
-            those changes.</p>
+            <div class="section">
+                <h2>Content</h2>
+                <p>All content is provided "as is" and may be updated or removed at any time without notice.</p>
+            </div>
 
-        <h2>Contact</h2>
-        <p>For questions, contact <a href="mailto:niranjansingh1419@gmail.com">niranjansingh1419@gmail.com</a>.</p>
-    </main>
+            <div class="section">
+                <h2>Limitation of Liability</h2>
+                <p>We are not liable for any damages arising from the use or inability to use this site or game.</p>
+            </div>
+
+            <div class="section">
+                <h2>Changes to Terms</h2>
+                <p>We reserve the right to update these Terms at any time. Continued use of the site constitutes
+                    acceptance of those changes.</p>
+            </div>
+
+            <div class="section contact-section">
+                <h2>Contact</h2>
+                <p>For questions, contact
+                    <a href="mailto:niranjansingh1419@gmail.com">niranjansingh1419@gmail.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -2,176 +2,434 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- ✅ Meta Description for SEO -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="Play a fun and interactive Tic Tac Toe game! Challenge a friend or play against the computer, enjoy confetti effects, dark/light mode, a clean modern UI, and enjoy confetti celebrations for every win!">
-
-    <!-- ✅ Theme Color -->
-    <meta name="theme-color" content="#819A91">
-
-    <!-- ✅ Google AdSense -->
-    <meta name="google-adsense-account" content="ca-pub-4208665414964925">
-
+        content="Master Tic Tac Toe with our comprehensive guide! Play online, learn winning strategies, explore game history, and improve your tactical skills. Features AI opponent, dark mode, and detailed gameplay tips." />
+    <meta name="theme-color" content="#819A91" />
+    <meta name="google-adsense-account" content="ca-pub-4208665414964925" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4208665414964925"
         crossorigin="anonymous"></script>
-
-    <!-- ✅ Google Verification -->
     <meta name="google-site-verification" content="KKxnRIS1ajvXZobsLsOcPIogecH-EXAqO1SbS430nac" />
-
-    <!-- ✅ Open Graph for Social Sharing -->
-    <meta property="og:title" content="Tic Tac Toe - Play Online" />
+    <meta property="og:title" content="Tic Tac Toe Master - Play, Learn, and Win" />
     <meta property="og:description"
-        content="A fun, interactive Tic Tac Toe game with multiplayer, computer mode, dark theme, and confetti effects." />
+        content="Complete Tic Tac Toe experience with gameplay, strategies, history, and tips to become unbeatable at this classic game." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tic-tac-toe-niranjan.vercel.app/" />
     <meta property="og:image" content="https://tic-tac-toe-niranjan.vercel.app/images/preview.png" />
-
-    <!-- ✅ Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Tic Tac Toe - Play Online" />
+    <meta name="twitter:title" content="Tic Tac Toe Master - Complete Strategy Guide" />
     <meta name="twitter:description"
-        content="Fun online Tic Tac Toe game with dark mode, AI opponent, confetti effect!" />
+        content="Learn winning strategies, play against AI, and master the classic game of Tic Tac Toe with our comprehensive guide." />
     <meta name="twitter:image" content="https://tic-tac-toe-niranjan.vercel.app/images/preview.png" />
-
-    <!-- ✅ PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
-
-    <title>Tic-Tac-Toe Game</title>
-
-    <!-- ✅ CSS & Confetti Library -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json" />
+    <title>Tic Tac Toe Master - Play Online & Learn Winning Strategies</title>
+    <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-    <!-- ✅ Favicon and Fonts -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon" alt="Tic Tac Toe Icon">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net;">
-
+        content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep2.adtrafficquality.google; worker-src 'self' blob:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://ep2.adtrafficquality.google https://www.google.com; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google; img-src 'self' data: https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;">
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Game",
-  "name": "Tic Tac Toe - Play Online",
-  "description": "A fun, interactive Tic Tac Toe game with multiplayer, dark mode, AI opponent, confetti effects, and offline support.",
-  "author": {
-    "@type": "Person",
-    "name": "Niranjan Kumar Singh",
-    "url": "https://github.com/Niranjan-Kumar-Singh"
-  },
-  "applicationCategory": "GameApplication",
-  "genre": "Strategy",
-  "operatingSystem": "Web",
-  "image": "https://tic-tac-toe-niranjan.vercel.app/images/tic-tac-toe.png",
-  "url": "https://tic-tac-toe-niranjan.vercel.app/",
-  "inLanguage": "en",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Niranjan Kumar Singh",
-    "url": "https://github.com/Niranjan-Kumar-Singh"
+  {
+    "@context": "https://schema.org",
+    "@type": "Game",
+    "name": "Tic Tac Toe Master - Complete Strategy Guide",
+    "description": "Comprehensive Tic Tac Toe platform with gameplay, winning strategies, history, and educational content for players of all skill levels.",
+    "author": {
+      "@type": "Person",
+      "name": "Niranjan Kumar Singh",
+      "url": "https://github.com/Niranjan-Kumar-Singh"
+    },
+    "applicationCategory": "GameApplication",
+    "genre": "Strategy",
+    "operatingSystem": "Web",
+    "image": "https://tic-tac-toe-niranjan.vercel.app/images/tic-tac-toe.png",
+    "url": "https://tic-tac-toe-niranjan.vercel.app/",
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Niranjan Kumar Singh",
+      "url": "https://github.com/Niranjan-Kumar-Singh"
+    }
   }
-}
-</script>
-
+  </script>
 </head>
 
 <body>
-    <!-- ✅ Game Over Modal -->
-    <div class="msg-container hide">
-        <p id="msg">Winner</p>
-        <button id="new-btn">New Game</button>
-    </div>
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="site-title">Tic Tac Toe Master</h1>
+            <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+            <nav class="site-nav">
+                <a href="/index.html">Home</a>
+                <a href="/tips.html">Strategy Guide</a>
+                <a href="/updates.html">Updates</a>
+                <a href="/about.html">About</a>
+            </nav>
+        </div>
+    </header>
 
-    <!-- ✅ Main Game UI -->
-    <main>
-        <h1>Tic Tac Toe</h1>
-        <p id="turn-indicator">O's Turn</p>
-        <div class="container">
-            <div class="game" id="game-board">
-                <button class="box" aria-label="Cell 1"></button>
-                <button class="box" aria-label="Cell 2"></button>
-                <button class="box" aria-label="Cell 3"></button>
-                <button class="box" aria-label="Cell 4"></button>
-                <button class="box" aria-label="Cell 5"></button>
-                <button class="box" aria-label="Cell 6"></button>
-                <button class="box" aria-label="Cell 7"></button>
-                <button class="box" aria-label="Cell 8"></button>
-                <button class="box" aria-label="Cell 9"></button>
+    <!-- Hero Section with Introduction -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Master the Art of Tic Tac Toe</h1>
+            <p class="hero-subtitle">Learn winning strategies, play against our advanced AI, and become unbeatable at
+                the world's most beloved strategy game.</p>
+            <div class="hero-features">
+                <span class="feature-badge">🎯 Smart AI Opponent</span>
+                <span class="feature-badge">📚 Strategy Guides</span>
+                <span class="feature-badge">🌙 Dark Mode</span>
+                <span class="feature-badge">🎉 Celebration Effects</span>
             </div>
         </div>
+    </section>
 
-        <!-- ✅ Controls -->
-        <div class="controls">
-            <button id="reset-btn">Reset</button>
-            <button id="mode-toggle">Play vs Computer: OFF</button>
-            <button id="theme-toggle">Toggle Theme</button>
+    <!-- Game Section -->
+    <section class="game-section">
+        <div class="msg-container hide">
+            <p id="msg">Winner</p>
+            <button id="new-btn">New Game</button>
         </div>
-    </main>
 
-    <section class="game-info">
-        <h2>About the Game</h2>
-        <p>
-            Welcome to <strong>Tic Tac Toe - Play Online</strong>! This is a clean, fun, and interactive version of the
-            classic game built using HTML, CSS, and JavaScript. Whether you want to challenge a friend or test your
-            skills against a smart computer opponent, this game is designed for endless fun.
+        <main>
+            <p id="turn-indicator">O's Turn</p>
+            <div class="container">
+                <div class="game" id="game-board">
+                    <button class="box" aria-label="Cell 1"></button>
+                    <button class="box" aria-label="Cell 2"></button>
+                    <button class="box" aria-label="Cell 3"></button>
+                    <button class="box" aria-label="Cell 4"></button>
+                    <button class="box" aria-label="Cell 5"></button>
+                    <button class="box" aria-label="Cell 6"></button>
+                    <button class="box" aria-label="Cell 7"></button>
+                    <button class="box" aria-label="Cell 8"></button>
+                    <button class="box" aria-label="Cell 9"></button>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="reset-btn">Reset Game</button>
+                <button id="mode-toggle">Play vs Computer: OFF</button>
+                <button id="theme-toggle">Toggle Theme</button>
+            </div>
+        </main>
+    </section>
+
+    <!-- Ad Container -->
+    <div class="ad-container" style="margin: 20px auto; text-align: center;">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4208665414964925"
+            data-ad-slot="1712602490" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <!-- Educational Content Sections -->
+    <section class="content-section what-is-section">
+        <div class="content-container">
+            <h2>What is Tic Tac Toe?</h2>
+            <p>Tic Tac Toe, also known as Noughts and Crosses, is a classic strategy game played on a 3×3 grid. Two
+                players take turns marking spaces with their respective symbols (X and O), with the goal of being the
+                first to achieve three of their marks in a row horizontally, vertically, or diagonally.</p>
+
+            <p>Despite its simple appearance, Tic Tac Toe involves mathematical concepts including game theory,
+                combinatorics, and strategic thinking. The game has been studied extensively by mathematicians and
+                computer scientists as an example of a solved game with optimal play strategies.</p>
+
+            <h3>Game Objective</h3>
+            <p>The primary objective is to be the first player to get three of your marks (X or O) in a row. This can be
+                achieved in eight different ways:</p>
+            <ul class="game-objectives">
+                <li><strong>Horizontal victories:</strong> Three marks across the top, middle, or bottom row</li>
+                <li><strong>Vertical victories:</strong> Three marks down the left, center, or right column</li>
+                <li><strong>Diagonal victories:</strong> Three marks across either diagonal line</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="content-section strategy-section">
+        <div class="content-container">
+            <h2>Winning Strategies and Tips</h2>
+
+            <div class="strategy-grid">
+                <div class="strategy-card">
+                    <h3>🎯 The Center Strategy</h3>
+                    <p>Always take the center square (position 5) if it's available on your first move. The center
+                        connects to the most winning combinations and gives you maximum control over the game board.</p>
+                </div>
+
+                <div class="strategy-card">
+                    <h3>🏰 Corner Control</h3>
+                    <p>If the center is taken, choose a corner square. Corners offer multiple paths to victory and force
+                        your opponent into defensive positions more effectively than edge squares.</p>
+                </div>
+
+                <div class="strategy-card">
+                    <h3>🛡️ Block and Attack</h3>
+                    <p>Always block your opponent when they have two in a row. Simultaneously, create your own threats
+                        by setting up multiple winning possibilities in a single move.</p>
+                </div>
+
+                <div class="strategy-card">
+                    <h3>🔀 Fork Creation</h3>
+                    <p>A fork occurs when you have two different ways to win on your next turn. Creating forks forces
+                        your opponent to defend against multiple threats, often leading to victory.</p>
+                </div>
+            </div>
+
+            <h3>Advanced Tactical Concepts</h3>
+            <p>Master players understand that perfect play from both sides always results in a draw. However, by
+                understanding these advanced concepts, you can capitalize on your opponent's mistakes:</p>
+
+            <div class="tactics-list">
+                <div class="tactic-item">
+                    <strong>Tempo Control:</strong> Make moves that force your opponent to respond defensively while
+                    advancing your own position.
+                </div>
+                <div class="tactic-item">
+                    <strong>Pattern Recognition:</strong> Learn to quickly identify winning and losing patterns to make
+                    optimal moves under time pressure.
+                </div>
+                <div class="tactic-item">
+                    <strong>Psychological Pressure:</strong> In rapid games, consistent strategic play can pressure
+                    opponents into making errors.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section history-section">
+        <div class="content-container">
+            <h2>The Rich History of Tic Tac Toe</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">Ancient Rome</div>
+                    <div class="timeline-content">
+                        <h4>Terni Lapilli</h4>
+                        <p>The earliest known version of Tic Tac Toe was played by Roman soldiers. Called "Terni
+                            Lapilli," this game used a similar 3×3 grid but with different movement rules.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1952</div>
+                    <div class="timeline-content">
+                        <h4>Computer Implementation</h4>
+                        <p>OXO became one of the first computer games, implemented on the EDSAC computer at Cambridge
+                            University by A.S. Douglas as part of his PhD dissertation on human-computer interaction.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1970s</div>
+                    <div class="timeline-content">
+                        <h4>Mathematical Analysis</h4>
+                        <p>Game theorists provided complete mathematical analysis, proving that perfect play by both
+                            players leads to a draw and establishing optimal strategies.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">Present Day</div>
+                    <div class="timeline-content">
+                        <h4>Digital Evolution</h4>
+                        <p>Modern implementations feature AI opponents, online multiplayer, and educational tools,
+                            making this ancient game accessible to new generations worldwide.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section benefits-section">
+        <div class="content-container">
+            <h2>Educational Benefits and Cognitive Development</h2>
+
+            <p>Playing Tic Tac Toe offers numerous cognitive and educational benefits, making it an excellent tool for
+                mental development across all ages:</p>
+
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h3>🧠 Strategic Thinking</h3>
+                    <p>Develops forward-thinking skills as players must anticipate opponent moves and plan several steps
+                        ahead to achieve victory.</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h3>🔍 Pattern Recognition</h3>
+                    <p>Enhances ability to quickly identify winning combinations and defensive patterns, improving
+                        visual processing skills.</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h3>🎯 Decision Making</h3>
+                    <p>Teaches the importance of each choice and how individual decisions compound to determine final
+                        outcomes.</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h3>📊 Mathematical Concepts</h3>
+                    <p>Introduces basic game theory, probability, and logical reasoning in an accessible, interactive
+                        format.</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h3>🤝 Social Skills</h3>
+                    <p>Promotes healthy competition, turn-taking, and good sportsmanship when played with others.</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h3>⚡ Quick Analysis</h3>
+                    <p>Improves rapid assessment skills as players learn to evaluate board positions and make optimal
+                        moves efficiently.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section ai-section">
+        <div class="content-container">
+            <h2>Playing Against Our Advanced AI</h2>
+
+            <p>Our Tic Tac Toe AI implements the minimax algorithm with alpha-beta pruning, creating a challenging
+                opponent that plays optimally. Here's what makes our AI special:</p>
+
+            <div class="ai-features">
+                <div class="ai-feature">
+                    <h3>🤖 Perfect Play Algorithm</h3>
+                    <p>The AI uses minimax decision-making to evaluate all possible game states, ensuring it never makes
+                        a suboptimal move. This means you'll need perfect play to achieve even a draw!</p>
+                </div>
+
+                <div class="ai-feature">
+                    <h3>⚡ Optimized Performance</h3>
+                    <p>Alpha-beta pruning reduces computation time while maintaining perfect play, providing instant
+                        responses even on slower devices.</p>
+                </div>
+
+                <div class="ai-feature">
+                    <h3>🎯 Strategic Preferences</h3>
+                    <p>When multiple optimal moves exist, our AI prioritizes center and corner positions, creating more
+                        interesting and educational games.</p>
+                </div>
+            </div>
+
+            <p>Playing against our AI is an excellent way to improve your strategic thinking and learn optimal play
+                patterns. Can you force a draw against perfect play?</p>
+        </div>
+    </section>
+
+    <section class="extra-links">
+        <h2>Explore Our Complete Gaming Resources</h2>
+        <div class="links-grid">
+            <div class="link-card">
+                <h3>📖 Strategy Guides</h3>
+                <p>Comprehensive tutorials covering basic to advanced Tic Tac Toe strategies</p>
+                <a href="/tips.html">Learn Winning Strategies →</a>
+            </div>
+            <div class="link-card">
+                <h3>🎮 Game Variations</h3>
+                <p>Discover different Tic Tac Toe variants and rule modifications</p>
+                <a href="/variations.html">Explore Variants →</a>
+            </div>
+            <div class="link-card">
+                <h3>👥 Community</h3>
+                <p>Connect with other players, share strategies, and participate in tournaments</p>
+                <a href="/community.html">Join Community →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="content-container">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h3>Is it possible to always win at Tic Tac Toe?</h3>
+                <p>With perfect play from both players, Tic Tac Toe always ends in a draw. However, if your opponent
+                    makes a mistake, you can capitalize and win. The first player has a slight advantage if they play
+                    optimally.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What's the best opening move?</h3>
+                <p>The center square is mathematically the strongest opening move, as it's part of four different
+                    winning combinations. Corner squares are the second-best choice, while edge squares are generally
+                    weaker.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How does your AI work?</h3>
+                <p>Our AI uses the minimax algorithm, which evaluates all possible future game states to determine the
+                    optimal move. This ensures the AI plays perfectly and never makes strategic errors.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can I play on mobile devices?</h3>
+                <p>Yes! Our game is fully responsive and optimized for mobile devices, tablets, and desktop computers.
+                    The interface adapts to your screen size for the best experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>📧 Contact & Support</h2>
+        <p>Have questions about strategies, found a bug, or want to suggest improvements? We'd love to hear from you!
         </p>
+        <div class="contact-info">
+            <p><strong>Email:</strong> <a
+                    href="mailto:niranjansingh1419@gmail.com">niranjansingh1419@gmail.com</a></p>
+            <p><strong>Response Time:</strong> Usually within 24-48 hours</p>
+            <p><strong>Topics We Cover:</strong> Game strategies, technical support, feature requests, educational
+                partnerships</p>
+        </div>
 
-        <h3>✨ Features</h3>
-        <ul>
-            <li>🎮 Play against a friend or AI (computer)</li>
-            <li>🌗 Toggle between Dark and Light Mode</li>
-            <li>🎉 Confetti celebration on winning</li>
-            <li>📊 Scoreboard to keep track of wins</li>
-            <li>📴 Works offline (PWA supported)</li>
-            <li>💻 Fully responsive and mobile-friendly</li>
-        </ul>
-
-        <h3>🕹️ How to Play</h3>
-        <p>
-            Take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a
-            horizontal, vertical, or diagonal row wins the round. Switch between single-player and two-player modes
-            anytime.
-        </p>
-
-        <h3>🔧 Built With</h3>
-        <p>
-            This game was developed using:
-        <ul>
-            <li>💡 HTML5 for structure</li>
-            <li>🎨 CSS3 for styling and themes</li>
-            <li>⚙️ JavaScript for interactivity and AI logic</li>
-            <li>🛠️ Service Workers for offline support</li>
-        </ul>
-        </p>
-
-        <h3>📣 Help Us Grow</h3>
-        <p>
-            Share the game with your friends and bookmark this page! If you like it, give the project a ⭐ on
-            <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a>.
-        </p>
+        <div class="contact-cta">
+            <h3>🎓 Educational Use</h3>
+            <p>Teachers and educators: Contact us for information about using our Tic Tac Toe platform in educational
+                settings. We offer resources and support for classroom implementation.</p>
+        </div>
     </section>
 
     <footer class="site-footer">
         <div class="footer-content">
-            <p>&copy; 2025 <strong>Tic Tac Toe - Niranjan Kumar Singh</strong>. All rights reserved.</p>
-            <nav>
-                <a href="/privacy.html">Privacy Policy</a>
-                |
-                <a href="/terms.html">Terms & Conditions</a>
-                |
-                <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a>
-            </nav>
+            <div class="footer-section">
+                <h4>Tic Tac Toe Master</h4>
+                <p>Your ultimate destination for mastering the classic strategy game. Learn, play, and improve with our
+                    comprehensive platform.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/strategy-guide.html">Complete Strategy Guide</a></li>
+                    <li><a href="/game-theory.html">Mathematical Analysis</a></li>
+                    <li><a href="/mobile-app.html">Mobile App</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="/beginner-guide.html">Beginner's Guide</a></li>
+                    <li><a href="/advanced-tactics.html">Advanced Tactics</a></li>
+                    <li><a href="/printable-boards.html">Printable Boards</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <p>&copy; 2025 <strong>Tic Tac Toe Master</strong> by Niranjan Kumar Singh</p>
+                <nav class="footer-legal">
+                    <a href="/privacy.html">Privacy Policy</a> |
+                    <a href="/terms.html">Terms & Conditions</a> |
+                    <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a>
+                </nav>
+            </div>
         </div>
     </footer>
 
-    <!-- ✅ Game Script -->
-    <script src="script.js"></script>
-
-    <!-- ✅ Register Service Worker -->
     <script>
         if ("serviceWorker" in navigator) {
             window.addEventListener("load", () => {
@@ -182,6 +440,7 @@
             });
         }
     </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
