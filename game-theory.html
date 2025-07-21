@@ -68,6 +68,8 @@
             flex-direction: column;
             min-height: 100vh;
             overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            tap-highlight-color: transparent;
         }
 
         /* Enhanced animated background particles */
@@ -586,6 +588,14 @@
             background: var(--glass-bg);
         }
 
+        .footer-separator {
+            color: var(--text-secondary);
+            margin: 0 0.5em;
+            user-select: none;
+            pointer-events: none;
+            font-weight: 400;
+        }
+
         /* Responsive design */
         @media (max-width: 768px) {
             .site-header {
@@ -601,7 +611,6 @@
                 position: absolute;
                 top: 100%;
                 right: 0;
-                background: var(--glass-bg);
                 backdrop-filter: blur(20px);
                 border: 1px solid var(--glass-border);
                 border-radius: 16px;
@@ -609,6 +618,8 @@
                 padding: 1rem;
                 flex-direction: column;
                 min-width: 200px;
+                background: rgba(20, 24, 40, 0.95);
+                color: var(--text-primary);
             }
 
             .site-nav.nav-open {
@@ -618,6 +629,8 @@
             .site-nav a {
                 margin: 0.25rem 0;
                 text-align: center;
+                color: var(--text-primary);
+                background: transparent;
             }
 
             main {
@@ -646,6 +659,10 @@
             .footer-nav {
                 flex-direction: column;
                 gap: 0.5rem;
+            }
+
+            .footer-separator {
+                display: none;
             }
         }
 
@@ -679,10 +696,10 @@
             <a href="index.html" class="site-title">Tic Tac Toe</a>
             <button class="menu-toggle" aria-label="Toggle navigation" id="menuToggle">&#9776;</button>
             <nav class="site-nav" id="siteNav">
-                <a href="/index.html">Home</a>
-                <a href="/tips.html">Tips</a>
-                <a href="/updates.html">Updates</a>
-                <a href="/about.html">About</a>
+                <a href="index.html">Home</a>
+                <a href="tips.html">Tips</a>
+                <a href="updates.html">Updates</a>
+                <a href="about.html">About</a>
             </nav>
         </div>
     </header>
@@ -797,9 +814,11 @@
         <div class="footer-content">
             <p>&copy; 2025 Tic Tac Toe Game. All rights reserved.</p>
             <nav class="footer-nav">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
-                <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a>
+                <span><a href="privacy.html">Privacy Policy</a></span>
+                <span class="footer-separator">|</span>
+                <span><a href="terms.html">Terms of Service</a></span>
+                <span class="footer-separator">|</span>
+                <span><a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a></span>
             </nav>
         </div>
     </footer>

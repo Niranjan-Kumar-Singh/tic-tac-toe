@@ -45,6 +45,26 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --dark-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: #b8bcc8;
+            --accent: #00d2ff;
+            --accent-secondary: #3a7bd5;
+            --gaming-green: #00ff88;
+            --gaming-purple: #8b5cf6;
+            --gaming-orange: #ff8c42;
+            --gaming-blue: #00d2ff;
+            --gaming-pink: #f5576c;
+            --gaming-cyan: #00ffcc;
+            --gaming-red: #ff4757;
+            --gaming-yellow: #ffd700;
+        }
+
         body {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #7209b7 100%);
             color: #333;
@@ -52,6 +72,8 @@
             flex-direction: column;
             min-height: 100vh;
             position: relative;
+            -webkit-tap-highlight-color: transparent;
+            tap-highlight-color: transparent;
         }
 
         body::before {
@@ -69,11 +91,15 @@
         }
 
         .site-header {
-            background: rgba(255, 255, 255, 0.08);
+            background: var(--glass-bg);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 1rem 0;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
         }
 
         .header-content {
@@ -98,27 +124,39 @@
 
         .menu-toggle {
             display: none;
-            background: none;
-            border: none;
-            color: white;
             font-size: 1.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
             cursor: pointer;
+            padding: 0.75rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background: var(--glass-border);
+            transform: scale(1.1);
         }
 
         .site-nav {
             display: flex;
-            gap: 2rem;
+            gap: 0.5rem;
         }
 
         .site-nav a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
+            color: var(--text-secondary);
             font-weight: 500;
-            padding: 0.5rem 1rem;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
             border-radius: 25px;
-            transition: all 0.3s ease;
+            background: var(--glass-bg);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid transparent;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
 
         .site-nav a:hover {
@@ -491,6 +529,30 @@
 
             .site-nav {
                 display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                z-index: 3000;
+                backdrop-filter: blur(20px);
+                border: 1px solid var(--glass-border);
+                border-radius: 16px;
+                margin-top: 1rem;
+                padding: 1rem;
+                flex-direction: column;
+                min-width: 200px;
+                background: rgba(20, 24, 40, 0.95);
+                color: var(--text-primary);
+            }
+
+            .site-nav.nav-open {
+                display: flex;
+            }
+
+            .site-nav a {
+                margin: 0.25rem 0;
+                text-align: center;
+                color: var(--text-primary);
+                background: transparent;
             }
 
             .hero-section h2 {
@@ -508,6 +570,21 @@
 
             main {
                 padding: 2rem 1rem;
+            }
+
+            .footer-nav {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .footer-separator {
+                display: none;
+            }
+
+            .boards-container,
+            .board-page,
+            .boards-grid {
+                display: none !important;
             }
         }
 
@@ -561,14 +638,13 @@
 <body>
     <header class="site-header">
         <div class="header-content">
-            <h1 class="site-title">Printable Boards</h1>
-            <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
-            <nav class="site-nav">
-                <a href="/index.html">Home</a>
-                <a href="/tips.html">Tips</a>
-                <a href="/updates.html">Updates</a>
-                <a href="/about.html">About</a>
-                <a href="/contact.html">Contact</a>
+            <a href="index.html" class="site-title">Tic Tac Toe</a>
+            <button class="menu-toggle" aria-label="Toggle navigation" id="menuToggle">&#9776;</button>
+            <nav class="site-nav" id="siteNav">
+                <a href="index.html">Home</a>
+                <a href="tips.html">Tips</a>
+                <a href="updates.html">Updates</a>
+                <a href="about.html">About</a>
             </nav>
         </div>
     </header>
@@ -663,14 +739,30 @@
         <div class="footer-content">
             <p>&copy; 2025 Tic Tac Toe Game. All rights reserved.</p>
             <nav class="footer-nav">
-                <a href="privacy.html">Privacy Policy</a> |
-                <a href="terms.html">Terms of Service</a> |
-                <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a>
+                <span><a href="privacy.html">Privacy Policy</a></span>
+                <span class="footer-separator">|</span>
+                <span><a href="terms.html">Terms of Service</a></span>
+                <span class="footer-separator">|</span>
+                <span><a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a></span>
             </nav>
         </div>
     </footer>
 
     <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const siteNav = document.getElementById('siteNav');
+
+        menuToggle.addEventListener('click', function () {
+            siteNav.classList.toggle('nav-open');
+        });
+
+        // Optional: Close menu when clicking outside
+        document.addEventListener('click', function (e) {
+            if (!menuToggle.contains(e.target) && !siteNav.contains(e.target)) {
+                siteNav.classList.remove('nav-open');
+            }
+        });
+
         let currentTheme = 'classic';
 
         // Theme selection

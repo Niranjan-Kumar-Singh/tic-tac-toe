@@ -67,6 +67,8 @@
             flex-direction: column;
             min-height: 100vh;
             overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            tap-highlight-color: transparent;
         }
 
         /* Enhanced animated background particles */
@@ -597,6 +599,14 @@
             background: var(--glass-bg);
         }
 
+        .footer-separator {
+            color: var(--text-secondary);
+            margin: 0 0.5em;
+            user-select: none;
+            pointer-events: none;
+            font-weight: 400;
+        }
+
         /* Responsive design */
         @media (max-width: 768px) {
             .site-header {
@@ -612,8 +622,9 @@
                 position: absolute;
                 top: 100%;
                 right: 0;
-                background: var(--glass-bg);
-                backdrop-filter: blur(20px);
+                background: rgba(20, 24, 40, 0.95);
+                /* Solid dark background for mobile dropdown */
+                color: var(--text-primary);
                 border: 1px solid var(--glass-border);
                 border-radius: 16px;
                 margin-top: 1rem;
@@ -629,6 +640,7 @@
             .site-nav a {
                 margin: 0.25rem 0;
                 text-align: center;
+                color: var(--text-primary);
             }
 
             main {
@@ -658,6 +670,10 @@
             .footer-nav {
                 flex-direction: column;
                 gap: 0.5rem;
+            }
+
+            .footer-separator {
+                display: none;
             }
         }
 
@@ -858,9 +874,11 @@
         <div class="footer-content">
             <p>&copy; 2025 Tic Tac Toe Game. All rights reserved.</p>
             <nav class="footer-nav">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
-                <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a>
+                <span><a href="privacy.html">Privacy Policy</a></span>
+                <span class="footer-separator">|</span>
+                <span><a href="terms.html">Terms of Service</a></span>
+                <span class="footer-separator">|</span>
+                <span><a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a></span>
             </nav>
         </div>
     </footer>

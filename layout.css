@@ -25,6 +25,8 @@ body {
     flex-direction: column;
     min-height: 100vh;
     overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
 }
 
 /* Animated background particles */
@@ -446,6 +448,14 @@ main {
     background: var(--glass-bg);
 }
 
+.footer-separator {
+    color: var(--text-secondary);
+    margin: 0 0.5em;
+    user-select: none;
+    pointer-events: none;
+    font-weight: 400;
+}
+
 /* Content cards for tips page */
 .content-card {
     background: var(--glass-bg);
@@ -700,11 +710,25 @@ main {
     animation: slideInUp 0.6s ease-out both;
 }
 
-.timeline-item:nth-child(1) { animation-delay: 0.1s; }
-.timeline-item:nth-child(2) { animation-delay: 0.2s; }
-.timeline-item:nth-child(3) { animation-delay: 0.3s; }
-.timeline-item:nth-child(4) { animation-delay: 0.4s; }
-.timeline-item:nth-child(5) { animation-delay: 0.5s; }
+.timeline-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.timeline-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.timeline-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.timeline-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.timeline-item:nth-child(5) {
+    animation-delay: 0.5s;
+}
 
 .timeline-marker {
     position: relative;
@@ -741,11 +765,14 @@ main {
 }
 
 @keyframes pulse {
-    0%, 100% { 
+
+    0%,
+    100% {
         transform: scale(1);
         box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
     }
-    50% { 
+
+    50% {
         transform: scale(1.1);
         box-shadow: 0 0 25px rgba(0, 210, 255, 0.8);
     }
@@ -811,8 +838,13 @@ main {
 }
 
 @keyframes glow {
-    from { box-shadow: 0 0 10px rgba(245, 87, 108, 0.5); }
-    to { box-shadow: 0 0 20px rgba(245, 87, 108, 0.8); }
+    from {
+        box-shadow: 0 0 10px rgba(245, 87, 108, 0.5);
+    }
+
+    to {
+        box-shadow: 0 0 20px rgba(245, 87, 108, 0.8);
+    }
 }
 
 .update-title {
@@ -1039,7 +1071,6 @@ main {
         position: absolute;
         top: 100%;
         right: 0;
-        background: var(--glass-bg);
         backdrop-filter: blur(20px);
         border: 1px solid var(--glass-border);
         border-radius: 16px;
@@ -1047,6 +1078,8 @@ main {
         padding: 1rem;
         flex-direction: column;
         min-width: 200px;
+        background: rgba(20, 24, 40, 0.95);
+        color: var(--text-primary);
     }
 
     .site-nav.nav-open {
@@ -1056,6 +1089,8 @@ main {
     .site-nav a {
         margin: 0.25rem 0;
         text-align: center;
+        color: var(--text-primary);
+        background: transparent;
     }
 
     main {
@@ -1077,28 +1112,32 @@ main {
         gap: 0.5rem;
     }
 
+    .footer-separator {
+        display: none;
+    }
+
     .content-card {
         padding: 2rem 1.5rem;
         margin: 1.5rem 0;
     }
-    
+
     .tip-item,
     .ai-step {
         flex-direction: column;
         text-align: center;
         gap: 1rem;
     }
-    
+
     .feature-highlight {
         flex-direction: column;
         text-align: center;
         gap: 1.5rem;
     }
-    
+
     .pro-tips-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .tech-badges {
         justify-content: center;
     }
@@ -1106,35 +1145,35 @@ main {
     .timeline {
         padding-left: 2rem;
     }
-    
+
     .timeline::before {
         left: 1rem;
     }
-    
+
     .timeline-marker {
         left: -1.5rem;
     }
-    
+
     .timeline-content {
         padding: 1.5rem;
     }
-    
+
     .version-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.5rem;
     }
-    
+
     .roadmap-item {
         flex-direction: column;
         text-align: center;
         gap: 1rem;
     }
-    
+
     .feedback-section {
         padding: 1.5rem;
     }
-    
+
     .roadmap-items {
         grid-template-columns: 1fr;
     }
@@ -1156,18 +1195,18 @@ main {
     .content-card {
         padding: 1.5rem 1rem;
     }
-    
+
     .section-title {
         font-size: 1.5rem;
     }
-    
+
     .tip-icon,
     .step-number {
         width: 45px;
         height: 45px;
         font-size: 1rem;
     }
-    
+
     .feature-icon {
         font-size: 3rem;
     }
@@ -1175,23 +1214,23 @@ main {
     .timeline {
         padding-left: 1.5rem;
     }
-    
+
     .timeline::before {
         left: 0.75rem;
     }
-    
+
     .timeline-marker {
         left: -1.25rem;
     }
-    
+
     .timeline-content {
         padding: 1rem;
     }
-    
+
     .version-number {
         font-size: 1.2rem;
     }
-    
+
     .roadmap-title {
         font-size: 1.1rem;
     }

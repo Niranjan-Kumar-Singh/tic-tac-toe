@@ -45,6 +45,8 @@
             min-height: 100vh;
             color: #333;
             line-height: 1.6;
+            -webkit-tap-highlight-color: transparent;
+            tap-highlight-color: transparent;
         }
 
         header {
@@ -351,8 +353,21 @@
         }
 
         @media (max-width: 768px) {
+            main {
+                margin: 1rem 0;
+                padding: 0 0.5rem;
+            }
+
+            p {
+                margin-bottom: 1rem;
+            }
+
             h1 {
                 font-size: 2rem;
+            }
+
+            header {
+                padding: 1.2rem 0 0.5rem 0;
             }
 
             .subtitle {
@@ -360,30 +375,68 @@
             }
 
             .content-section {
-                padding: 1.5rem;
-                margin: 1rem;
+                padding: 1rem;
+                margin: 1rem 0.5rem;
             }
 
             .content-section h2 {
                 font-size: 1.5rem;
             }
 
-            .features-grid {
+            .features-grid,
+            .device-specific {
                 grid-template-columns: 1fr;
                 gap: 1rem;
             }
 
             .feature-card {
-                padding: 1.5rem;
+                padding: 1rem;
+            }
+
+            .preview-image img {
+                border-radius: 10px;
+            }
+
+            .cta-buttons {
+                margin: 1rem 0;
+            }
+
+            footer {
+                padding: 1.2rem 0.5rem;
+                font-size: 0.95rem;
+            }
+
+            .footer-nav {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+                margin-top: 0.5rem;
+            }
+
+            .footer-nav a {
+                margin: 0;
+                padding: 0.5rem 1rem;
+                font-size: 1rem;
+                border-radius: 16px;
+                background: transparent;
+                color: rgba(255, 255, 255, 0.7);
+            }
+
+            .footer-nav a:hover {
+                background: rgba(255, 255, 255, 0.1);
+                color: #fff;
             }
 
             nav ul {
                 gap: 0.5rem;
+                padding: 0;
             }
 
             nav a {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.9rem;
+                padding: 0.6rem 1rem;
+                font-size: 1rem;
+                border-radius: 16px;
             }
 
             .device-specific {
