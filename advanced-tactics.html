@@ -803,6 +803,34 @@
         font-size: 1.4rem;
       }
     }
+
+    /* Social Buttons */
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .social-btn:hover {
+      background: white;
+      color: #333;
+      transform: translateY(-3px);
+    }
   </style>
 </head>
 
@@ -973,13 +1001,12 @@
 
   <footer class="site-footer">
     <div class="footer-content">
-      <p>&copy; 2025 Tic Tac Toe Game. All rights reserved.</p>
-      <nav class="footer-nav">
-        <span><a href="privacy.html">Privacy Policy</a></span>
-        <span class="footer-separator">|</span>
-        <span><a href="terms.html">Terms of Service</a></span>
-        <span class="footer-separator">|</span>
-        <span><a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a></span>
+      <p>&copy; 2026 Tic Tac Toe Game. All rights reserved.</p>
+      <nav class="footer-legal">
+        <a href="privacy.html">Privacy Policy</a> |
+        <a href="terms.html">Terms & Conditions</a> |
+        <a href="disclaimer.html">Disclaimer</a> |
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </footer>

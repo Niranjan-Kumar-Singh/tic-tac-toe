@@ -9,7 +9,7 @@ const urlsToCache = [
   "/ads.txt",
   "/manifest.json",
   "/robots.txt",
-  "/sitemap-2025.xml",
+  "/sitemap-2026.xml",
   "/LICENSE",
   "/README.md",
 

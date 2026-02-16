@@ -22,7 +22,7 @@
     <link rel="manifest" href="manifest.json">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="style.css">
 
     <!-- Theme Colors for Light/Dark Mode -->
     <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
@@ -50,14 +50,20 @@
             <button class="menu-toggle" aria-label="Toggle navigation" id="menuToggle">&#9776;</button>
             <nav class="site-nav" id="siteNav">
                 <a href="index.html">Home</a>
-                <a href="tips.html">Tips</a>
+                <a href="tips.html">Strategy Guide</a>
                 <a href="updates.html">Updates</a>
+                <a href="contact.html">Contact</a>
                 <a href="about.html">About</a>
             </nav>
         </div>
     </header>
 
     <main>
+        <section class="hero-section">
+            <h1 class="hero-title">Update History</h1>
+            <p class="hero-subtitle">Track the evolution of our Tic Tac Toe game</p>
+        </section>
+
         <!-- Ad Container -->
         <div class="ad-container" style="margin: 20px auto; text-align: center;">
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4208665414964925"
@@ -67,22 +73,17 @@
             </script>
         </div>
 
-        <section class="hero-section">
-            <h1 class="hero-title">Update History</h1>
-            <p class="hero-subtitle">Track the evolution of our Tic Tac Toe game</p>
-        </section>
-
         <div class="content-card">
             <div class="card-content">
                 <h2 class="section-title">📋 Changelog</h2>
                 <div class="timeline">
-                    <div class="timeline-item">
+                    <div class="timeline-item fade-in-up">
                         <div class="timeline-marker">
                             <div class="timeline-dot current"></div>
                             <div class="timeline-line"></div>
                         </div>
                         <div class="timeline-content">
-                            <div class="update-badge current">v1.4 - Latest</div>
+                            <div class="update-badge current pulse-animation">v1.4 - Latest</div>
                             <h3 class="update-title">AdSense & SEO Improvements</h3>
                             <p class="update-date">July 2025</p>
                             <div class="update-features">
@@ -95,7 +96,7 @@
                         </div>
                     </div>
 
-                    <div class="timeline-item">
+                    <div class="timeline-item fade-in-up" style="transition-delay: 0.1s;">
                         <div class="timeline-marker">
                             <div class="timeline-dot"></div>
                             <div class="timeline-line"></div>
@@ -114,7 +115,7 @@
                         </div>
                     </div>
 
-                    <div class="timeline-item">
+                    <div class="timeline-item fade-in-up" style="transition-delay: 0.2s;">
                         <div class="timeline-marker">
                             <div class="timeline-dot"></div>
                             <div class="timeline-line"></div>
@@ -133,7 +134,7 @@
                         </div>
                     </div>
 
-                    <div class="timeline-item">
+                    <div class="timeline-item fade-in-up" style="transition-delay: 0.3s;">
                         <div class="timeline-marker">
                             <div class="timeline-dot"></div>
                             <div class="timeline-line"></div>
@@ -152,7 +153,7 @@
                         </div>
                     </div>
 
-                    <div class="timeline-item">
+                    <div class="timeline-item fade-in-up" style="transition-delay: 0.4s;">
                         <div class="timeline-marker">
                             <div class="timeline-dot first"></div>
                         </div>
@@ -173,7 +174,7 @@
             </div>
         </div>
 
-        <div class="content-card">
+        <div class="content-card fade-in-up">
             <div class="card-content">
                 <h2 class="section-title">🚀 Upcoming Features</h2>
                 <div class="roadmap-grid">
@@ -229,20 +230,20 @@
             </div>
         </div>
 
-        <div class="content-card">
+        <div class="content-card fade-in-up" id="stats-section">
             <div class="card-content">
                 <h2 class="section-title">📊 Development Stats</h2>
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <div class="stat-number">1.4</div>
+                        <div class="stat-number" data-target="1.4">1.4</div>
                         <div class="stat-label">Current Version</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">5</div>
+                        <div class="stat-number" data-target="5">0</div>
                         <div class="stat-label">Major Releases</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">4</div>
+                        <div class="stat-number" data-target="4">0</div>
                         <div class="stat-label">Months in Development</div>
                     </div>
                     <div class="stat-item">
@@ -256,18 +257,89 @@
 
     <footer class="site-footer">
         <div class="footer-content">
-            <p>&copy; 2025 Tic Tac Toe Game. All rights reserved.</p>
-            <nav class="footer-nav">
-                <span><a href="privacy.html">Privacy Policy</a></span>
-                <span class="footer-separator">|</span>
-                <span><a href="terms.html">Terms of Service</a></span>
-                <span class="footer-separator">|</span>
-                <span><a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a></span>
+            <p>&copy; 2026 Tic Tac Toe Game. All rights reserved.</p>
+            <div class="footer-socials">
+                <a href="https://instagram.com/niranjan.ks.in" target="_blank" class="social-btn insta-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank"
+                    class="social-btn github-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+            <nav class="footer-legal">
+                <a href="privacy.html">Privacy Policy</a> |
+                <a href="terms.html">Terms & Conditions</a> |
+                <a href="disclaimer.html">Disclaimer</a> |
+                <a href="contact.html">Contact</a>
             </nav>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Scroll Animation (Fade Up)
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+        // Stats Counter Animation
+        const statsSection = document.getElementById('stats-section');
+        if (statsSection) {
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counters = document.querySelectorAll('.stat-number');
+                        counters.forEach(counter => {
+                            const target = +counter.getAttribute('data-target');
+                            if (!target) return; // Skip non-numeric like '1.4' if not easily parsable or '∞'
+
+                            const duration = 2000; // 2 seconds
+                            const increment = target / (duration / 16);
+
+                            let current = 0;
+                            const updateCounter = () => {
+                                current += increment;
+                                if (current < target) {
+                                    counter.innerText = Number.isInteger(target) ? Math.ceil(current) : current.toFixed(1);
+                                    requestAnimationFrame(updateCounter);
+                                } else {
+                                    counter.innerText = target;
+                                }
+                            };
+                            updateCounter();
+                        });
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            statsObserver.observe(statsSection);
+        }
+    </script>
 </body>
 
 </html>

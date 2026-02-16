@@ -1,0 +1,19 @@
+# IDE Settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build/Temp
+dist/
+build/
+.temp/
+.cache/

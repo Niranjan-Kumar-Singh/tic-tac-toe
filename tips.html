@@ -21,7 +21,7 @@
     <link rel="manifest" href="manifest.json">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="style.css">
 
     <!-- Theme Colors for Light/Dark Mode -->
     <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
@@ -48,10 +48,11 @@
             <a href="/index.html" class="site-title">Tic Tac Toe</a>
             <button class="menu-toggle" aria-label="Toggle navigation" id="menuToggle">&#9776;</button>
             <nav class="site-nav" id="siteNav">
-                <a href="/index.html">Home</a>
-                <a href="/tips.html">Tips</a>
-                <a href="/updates.html">Updates</a>
-                <a href="/about.html">About</a>
+                <a href="index.html">Home</a>
+                <a href="tips.html">Strategy Guide</a>
+                <a href="updates.html">Updates</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
             </nav>
         </div>
     </header>
@@ -64,30 +65,29 @@
 
         <div class="content-card">
             <div class="card-content">
-                <h2 class="section-title">🏆 How to Always Win (or Draw)</h2>
+                <h2 class="section-title">🏆 Quick Success Tips</h2>
                 <div class="tips-grid">
                     <div class="tip-item">
                         <div class="tip-icon">🎯</div>
                         <div class="tip-content">
-                            <h3>Take the Center</h3>
-                            <p>Always grab the center square if it's available. It gives you the most winning
-                                possibilities.</p>
+                            <h3>Control the Center</h3>
+                            <p>Taking the center square is the most important first move for winning or forcing a draw.
+                            </p>
                         </div>
                     </div>
                     <div class="tip-item">
                         <div class="tip-icon">📐</div>
                         <div class="tip-content">
-                            <h3>Corner Strategy</h3>
-                            <p>If your opponent takes the center, immediately go for any corner. Avoid the sides when
-                                possible.</p>
+                            <h3>Secure the Corners</h3>
+                            <p>Corners are strategically superior to sides. They open up multiple winning paths.</p>
                         </div>
                     </div>
                     <div class="tip-item">
                         <div class="tip-icon">🛡️</div>
                         <div class="tip-content">
-                            <h3>Block Proactively</h3>
-                            <p>Always block your opponent's winning moves. Stay one step ahead by anticipating their
-                                strategy.</p>
+                            <h3>Block Winning Moves</h3>
+                            <p>Always stay alert to your opponent's position and block their three-in-a-row attempts.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -96,49 +96,20 @@
 
         <div class="content-card">
             <div class="card-content">
-                <h2 class="section-title">🤖 How the AI Works</h2>
-                <div class="ai-explanation">
-                    <div class="ai-step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Check for Winning Moves</h3>
-                            <p>The AI first scans for any immediate winning opportunities.</p>
-                        </div>
-                    </div>
-                    <div class="ai-step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Block Player Wins</h3>
-                            <p>If no winning move exists, it looks for moves to block your victories.</p>
-                        </div>
-                    </div>
-                    <div class="ai-step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3>Strategic Positioning</h3>
-                            <p>Finally, it follows the optimal strategy: Center → Corners → Sides.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <div class="card-content">
-                <h2 class="section-title">📱 Offline Support</h2>
+                <h2 class="section-title">📱 Play Anywhere, Anytime</h2>
                 <div class="feature-highlight">
                     <div class="feature-icon">🌐</div>
                     <div class="feature-content">
-                        <p>This game uses advanced web technologies including Service Workers and Web App Manifest to
-                            provide seamless offline gameplay.</p>
+                        <p>Our Progressive Web App (PWA) technology allows you to play Tic Tac Toe even without an
+                            internet connection.</p>
                         <div class="offline-test">
-                            <p><strong>Try it yourself:</strong> Turn off your Wi-Fi or mobile data and reload the page.
-                                The game will still work perfectly!</p>
+                            <p><strong>Offline Mode:</strong> Once loaded, you can turn off your data/Wi-Fi and the game
+                                will continue to work perfectly!</p>
                         </div>
                         <div class="tech-badges">
                             <span class="tech-badge">PWA Ready</span>
                             <span class="tech-badge">Service Worker</span>
-                            <span class="tech-badge">Cache API</span>
+                            <span class="tech-badge">Offline Play</span>
                         </div>
                     </div>
                 </div>
@@ -147,26 +118,11 @@
 
         <div class="content-card">
             <div class="card-content">
-                <h2 class="section-title">🎮 Pro Tips</h2>
+                <h2 class="section-title">📖 Advanced Mastery</h2>
                 <div class="pro-tips-grid">
-                    <div class="pro-tip">
-                        <h4>🧠 Think Two Moves Ahead</h4>
-                        <p>Don't just react to your opponent's moves. Plan your strategy and force them into difficult
-                            positions.</p>
-                    </div>
-                    <div class="pro-tip">
-                        <h4>⚡ Speed Advantage</h4>
-                        <p>In fast-paced games, quick decision-making can pressure opponents into mistakes.</p>
-                    </div>
-                    <div class="pro-tip">
-                        <h4>🎯 Pattern Recognition</h4>
-                        <p>Learn to quickly identify winning patterns and threats across rows, columns, and diagonals.
-                        </p>
-                    </div>
-                    <div class="pro-tip">
-                        <h4>🔄 Practice Variations</h4>
-                        <p>Try different opening moves to understand various game flows and outcomes.</p>
-                    </div>
+                    <p>Looking for deeper insights? Our <a href="strategy-guide.html"
+                            style="color: var(--accent); font-weight: bold;">Ultimate Strategy Guide</a> covers
+                        everything from opening patterns to perfect AI logic.</p>
                 </div>
             </div>
         </div>
@@ -182,13 +138,33 @@
 
     <footer class="site-footer">
         <div class="footer-content">
-            <p>&copy; 2025 Tic Tac Toe Game. All rights reserved.</p>
-            <nav class="footer-nav">
-                <span><a href="privacy.html">Privacy Policy</a></span>
-                <span class="footer-separator">|</span>
-                <span><a href="terms.html">Terms of Service</a></span>
-                <span class="footer-separator">|</span>
-                <span><a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a></span>
+            <p>&copy; 2026 Tic Tac Toe Game. All rights reserved.</p>
+            <div class="footer-socials">
+                <a href="https://instagram.com/niranjan.ks.in" target="_blank" class="social-btn insta-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank"
+                    class="social-btn github-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+            <nav class="footer-legal">
+                <a href="privacy.html">Privacy Policy</a> |
+                <a href="terms.html">Terms & Conditions</a> |
+                <a href="disclaimer.html">Disclaimer</a> |
+                <a href="contact.html">Contact</a>
             </nav>
         </div>
     </footer>

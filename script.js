@@ -239,10 +239,10 @@ const minimax = (
     let maxEval = -Infinity;
     for (let move of availableMoves) {
       board[move] = "X";
-      let eval = minimax(board, depth + 1, false, alpha, beta);
+      let score = minimax(board, depth + 1, false, alpha, beta);
       board[move] = null;
-      maxEval = Math.max(maxEval, eval);
-      alpha = Math.max(alpha, eval);
+      maxEval = Math.max(maxEval, score);
+      alpha = Math.max(alpha, score);
       if (beta <= alpha) break;
     }
     return maxEval;
@@ -250,10 +250,10 @@ const minimax = (
     let minEval = Infinity;
     for (let move of availableMoves) {
       board[move] = "O";
-      let eval = minimax(board, depth + 1, true, alpha, beta);
+      let score = minimax(board, depth + 1, true, alpha, beta);
       board[move] = null;
-      minEval = Math.min(minEval, eval);
-      beta = Math.min(beta, eval);
+      minEval = Math.min(minEval, score);
+      beta = Math.min(beta, score);
       if (beta <= alpha) break;
     }
     return minEval;
@@ -474,6 +474,41 @@ const setupEventListeners = () => {
         }
       });
     }
+
+    // Hero Badge Event Listeners
+    const heroAi = document.getElementById("hero-ai");
+    if (heroAi) {
+      heroAi.addEventListener("click", () => {
+        if (!vsComputer) toggleMode();
+        document.querySelector('.game-section').scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+
+    const heroStrategy = document.getElementById("hero-strategy");
+    if (heroStrategy) {
+      heroStrategy.addEventListener("click", () => {
+        window.location.href = "tips.html";
+      });
+    }
+
+    const heroTheme = document.getElementById("hero-theme");
+    if (heroTheme) {
+      heroTheme.addEventListener("click", toggleTheme);
+    }
+
+    const heroConfetti = document.getElementById("hero-confetti");
+    if (heroConfetti) {
+      heroConfetti.addEventListener("click", () => {
+        if (typeof confetti === "function") {
+          confetti({
+            particleCount: 150,
+            spread: 80,
+            origin: { y: 0.6 }
+          });
+        }
+      });
+    }
+
   } catch (error) {
     console.warn("Some event listeners could not be attached:", error.message);
   }

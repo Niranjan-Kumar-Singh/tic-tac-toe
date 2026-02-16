@@ -30,10 +30,25 @@
     <meta property="og:image" content="images/developer-profile.png" />
 
     <!-- ✅ Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
 
     <!-- ✅ CSS -->
-    <link rel="stylesheet" href="layout.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Page-specific overrides for extra polish if needed, 
+           but mostly relying on style.css for consistency */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -45,75 +60,124 @@
             <button class="menu-toggle" aria-label="Toggle navigation" id="menuToggle">&#9776;</button>
             <nav class="site-nav" id="siteNav">
                 <a href="index.html">Home</a>
-                <a href="tips.html">Tips</a>
+                <a href="tips.html">Strategy Guide</a>
                 <a href="updates.html">Updates</a>
+                <a href="contact.html">Contact</a>
                 <a href="about.html">About</a>
             </nav>
         </div>
     </header>
 
     <main>
-        <section class="hero-section">
-            <h1 class="hero-title">Meet the Developer</h1>
-            <p class="hero-subtitle">Passionate about creating exceptional digital experiences</p>
+        <section class="hero-section text-center">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Hi, I'm <span class="highlight-text">Niranjan</span>
+                </h1>
+                <p class="hero-subtitle typing-container">
+                    <span id="typing-text"></span><span class="typing-cursor"></span>
+                </p>
+            </div>
         </section>
 
-        <div class="profile-card">
-            <div class="profile-content">
-                <span class="greeting">👋</span>
-                <p class="description-text">
-                    Hi there! I'm <span class="name-highlight">Niranjan Kumar Singh</span>, a full-stack developer with
-                    a passion for crafting beautiful, functional, and user-centric web applications.
-                </p>
-                <p class="description-text">
-                    This Tic Tac Toe project represents my commitment to combining classic gameplay with modern web
-                    technologies. Built with responsive design principles, intelligent AI logic, and offline-first
-                    capabilities, it showcases my approach to creating engaging digital experiences.
-                </p>
-                <p class="description-text">
-                    I believe in the power of clean code, intuitive design, and continuous learning. Every project is an
-                    opportunity to push boundaries and create something meaningful.
-                </p>
+        <div class="container-about">
+            <div class="glass-card profile-card" data-tilt>
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <!-- Placeholder for avatar if user adds one later, using emoji for now -->
+                        👨‍💻
+                    </div>
+                </div>
+                <div class="profile-body">
+                    <h2 class="profile-name">Niranjan Kumar Singh</h2>
+                    <p class="profile-title">B.Tech in CSE (2025 Passout) & Full Stack Developer</p>
 
-                <div class="social-links">
-                    <a href="https://github.com/Niranjan-Kumar-Singh" target="_blank" class="social-link">
-                        <span>🚀</span>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="mailto:your.email@example.com" class="social-link">
-                        <span>📧</span>
-                        <span>Contact</span>
-                    </a>
+                    <p class="profile-bio">
+                        Passionate about crafting beautiful, functional, and user-centric web applications.
+                        I combine technical expertise with creative design to build digital experiences that matter.
+                        This project showcases my commitment to clean code, offline-first architectures, and modern
+                        UI/UX.
+                    </p>
+
+                    <div class="profile-socials">
+                        <a href="https://github.com/Niranjan-Kumar-Singh" target="_blank" class="social-icon github"
+                            aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="mailto:niranjansingh1419@gmail.com" class="social-icon email" aria-label="Email">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com/niranjan.ks.in" target="_blank" class="social-icon instagram"
+                            aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <section class="tech-section">
-            <h2 class="tech-title">Built With Modern Technologies</h2>
-            <div class="tech-grid">
-                <div class="tech-item">
-                    <span class="tech-icon">🌐</span>
-                    <div class="tech-name">HTML5</div>
+        <section class="skills-section">
+            <h2 class="section-title">Tech Stack & Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card fade-up">
+                    <div class="skill-icon">🌐</div>
+                    <h3>HTML5</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
                 </div>
-                <div class="tech-item">
-                    <span class="tech-icon">🎨</span>
-                    <div class="tech-name">CSS3</div>
+                <div class="skill-card fade-up" style="animation-delay: 0.1s">
+                    <div class="skill-icon">🎨</div>
+                    <h3>CSS3</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
                 </div>
-                <div class="tech-item">
-                    <span class="tech-icon">⚡</span>
-                    <div class="tech-name">JavaScript</div>
+                <div class="skill-card fade-up" style="animation-delay: 0.2s">
+                    <div class="skill-icon">⚡</div>
+                    <h3>JavaScript</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
                 </div>
-                <div class="tech-item">
-                    <span class="tech-icon">📱</span>
-                    <div class="tech-name">Responsive</div>
+                <div class="skill-card fade-up" style="animation-delay: 0.3s">
+                    <div class="skill-icon">⚛️</div>
+                    <h3>React / UI</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
                 </div>
-                <div class="tech-item">
-                    <span class="tech-icon">🤖</span>
-                    <div class="tech-name">AI Logic</div>
+                <div class="skill-card fade-up" style="animation-delay: 0.4s">
+                    <div class="skill-icon">🚀</div>
+                    <h3>PWA</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
                 </div>
-                <div class="tech-item">
-                    <span class="tech-icon">🔄</span>
-                    <div class="tech-name">PWA Ready</div>
+                <div class="skill-card fade-up" style="animation-delay: 0.5s">
+                    <div class="skill-icon">🤖</div>
+                    <h3>AI Integration</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -121,17 +185,111 @@
 
     <footer class="site-footer">
         <div class="footer-content">
-            <p>&copy; 2025 Tic Tac Toe Game. All rights reserved.</p>
-            <nav class="footer-nav">
-                <span><a href="privacy.html">Privacy Policy</a></span>
-                <span class="footer-separator">|</span>
-                <span><a href="terms.html">Terms of Service</a></span>
-                <span class="footer-separator">|</span>
-                <span><a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank">GitHub</a></span>
+            <p>&copy; 2026 Tic Tac Toe Game. All rights reserved.</p>
+            <div class="footer-socials">
+                <a href="https://instagram.com/niranjan.ks.in" target="_blank" class="social-btn insta-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank"
+                    class="social-btn github-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+            <nav class="footer-legal">
+                <a href="privacy.html">Privacy Policy</a> |
+                <a href="terms.html">Terms & Conditions</a> |
+                <a href="disclaimer.html">Disclaimer</a> |
+                <a href="contact.html">Contact</a>
             </nav>
         </div>
     </footer>
-    <script src="layout.js"></script>
+
+    <script src="script.js"></script>
+    <script>
+        // Typing Effect
+        const textElement = document.getElementById('typing-text');
+        const phrases = ["Game Developer", "UI/UX Enthusiast", "Problem Solver", "Tech Explorer"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isDeleting) {
+                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50;
+            } else {
+                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500; // Pause before new word
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        document.addEventListener('DOMContentLoaded', type);
+
+        // Vanilla Tilt Effect for Profile Card
+        const card = document.querySelector('.profile-card');
+        if (card) {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = ((y - centerY) / centerY) * -10; // Max 10deg rotation
+                const rotateY = ((x - centerX) / centerX) * 10;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
+            });
+        }
+
+        // Scroll Animation (Fade Up)
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
 </body>
 
 </html>
