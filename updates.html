@@ -35,18 +35,12 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="premium.css" />
     <!-- Theme Colors for Light/Dark Mode -->
     <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 
-    <!-- Open Graph / Social Sharing -->
-    <meta property="og:title" content="Updates - Tic Tac Toe">
-    <meta property="og:description"
-        content="Stay updated with the latest improvements, bug fixes, and upcoming features of the Tic Tac Toe game.">
-    <meta property="og:image" content="images/preview.png">
-    <meta property="og:url" content="https://yourdomain.com/updates.html">
-    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://tic-tac-toe-niranjan.vercel.app/updates.html" />
 
     <!-- Google AdSense (optional) -->
     <meta name="google-adsense-account" content="ca-pub-4208665414964925">
@@ -77,6 +71,7 @@
             <p class="hero-subtitle">Track the evolution of our Tic Tac Toe game</p>
         </section>
 
+        <div class="page-mobile-wrap">
         <!-- Ad Container -->
         <div class="ad-container" style="margin: 20px auto; text-align: center;">
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4208665414964925"
@@ -234,7 +229,7 @@
                 <div class="roadmap-cta">
                     <h3>Have a Feature Request?</h3>
                     <p>We'd love to hear your ideas! Share your suggestions and help shape the future of our game.</p>
-                    <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe/issues" target="_blank"
+                    <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe/issues" target="_blank" rel="noopener noreferrer"
                         class="cta-button">
                         <span>💡</span>
                         <span>Submit Ideas</span>
@@ -266,6 +261,7 @@
                 </div>
             </div>
         </div>
+        </div>
     </main>
 
     <footer class="site-footer">
@@ -295,7 +291,7 @@
                 <h4>Connect</h4>
                 <p>&copy; 2026 <strong>Tic Tac Toe Master</strong> by Niranjan Kumar Singh</p>
                 <div class="footer-socials">
-                    <a href="https://instagram.com/niranjan.ks.in" target="_blank" class="social-btn insta-btn">
+                    <a href="https://instagram.com/niranjan.ks.in" target="_blank" rel="noopener noreferrer" class="social-btn insta-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -304,7 +300,7 @@
                         </svg>
                         <span>Instagram</span>
                     </a>
-                    <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank"
+                    <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank" rel="noopener noreferrer"
                         class="social-btn github-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -325,7 +321,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="layout.js"></script>
     <script>
         // Scroll Animation (Fade Up)
         const observerOptions = {

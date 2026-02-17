@@ -1,8 +1,14 @@
 // Mobile menu toggle
-document.getElementById("menuToggle").addEventListener("click", function () {
-  const nav = document.getElementById("siteNav");
-  nav.classList.toggle("nav-open");
-});
+const menuToggle =
+  document.getElementById("menuToggle") ||
+  document.querySelector(".menu-toggle");
+const nav = document.getElementById("siteNav") || document.querySelector(".site-nav");
+
+if (menuToggle && nav) {
+  menuToggle.addEventListener("click", function () {
+    nav.classList.toggle("nav-open");
+  });
+}
 
 // Create floating particles
 function createParticles() {
@@ -32,6 +38,7 @@ function createParticles() {
 // Header scroll effect
 window.addEventListener("scroll", function () {
   const header = document.querySelector(".site-header");
+  if (!header) return;
   if (window.scrollY > 50) {
     header.style.background = "linear-gradient(to right, #1a1a1a, #333)";
     header.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.4)";
@@ -57,10 +64,16 @@ document.querySelectorAll(".tech-item").forEach((item) => {
 
 // Close mobile menu when clicking outside
 document.addEventListener("click", function (e) {
-  const nav = document.getElementById("siteNav");
-  const toggle = document.getElementById("menuToggle");
+  const navElement = document.getElementById("siteNav") || document.querySelector(".site-nav");
+  const toggleElement =
+    document.getElementById("menuToggle") || document.querySelector(".menu-toggle");
 
-  if (!nav.contains(e.target) && !toggle.contains(e.target)) {
-    nav.classList.remove("nav-open");
+  if (
+    navElement &&
+    toggleElement &&
+    !navElement.contains(e.target) &&
+    !toggleElement.contains(e.target)
+  ) {
+    navElement.classList.remove("nav-open");
   }
 });

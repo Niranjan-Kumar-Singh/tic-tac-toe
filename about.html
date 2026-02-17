@@ -29,6 +29,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tic-tac-toe-niranjan.vercel.app/about.html" />
     <meta property="og:image" content="https://tic-tac-toe-niranjan.vercel.app/images/developer-profile.png" />
+    <link rel="canonical" href="https://tic-tac-toe-niranjan.vercel.app/about.html" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="About Niranjan Kumar Singh | Tic Tac Toe Master" />
     <meta name="twitter:description"
@@ -44,6 +45,7 @@
 
     <!-- ✅ CSS -->
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="premium.css" />
     <style>
         /* Page-specific overrides for extra polish if needed, 
            but mostly relying on style.css for consistency */
@@ -89,12 +91,12 @@
             </div>
         </section>
 
-        <div class="container-about">
-            <div class="glass-card profile-card" data-tilt>
+        <div class="container-about about-mobile-layout">
+            <div class="profile-card">
                 <div class="profile-header">
                     <div class="profile-avatar">
-                        <!-- Placeholder for avatar if user adds one later, using emoji for now -->
-                        👨‍💻
+                        <img src="images/developer-profile.png" alt="Niranjan Kumar Singh profile photo"
+                            class="developer-avatar-img" loading="lazy" />
                     </div>
                 </div>
                 <div class="profile-body">
@@ -125,7 +127,7 @@
                     </p>
 
                     <div class="profile-socials">
-                        <a href="https://github.com/Niranjan-Kumar-Singh" target="_blank" class="social-icon github"
+                        <a href="https://github.com/Niranjan-Kumar-Singh" target="_blank" rel="noopener noreferrer" class="social-icon github"
                             aria-label="GitHub">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -144,7 +146,7 @@
                                 <polyline points="22,6 12,13 2,6"></polyline>
                             </svg>
                         </a>
-                        <a href="https://instagram.com/niranjan.ks.in" target="_blank" class="social-icon instagram"
+                        <a href="https://instagram.com/niranjan.ks.in" target="_blank" rel="noopener noreferrer" class="social-icon instagram"
                             aria-label="Instagram">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -158,7 +160,9 @@
                 </div>
             </div>
 
-            <div class="about-highlights fade-up">
+        </div>
+
+            <div class="about-highlights fade-up about-highlights-mobile">
                 <div class="highlight-card">
                     <div class="highlight-icon">🎓</div>
                     <h3>Education</h3>
@@ -175,7 +179,6 @@
                     <p>Seeking entry-level roles to build impactful digital products.</p>
                 </div>
             </div>
-        </div>
 
         <section class="skills-section">
             <h2 class="section-title">Tech Stack & Skills</h2>
@@ -262,7 +265,7 @@
                 <h4>Connect</h4>
                 <p>&copy; 2026 <strong>Tic Tac Toe Master</strong> by Niranjan Kumar Singh</p>
                 <div class="footer-socials">
-                    <a href="https://instagram.com/niranjan.ks.in" target="_blank" class="social-btn insta-btn">
+                    <a href="https://instagram.com/niranjan.ks.in" target="_blank" rel="noopener noreferrer" class="social-btn insta-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -271,7 +274,7 @@
                         </svg>
                         <span>Instagram</span>
                     </a>
-                    <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank"
+                    <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank" rel="noopener noreferrer"
                         class="social-btn github-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -292,7 +295,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="layout.js"></script>
     <script>
         // Typing Effect
         const textElement = document.getElementById('typing-text');
@@ -331,7 +334,9 @@
 
         // Vanilla Tilt Effect for Profile Card
         const card = document.querySelector('.profile-card');
-        if (card) {
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+        if (card && !isTouchDevice) {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;

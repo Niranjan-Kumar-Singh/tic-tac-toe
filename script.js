@@ -11,6 +11,8 @@ let turnO = true;
 let move = 0;
 let vsComputer = false;
 let gameOver = false;
+let computerMoveDelayId = null;
+let computerClickDelayId = null;
 
 const winPatterns = [
   [0, 1, 2],
@@ -77,6 +79,17 @@ const updateTurnIndicator = () => {
   }
 };
 
+const clearComputerMoveTimers = () => {
+  if (computerMoveDelayId !== null) {
+    clearTimeout(computerMoveDelayId);
+    computerMoveDelayId = null;
+  }
+  if (computerClickDelayId !== null) {
+    clearTimeout(computerClickDelayId);
+    computerClickDelayId = null;
+  }
+};
+
 // Enhanced box click with better visual feedback
 boxes.forEach((box, index) => {
   box.addEventListener("click", () => boxClick(index));
@@ -112,7 +125,10 @@ const boxClick = (i) => {
   updateTurnIndicator();
 
   if (vsComputer && !turnO && !gameOver) {
-    setTimeout(makeComputerMove, 300);
+    computerMoveDelayId = setTimeout(() => {
+      computerMoveDelayId = null;
+      makeComputerMove();
+    }, 300);
   }
 };
 
@@ -132,6 +148,7 @@ const enableBoxes = () => {
 };
 
 const showWinner = (winner, pattern) => {
+  clearComputerMoveTimers();
   gameOver = true;
   disableBoxes();
 
@@ -168,6 +185,7 @@ const showWinner = (winner, pattern) => {
 };
 
 const draw = () => {
+  clearComputerMoveTimers();
   gameOver = true;
   disableBoxes();
 
@@ -199,6 +217,7 @@ const checkWinner = (player) => {
 };
 
 const resetGame = () => {
+  clearComputerMoveTimers();
   turnO = true;
   move = 0;
   gameOver = false;
@@ -318,17 +337,21 @@ const getBestMove = () => {
 };
 
 const makeComputerMove = () => {
-  if (gameOver) return;
+  if (gameOver || !vsComputer || turnO) return;
 
   const bestMove = getBestMove();
+  if (bestMove === undefined) return;
 
   // Add visual indication that computer is thinking
   if (turnIndicator) {
     turnIndicator.innerText = "🤖 Computer thinking...";
   }
 
-  setTimeout(() => {
-    boxClick(bestMove);
+  computerClickDelayId = setTimeout(() => {
+    computerClickDelayId = null;
+    if (!gameOver && vsComputer && !turnO) {
+      boxClick(bestMove);
+    }
   }, 200);
 };
 
@@ -442,7 +465,12 @@ document.addEventListener("keydown", (e) => {
   const key = parseInt(e.key);
   if (key >= 1 && key <= 9) {
     const boxIndex = key - 1;
-    if (!boxes[boxIndex].disabled && boxes[boxIndex].innerText === "") {
+    if (
+      boxes.length === 9 &&
+      boxes[boxIndex] &&
+      !boxes[boxIndex].disabled &&
+      boxes[boxIndex].innerText === ""
+    ) {
       boxClick(boxIndex);
     }
   }
@@ -457,6 +485,16 @@ document.addEventListener("keydown", (e) => {
 // Event listeners with enhanced error handling
 const setupEventListeners = () => {
   try {
+    const addBadgeKeyboardSupport = (element, handler) => {
+      if (!element) return;
+      element.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handler();
+        }
+      });
+    };
+
     if (newGame) {
       newGame.addEventListener("click", resetGame);
       newGame.addEventListener("keydown", (e) => {
@@ -500,35 +538,45 @@ const setupEventListeners = () => {
     // Hero Badge Event Listeners
     const heroAi = document.getElementById("hero-ai");
     if (heroAi) {
-      heroAi.addEventListener("click", () => {
+      const heroAiHandler = () => {
         if (!vsComputer) toggleMode();
-        document.querySelector('.game-section').scrollIntoView({ behavior: 'smooth' });
-      });
+        const gameSection = document.querySelector(".game-section");
+        if (gameSection) {
+          gameSection.scrollIntoView({ behavior: "smooth" });
+        }
+      };
+      heroAi.addEventListener("click", heroAiHandler);
+      addBadgeKeyboardSupport(heroAi, heroAiHandler);
     }
 
     const heroStrategy = document.getElementById("hero-strategy");
     if (heroStrategy) {
-      heroStrategy.addEventListener("click", () => {
+      const heroStrategyHandler = () => {
         window.location.href = "tips.html";
-      });
+      };
+      heroStrategy.addEventListener("click", heroStrategyHandler);
+      addBadgeKeyboardSupport(heroStrategy, heroStrategyHandler);
     }
 
     const heroTheme = document.getElementById("hero-theme");
     if (heroTheme) {
       heroTheme.addEventListener("click", toggleTheme);
+      addBadgeKeyboardSupport(heroTheme, toggleTheme);
     }
 
     const heroConfetti = document.getElementById("hero-confetti");
     if (heroConfetti) {
-      heroConfetti.addEventListener("click", () => {
+      const heroConfettiHandler = () => {
         if (typeof confetti === "function") {
           confetti({
             particleCount: 150,
             spread: 80,
-            origin: { y: 0.6 }
+            origin: { y: 0.6 },
           });
         }
-      });
+      };
+      heroConfetti.addEventListener("click", heroConfettiHandler);
+      addBadgeKeyboardSupport(heroConfetti, heroConfettiHandler);
     }
 
   } catch (error) {

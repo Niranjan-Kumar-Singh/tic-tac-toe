@@ -1,0 +1,283 @@
+:root {
+  --premium-max: 1100px;
+  --premium-gap: 1rem;
+}
+
+/* Global layout guardrails */
+main,
+.content-card,
+.profile-card,
+.legal-card,
+.privacy-card,
+.timeline-content,
+.highlight-card,
+.roadmap-item,
+.tip-item,
+.skill-card {
+  min-width: 0;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Consistent content width */
+.page-mobile-wrap,
+.container-about,
+.skills-section,
+.content-section,
+.extra-links,
+.legal-page {
+  width: min(100%, var(--premium-max));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* About page deterministic layout */
+.about-mobile-layout {
+  display: block !important;
+  padding: 0 1rem 1rem !important;
+}
+
+.about-mobile-layout > .profile-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+.about-highlights-mobile {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: var(--premium-gap) !important;
+  width: min(100%, var(--premium-max)) !important;
+  margin: 0 auto !important;
+  padding: 0 1rem 1rem !important;
+}
+
+/* Tips/Updates deterministic wrapper */
+.page-mobile-wrap {
+  padding: 0 0.75rem 1rem !important;
+}
+
+.page-mobile-wrap .content-card {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Mobile-first fixes */
+@media (max-width: 900px) {
+  .about-highlights-mobile {
+    grid-template-columns: 1fr !important;
+  }
+
+  .about-mobile-layout > .profile-card {
+    border-radius: 16px !important;
+  }
+
+  .about-mobile-layout .profile-header {
+    height: auto !important;
+    padding: 1rem 0.75rem 0.25rem !important;
+  }
+
+  .about-mobile-layout .profile-avatar {
+    position: static !important;
+    top: auto !important;
+    width: 96px !important;
+    height: 96px !important;
+    margin: 0 auto 1rem !important;
+    border-width: 4px !important;
+    font-size: 3rem !important;
+  }
+
+  .about-mobile-layout .profile-body {
+    padding: 1rem !important;
+    text-align: left !important;
+  }
+
+  .about-mobile-layout .profile-name,
+  .about-mobile-layout .profile-title {
+    text-align: left !important;
+  }
+
+  .about-mobile-layout .profile-socials {
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-inline: 0.5rem;
+  }
+
+  .page-mobile-wrap {
+    padding: 0 0.4rem 0.8rem !important;
+  }
+
+  .content-card,
+  .profile-card,
+  .privacy-card,
+  .legal-card {
+    margin: 0.75rem 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .tips-grid,
+  .roadmap-grid,
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .feature-highlight {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 0.75rem !important;
+    padding: 1rem !important;
+  }
+
+  .timeline-item {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.75rem !important;
+  }
+
+  .timeline-marker {
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    gap: 0.5rem !important;
+  }
+
+  .timeline-line {
+    display: none !important;
+  }
+
+  .timeline-content {
+    width: 100% !important;
+    transform: none !important;
+  }
+}
+
+/* Final premium stabilization layer */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+main {
+  width: 100%;
+}
+
+.developer-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.profile-bio,
+.tip-content p,
+.update-description,
+.roadmap-content p,
+.stat-label {
+  overflow-wrap: anywhere;
+}
+
+.site-header .header-content,
+.hero-content,
+.content-container,
+.footer-content {
+  min-width: 0;
+}
+
+.timeline-content,
+.roadmap-item,
+.tip-item,
+.feature-highlight,
+.highlight-card,
+.content-card {
+  overflow: hidden;
+}
+
+.update-features {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .container-about,
+  .skills-section,
+  .about-highlights-mobile {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  .profile-card {
+    margin-top: 1rem !important;
+    border-radius: 16px !important;
+  }
+
+  .profile-avatar {
+    width: 112px !important;
+    height: 112px !important;
+  }
+
+  .about-highlights-mobile .highlight-card {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-mobile-wrap,
+  .container-about,
+  .skills-section,
+  .content-section,
+  .extra-links,
+  .legal-page {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0.6rem !important;
+    padding-right: 0.6rem !important;
+  }
+
+  .content-card,
+  .profile-card,
+  .privacy-card,
+  .legal-card,
+  .highlight-card,
+  .timeline-content,
+  .roadmap-item,
+  .stat-item {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .site-header .header-content {
+    gap: 0.5rem;
+  }
+
+  .site-nav {
+    max-width: calc(100vw - 1rem);
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr !important;
+  }
+}
