@@ -5,100 +5,160 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#819A91" />
+  <meta name="author" content="Niranjan Kumar Singh" />
+  <meta name="instagram" content="niranjan.ks.in" />
+  <meta name="google-adsense-account" content="ca-pub-4208665414964925" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4208665414964925"
     crossorigin="anonymous"></script>
   <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <title>Offline - Tic Tac Toe</title>
+  <title>Offline - Tic Tac Toe Master</title>
   <style>
-    .offline-wrapper {
+    .offline-page {
       max-width: 600px;
-      margin: 100px auto;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
       text-align: center;
-      padding: 2rem;
-      background-color: var(--bg-light);
-      border: 1px solid var(--border-color);
-      border-radius: 1rem;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    .offline-wrapper img {
-      width: 120px;
-      margin-bottom: 1rem;
+    .offline-card {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     }
 
-    .offline-wrapper h1 {
+    .offline-card img {
+      width: 100px;
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
+    }
+
+    .offline-card h1 {
       font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin-bottom: 1rem;
     }
 
-    .offline-wrapper p {
+    .offline-card p {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 1rem;
+      line-height: 1.7;
       margin-bottom: 2rem;
     }
 
-    .offline-wrapper a {
-      padding: 0.75rem 1.5rem;
-      background-color: var(--primary);
+    .retry-btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: linear-gradient(135deg, #667eea, #764ba2);
       color: white;
       border: none;
-      border-radius: 0.5rem;
+      border-radius: 12px;
       text-decoration: none;
-      transition: background 0.3s ease;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: transform 0.2s, box-shadow 0.3s;
     }
 
-    .offline-wrapper a:hover {
-      background-color: var(--primary-dark);
+    .retry-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <a href="/" class="logo">Tic Tac Toe</a>
-    </nav>
+  <header class="site-header">
+    <div class="header-content">
+      <h1 class="site-title">Tic Tac Toe Master</h1>
+      <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="tips.html">Strategy Guide</a>
+        <a href="updates.html">Updates</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <div class="offline-wrapper">
+  <main class="offline-page">
+    <div class="offline-card">
       <img src="images/tic-tac-toe.png" alt="Tic Tac Toe Icon" />
-      <h1>You Are Offline</h1>
-      <p>It looks like you're not connected to the internet. Please check your connection and try again.</p>
-      <a href="/" onclick="location.reload()">Retry</a>
+      <h1>You're Offline</h1>
+      <p>It looks like you've lost your internet connection. Check your network and try again to get back in the
+        game.</p>
+      <a href="index.html" class="retry-btn">Retry Connection</a>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="footer-content">
-      <p>&copy; 2026 Tic Tac Toe Game. All rights reserved.</p>
-      <div class="footer-socials">
-        <a href="https://instagram.com/niranjan.ks.in" target="_blank" class="social-btn insta-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-          </svg>
-          <span>Instagram</span>
-        </a>
-        <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank" class="social-btn github-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path
-              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-            </path>
-          </svg>
-          <span>GitHub</span>
-        </a>
+      <div class="footer-section">
+        <h4>Tic Tac Toe Master</h4>
+        <p>Your ultimate destination for mastering the classic strategy game. Learn, play, and improve with our
+          comprehensive platform.</p>
       </div>
-      <nav class="footer-legal">
-        <a href="privacy.html">Privacy Policy</a> |
-        <a href="terms.html">Terms & Conditions</a> |
-        <a href="disclaimer.html">Disclaimer</a> |
-        <a href="contact.html">Contact</a>
-      </nav>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="tips.html">Strategy Guide</a></li>
+          <li><a href="updates.html">Updates</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <p>&copy; 2026 <strong>Tic Tac Toe Master</strong> by Niranjan Kumar Singh</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/niranjan.ks.in" target="_blank" class="social-btn insta-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span>Instagram</span>
+          </a>
+          <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank" class="social-btn github-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+              </path>
+            </svg>
+            <span>GitHub</span>
+          </a>
+        </div>
+        <nav class="footer-legal">
+          <a href="privacy.html">Privacy Policy</a> |
+          <a href="terms.html">Terms & Conditions</a> |
+          <a href="disclaimer.html">Disclaimer</a> |
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
     </div>
   </footer>
+
+  <script src="layout.js"></script>
 </body>
 
 </html>

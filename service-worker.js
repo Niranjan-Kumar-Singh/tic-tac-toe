@@ -1,34 +1,21 @@
-const CACHE_NAME = "tic-tac-toe-cache-v2"; // incremented version
+const CACHE_NAME = "tic-tac-toe-cache-v3";
 const urlsToCache = [
   "/", // default page
   "/index.html",
   "/about.html",
+  "/contact.html",
+  "/tips.html",
+  "/updates.html",
   "/privacy.html",
   "/terms.html",
+  "/disclaimer.html",
   "/offline.html",
   "/ads.txt",
   "/manifest.json",
   "/robots.txt",
-  "/sitemap-2026.xml",
-  "/LICENSE",
-  "/README.md",
-
-  // Game-related pages
-  "/advanced-tactics.html",
-  "/beginner-guide.html",
-  "/community.html",
-  "/game-theory.html",
-  "/mobile-app.html",
-  "/printable-boards.html",
-  "/strategy-guide.html",
-  "/tips.html",
-  "/updates.html",
-  "/variations.html",
 
   // Styles and scripts
   "/style.css",
-  "/layout.css",
-  "/legal.css",
   "/script.js",
   "/layout.js",
 

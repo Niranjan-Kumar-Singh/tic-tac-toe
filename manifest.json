@@ -1,13 +1,13 @@
 {
-  "name": "Tic Tac Toe - Play Online",
-  "short_name": "Tic Tac Toe",
-  "description": "A fun, interactive Tic Tac Toe game with multiplayer, dark mode, and confetti effects!",
-  "start_url": "/index.html",
+  "name": "Tic Tac Toe Master | Luxury Edition",
+  "short_name": "TTT Master",
+  "description": "High-end Tic Tac Toe platform with unbeatable AI, luxury design, and professional strategy guides.",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#819A91",
   "theme_color": "#191913",
   "orientation": "portrait",
-  "scope": "/",
+  "scope": "./",
   "icons": [
     {
       "src": "images/tic-tac-toe-192x192.png",

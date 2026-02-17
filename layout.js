@@ -7,23 +7,23 @@ document.getElementById("menuToggle").addEventListener("click", function () {
 // Create floating particles
 function createParticles() {
   const container = document.getElementById("particles");
-  const particleCount = window.innerWidth < 768 ? 20 : 50;
+  if (!container) return;
 
-  for (let i = 0; i < particleCount; i++) {
+  const count = 20;
+  for (let i = 0; i < count; i++) {
     const particle = document.createElement("div");
     particle.className = "particle";
 
-    // Random position
-    particle.style.left = Math.random() * 100 + "%";
-    particle.style.top = Math.random() * 100 + "%";
+    const size = Math.random() * 8 + 4 + "px";
+    particle.style.width = size;
+    particle.style.height = size;
 
-    // Random animation delay
-    particle.style.animationDelay = Math.random() * 6 + "s";
+    particle.style.left = Math.random() * 100 + "vw";
+    particle.style.top = Math.random() * 100 + "vh";
 
-    // Random size variation
-    const size = Math.random() * 3 + 2;
-    particle.style.width = size + "px";
-    particle.style.height = size + "px";
+    particle.style.opacity = Math.random() * 0.4 + 0.1;
+    particle.style.animationDelay = Math.random() * 15 + "s";
+    particle.style.animationDuration = Math.random() * 10 + 10 + "s";
 
     container.appendChild(particle);
   }
@@ -33,9 +33,11 @@ function createParticles() {
 window.addEventListener("scroll", function () {
   const header = document.querySelector(".site-header");
   if (window.scrollY > 50) {
-    header.style.background = "rgba(255, 255, 255, 0.12)";
+    header.style.background = "linear-gradient(to right, #1a1a1a, #333)";
+    header.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.4)";
   } else {
-    header.style.background = "rgba(255, 255, 255, 0.08)";
+    header.style.background = "";
+    header.style.boxShadow = "";
   }
 });
 

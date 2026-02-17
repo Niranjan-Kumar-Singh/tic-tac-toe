@@ -39,6 +39,31 @@ const initializeTheme = () => {
   updateThemeToggleText();
 };
 
+// Luxury Background Particles
+const initParticles = () => {
+  const container = document.getElementById("particles");
+  if (!container) return;
+
+  const count = 20;
+  for (let i = 0; i < count; i++) {
+    const particle = document.createElement("div");
+    particle.className = "particle";
+
+    const size = Math.random() * 10 + 5 + "px";
+    particle.style.width = size;
+    particle.style.height = size;
+
+    particle.style.left = Math.random() * 100 + "vw";
+    particle.style.top = Math.random() * 100 + "vh";
+
+    particle.style.opacity = Math.random() * 0.5 + 0.1;
+    particle.style.animationDelay = Math.random() * 15 + "s";
+    particle.style.animationDuration = Math.random() * 10 + 10 + "s";
+
+    container.appendChild(particle);
+  }
+};
+
 const updateThemeToggleText = () => {
   if (themeToggle) {
     const isDark = document.body.classList.contains("dark");
@@ -56,14 +81,10 @@ const updateTurnIndicator = () => {
 boxes.forEach((box, index) => {
   box.addEventListener("click", () => boxClick(index));
   box.addEventListener("mouseenter", () => {
-    if (!box.disabled && !gameOver && box.innerText === "") {
-      box.style.backgroundColor = "rgba(129, 154, 145, 0.1)";
-    }
+    // Premium hover handled by CSS
   });
   box.addEventListener("mouseleave", () => {
-    if (!box.disabled && !gameOver && box.innerText === "") {
-      box.style.backgroundColor = "";
-    }
+    // Premium hover handled by CSS
   });
 });
 
@@ -71,9 +92,8 @@ const boxClick = (i) => {
   if (boxes[i].innerText !== "" || gameOver) return;
 
   const currentPlayer = turnO ? "O" : "X";
-  boxes[i].innerText = currentPlayer;
-  boxes[i].style.color = currentPlayer === "O" ? "#dd7373" : "#3674B5";
-  boxes[i].style.backgroundColor = "";
+  const symbolClass = currentPlayer === "O" ? "o-symbol" : "x-symbol";
+  boxes[i].innerHTML = `<span class="${symbolClass}">${currentPlayer}</span>`;
   boxes[i].disabled = true;
   move++;
 
@@ -105,7 +125,7 @@ const disableBoxes = () => {
 const enableBoxes = () => {
   for (let box of boxes) {
     box.disabled = false;
-    box.innerText = "";
+    box.innerHTML = "";
     box.style.backgroundColor = "";
     box.style.transform = "scale(1)";
   }
@@ -126,7 +146,8 @@ const showWinner = (winner, pattern) => {
   // Highlight winning pattern with animation
   pattern.forEach((i, index) => {
     setTimeout(() => {
-      boxes[i].style.backgroundColor = "#90EE90";
+      boxes[i].style.backgroundColor = "rgba(144, 238, 144, 0.2)";
+      boxes[i].style.borderColor = "#90EE90";
       boxes[i].style.transform = "scale(1.1)";
     }, index * 100);
   });
@@ -183,9 +204,10 @@ const resetGame = () => {
   gameOver = false;
 
   boxes.forEach((box) => {
-    box.innerText = "";
+    box.innerHTML = "";
     box.disabled = false;
     box.style.backgroundColor = "";
+    box.style.borderColor = "";
     box.style.transform = "scale(1)";
   });
 
@@ -517,6 +539,7 @@ const setupEventListeners = () => {
 // Initialize the game
 const initializeGame = () => {
   initializeTheme();
+  initParticles();
   updateTurnIndicator();
   setupEventListeners();
 
