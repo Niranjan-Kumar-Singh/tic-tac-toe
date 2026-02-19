@@ -365,7 +365,7 @@ const toggleMode = () => {
 
   // Show helpful message
   if (vsComputer) {
-    console.log("🤖 Computer mode activated! You are 'O', computer is 'X'");
+    // console.log("🤖 Computer mode activated! You are 'O', computer is 'X'");
   }
 };
 
@@ -580,7 +580,7 @@ const setupEventListeners = () => {
     }
 
   } catch (error) {
-    console.warn("Some event listeners could not be attached:", error.message);
+    // Silent fail for optional components
   }
 };
 
@@ -594,9 +594,7 @@ const initializeGame = () => {
   // Show welcome message on first visit
   if (!localStorage.getItem("tic-tac-toe-visited")) {
     setTimeout(() => {
-      console.log(
-        "🎮 Welcome to Tic Tac Toe Master! Use number keys 1-9 to play, or click the squares."
-      );
+      // console.log("🎮 Welcome to Tic Tac Toe Master! Use number keys 1-9 to play, or click the squares.");
       localStorage.setItem("tic-tac-toe-visited", "true");
     }, 1000);
   }

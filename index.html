@@ -196,7 +196,8 @@
                 <h4>Connect</h4>
                 <p>&copy; 2026 <strong>Tic Tac Toe Master</strong> by Niranjan Kumar Singh</p>
                 <div class="footer-socials">
-                    <a href="https://instagram.com/niranjan.ks.in" target="_blank" rel="noopener noreferrer" class="social-btn insta-btn">
+                    <a href="https://instagram.com/niranjan.ks.in" target="_blank" rel="noopener noreferrer"
+                        class="social-btn insta-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -205,8 +206,8 @@
                         </svg>
                         <span>Instagram</span>
                     </a>
-                    <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank" rel="noopener noreferrer"
-                        class="social-btn github-btn">
+                    <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank"
+                        rel="noopener noreferrer" class="social-btn github-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path
@@ -231,8 +232,12 @@
             window.addEventListener("load", () => {
                 navigator.serviceWorker
                     .register("/service-worker.js")
-                    .then((reg) => console.log("✅ Service Worker registered:", reg.scope))
-                    .catch((err) => console.error("❌ Service Worker registration failed:", err));
+                    .then(registration => {
+                        // console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        // console.log('ServiceWorker registration failed: ', err);
+                    });
             });
         }
     </script>
