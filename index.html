@@ -126,6 +126,7 @@
 
     <!-- Ad Container -->
     <div class="ad-container" style="margin: 20px auto; text-align: center;">
+        <!-- GamePage_Top_Responsive -->
         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4208665414964925"
             data-ad-slot="1712602490" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>
@@ -227,20 +228,7 @@
         </div>
     </footer>
 
-    <script>
-        if ("serviceWorker" in navigator) {
-            window.addEventListener("load", () => {
-                navigator.serviceWorker
-                    .register("/service-worker.js")
-                    .then(registration => {
-                        // console.log('ServiceWorker registration successful');
-                    })
-                    .catch(err => {
-                        // console.log('ServiceWorker registration failed: ', err);
-                    });
-            });
-        }
-    </script>
+    <script src="layout.js"></script>
     <script src="script.js"></script>
 </body>
 
