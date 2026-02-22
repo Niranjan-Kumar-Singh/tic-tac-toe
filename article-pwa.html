@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transforming Web Games into Progressive Web Apps (PWA) - Tic Tac Toe Master</title>
+    <meta name="description"
+        content="A technical guide on modifying standard HTML5 and JavaScript games into installable, offline-capable Progressive Web Applications using Service Workers.">
+    <!-- GOOGLE FUNDING CHOICES CMP PLaCEHOLDER - TO BE REPLACED WITH ACTUAL SCRIPT FROM ADSENSE DASHBOARD -->
+    <script async src="https://fundingchoicesmessages.google.com/i/ca-pub-4208665414964925?ers=1"></script>
+    <script>(function () { function signalGooglefcPresent() { if (!window.frames['googlefcPresent']) { if (document.body) { const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe); } else { setTimeout(signalGooglefcPresent, 0); } } } signalGooglefcPresent(); })();</script>
+    <meta name="google-adsense-account" content="ca-pub-4208665414964925" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4208665414964925"
+        crossorigin="anonymous"></script>
+    <link rel="canonical" href="https://tic-tac-toe-niranjan.vercel.app/article-pwa.html" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="premium.css" />
+</head>
+
+<body>
+    <div class="bg-particles" id="particles"></div>
+    <header class="site-header">
+        <div class="header-content">
+            <a href="index.html" class="site-title">Tic Tac Toe Master</a>
+            <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+            <nav class="site-nav">
+                <a href="index.html">Home</a>
+                <a href="tips.html">Strategy Guide</a>
+                <a href="articles.html">Articles</a>
+                <a href="updates.html">Updates</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-mobile-wrap">
+            <article class="content-card"
+                style="padding: 3rem; border-radius: 12px; background: rgba(30,30,30,0.4); border: 1px solid rgba(255,255,255,0.1);">
+                <h1 style="font-size: 2.5rem; margin-bottom: 1rem; color: #9C27B0;">Transforming Games into Progressive
+                    Web Apps (PWA)</h1>
+                <p style="color: var(--text-dim); margin-bottom: 2rem;">By Niranjan Kumar Singh | Published: February
+                    2026 | Web Architecture</p>
+
+                <div style="line-height: 1.8; font-size: 1.1rem; color: var(--text-color);">
+                    <h2>The Evolution of Web Access</h2>
+                    <p>For a long time, the line between native mobile applications and websites was strictly drawn.
+                        Mobile apps ran offline, appeared on your home screen, and loaded instantaneously. Websites
+                        required the browser and an active internet connection. Thanks to the introduction of
+                        Progressive Web Applications (PWAs), those lines have blurred dramatically. For a project like
+                        Tic Tac Toe Master, building it as a PWA guarantees that users can get a seamless, native-like
+                        experience directly from modern web browsers like Chrome and Safari.</p>
+
+                    <h2 style="margin-top: 2rem;">What Makes an App a PWA?</h2>
+                    <p>Transforming a standard HTML/CSS/JS game into a PWA requires three primary components:</p>
+                    <ol>
+                        <li><strong>A Web App Manifest:</strong> This is a simple JSON file that provides information
+                            about the web application (like its name, author, icons, and description). It directs the
+                            mobile browser on how to display the application when "installed" to the user's home screen.
+                        </li>
+                        <li><strong>HTTPS:</strong> PWAs require a secure context. Service workers, the core technology
+                            powering offline play, can explicitly intercept network requests. For security reasons,
+                            browsers restrict this powerful API to domains running via HTTPS.</li>
+                        <li><strong>A Service Worker:</strong> A JavaScript script that your browser runs in the
+                            background. It intercepts network requests and acts as a programmable cache, determining
+                            whether to pull a file from the network or fetch it directly from the local cache.</li>
+                    </ol>
+
+                    <h2 style="margin-top: 2rem;">The Role of the Service Worker in Offline Play</h2>
+                    <p>In our Tic Tac Toe implementation, the service worker is configured to execute a 'cache-first'
+                        strategy. When a user first visits the website, the service worker initiates its `install`
+                        phase. During this phase, it downloads the critical assets: `index.html`, `style.css`,
+                        `script.js`, and the icons, placing them securely into the browser's persistent cache storage.
+                    </p>
+                    <p>When the user opens the game later—even if they have turned on Airplane Mode—the service worker
+                        intercepts the request for `index.html`. Because it notices the network is gone (or the file is
+                        cached), it intercepts the HTTP request and returns the locally stored file almost
+                        instantaneously.</p>
+
+                    <h2 style="margin-top: 2rem;">Installation to the Home Screen</h2>
+                    <p>Once Chrome or Safari verifies that a site is secure, possesses a valid manifest.json, and
+                        registers a Service Worker equipped with a functional `fetch` event handler, it will
+                        automatically prompt the user to "Add to Home Screen." This bypasses entirely the cumbersome App
+                        Store and Play Store review processes, bridging the gap directly between the developer and the
+                        end consumer.</p>
+
+                    <h2 style="margin-top: 2rem;">Conclusion</h2>
+                    <p>By leveraging Progressive Web App architecture, Tic Tac Toe Master isn't just a static webpage;
+                        it is a cross-platform application that behaves like a native binary without consuming huge
+                        amounts of disk storage. This drastically improves user retention and provides a premium
+                        experience that simply wasn't possible on the web ten years ago.</p>
+                </div>
+            </article>
+
+            <!-- Ad Container -->
+            <div class="ad-container" style="margin: 40px auto; text-align: center;">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4208665414964925"
+                    data-ad-slot="1712602490" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Tic Tac Toe Master</h4>
+                <p>Your ultimate destination for mastering the classic strategy game. Learn, play, and improve with our comprehensive platform.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="tips.html">Strategy Guide</a></li>
+                    <li><a href="articles.html">Articles</a></li>
+                    <li><a href="updates.html">Updates</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <p>&copy; 2026 <strong>Tic Tac Toe Master</strong> by Niranjan Kumar Singh</p>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/niranjan.ks.in" target="_blank" rel="noopener noreferrer" class="social-btn insta-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank" rel="noopener noreferrer" class="social-btn github-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                <nav class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a> |
+                    <a href="terms.html">Terms & Conditions</a> |
+                    <a href="disclaimer.html">Disclaimer</a> |
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    <script src="layout.js"></script>
+</body>
+
+</html>

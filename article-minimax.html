@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building an Unbeatable AI with the Minimax Algorithm - Tic Tac Toe Master</title>
+    <meta name="description"
+        content="Discover how to build a perfect, unbeatable AI for Tic Tac Toe using the Minimax algorithm in JavaScript. Detailed code breakdown and game theory explanation.">
+    <!-- GOOGLE FUNDING CHOICES CMP PLaCEHOLDER - TO BE REPLACED WITH ACTUAL SCRIPT FROM ADSENSE DASHBOARD -->
+    <script async src="https://fundingchoicesmessages.google.com/i/ca-pub-4208665414964925?ers=1"></script>
+    <script>(function () { function signalGooglefcPresent() { if (!window.frames['googlefcPresent']) { if (document.body) { const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe); } else { setTimeout(signalGooglefcPresent, 0); } } } signalGooglefcPresent(); })();</script>
+    <meta name="google-adsense-account" content="ca-pub-4208665414964925" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4208665414964925"
+        crossorigin="anonymous"></script>
+    <link rel="canonical" href="https://tic-tac-toe-niranjan.vercel.app/article-minimax.html" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="premium.css" />
+</head>
+
+<body>
+    <div class="bg-particles" id="particles"></div>
+    <header class="site-header">
+        <div class="header-content">
+            <a href="index.html" class="site-title">Tic Tac Toe Master</a>
+            <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+            <nav class="site-nav">
+                <a href="index.html">Home</a>
+                <a href="tips.html">Strategy Guide</a>
+                <a href="articles.html">Articles</a>
+                <a href="updates.html">Updates</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-mobile-wrap">
+            <article class="content-card"
+                style="padding: 3rem; border-radius: 12px; background: rgba(30,30,30,0.4); border: 1px solid rgba(255,255,255,0.1);">
+                <h1 style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--accent);">Building an Unbeatable AI with
+                    the Minimax Algorithm</h1>
+                <p style="color: var(--text-dim); margin-bottom: 2rem;">By Niranjan Kumar Singh | Published: February
+                    2026 | Programming</p>
+
+                <div style="line-height: 1.8; font-size: 1.1rem; color: var(--text-color);">
+                    <h2>Introduction to Game Theory AI</h2>
+                    <p>Have you ever wondered how computers manage to play chess, checkers, or Tic Tac Toe flawlessly?
+                        The secret to building an AI that can never be defeated in a zero-sum game lies in a decision
+                        rule named the <strong>Minimax Algorithm</strong>. In this article, we dive deep into the theory
+                        and practical implementation of Minimax in JavaScript, exploring how it maps out the entire game
+                        tree to guarantee a win or a draw.</p>
+
+                    <h2 style="margin-top: 2rem;">What is a Zero-Sum Game?</h2>
+                    <p>Before diving into the algorithm, it is crucial to understand the environment our AI operates in.
+                        Tic Tac Toe is a two-player, zero-sum game with perfect information. "Zero-sum" means that one
+                        player's advantage is mathematically identical to the other player's disadvantage. If Player X
+                        wins (+10 points), Player O inherently loses (-10 points). "Perfect information" means that both
+                        players have complete visibility of the board at all times—there is no hidden state, unlike in
+                        games like Poker.</p>
+                    <p>Because the number of board configurations (the state space) in Tic Tac Toe is relatively
+                        small—limited to a maximum of 9 factorial (362,880) possible game sequences, but realistically
+                        much less when accounting for early wins and symmetrical boards—a computer can easily calculate
+                        every single possible outcome from any given board state before making a move.</p>
+
+                    <h2 style="margin-top: 2rem;">The Core Concept of Minimax</h2>
+                    <p>The Minimax algorithm simulates all possible futures. It assumes that there are two players: the
+                        <strong>Maximizer</strong> and the <strong>Minimizer</strong>. The Maximizer wants to
+                        aggressively push the score as high as possible (striving for a Win), while the Minimizer wants
+                        to push the score as low as possible (striving for a Loss for the Maximizer).</p>
+                    <ul>
+                        <li>If the AI wins, the score is +10.</li>
+                        <li>If the Human wins, the score is -10.</li>
+                        <li>If the game ends in a draw, the score is 0.</li>
+                    </ul>
+                    <p>When it is the AI's turn to move, it tests placing its symbol in the first empty spot. Then, it
+                        calls itself recursively, switching roles, pretending to be the human player making the best
+                        possible counter-move. It continues this alternating back-and-forth simulation until the board
+                        reaches a terminal state (Win, Loss, or Draw).</p>
+                    <p>Once a terminal state is reached, the score is returned up the chain. The AI then selects the
+                        move that resulted in the highest possible guaranteed score, knowing that the human will always
+                        try to pick the move that yields the lowest score.</p>
+
+                    <h2 style="margin-top: 2rem;">Handling Depth and Efficiency</h2>
+                    <p>While standard Minimax is powerful, a raw implementation treats a win in 1 move the exact same as
+                        a win in 5 moves. A sophisticated AI should prefer to win as quickly as possible, and lose as
+                        slowly as possible (if losing is inevitable). We achieve this by adding or subtracting the
+                        <strong>depth</strong> (number of moves made so far) from the final score.</p>
+                    <p>If the AI wins at depth 2, the score is 10 - 2 = 8. If the AI wins at depth 6, the score is 10 -
+                        6 = 4. The Maximizer will naturally select the move that yields the score of 8, thereby winning
+                        faster.</p>
+
+                    <h2 style="margin-top: 2rem;">Alpha-Beta Pruning</h2>
+                    <p>To further optimize the performance of our Tic Tac Toe engine, we use Alpha-Beta Pruning. This is
+                        an optimization technique that stops evaluating a move when at least one possibility has been
+                        found that proves the move to be worse than a previously examined move. It drastically reduces
+                        the number of nodes the algorithm evaluates in the game tree, ensuring our AI responds in
+                        milliseconds even on low-end mobile devices without causing the browser to freeze.</p>
+
+                    <h2 style="margin-top: 2rem;">Conclusion</h2>
+                    <p>By relying on the Minimax algorithm and Alpha-Beta pruning, the Tic Tac Toe Master game
+                        guarantees an offline, client-side opponent that plays perfectly. It cannot be beaten—the best a
+                        human can hope for is a draw. Building this was an excellent exercise in recursion and
+                        algorithmic thinking, forming a foundation that can be expanded into much more complex systems
+                        like Checkers or Chess.</p>
+                </div>
+            </article>
+
+            <!-- Ad Container -->
+            <div class="ad-container" style="margin: 40px auto; text-align: center;">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4208665414964925"
+                    data-ad-slot="1712602490" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Tic Tac Toe Master</h4>
+                <p>Your ultimate destination for mastering the classic strategy game. Learn, play, and improve with our comprehensive platform.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="tips.html">Strategy Guide</a></li>
+                    <li><a href="articles.html">Articles</a></li>
+                    <li><a href="updates.html">Updates</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <p>&copy; 2026 <strong>Tic Tac Toe Master</strong> by Niranjan Kumar Singh</p>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/niranjan.ks.in" target="_blank" rel="noopener noreferrer" class="social-btn insta-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank" rel="noopener noreferrer" class="social-btn github-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                <nav class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a> |
+                    <a href="terms.html">Terms & Conditions</a> |
+                    <a href="disclaimer.html">Disclaimer</a> |
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    <script src="layout.js"></script>
+</body>
+
+</html>

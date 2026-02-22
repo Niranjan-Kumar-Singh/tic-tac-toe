@@ -17,6 +17,7 @@
         content="Master the game with advanced strategies from Niranjan Kumar Singh (B.Tech CSE 2025). Learn how to play like a pro. Instagram: niranjan.ks.in" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tic-tac-toe-niranjan.vercel.app/tips.html" />
+    <link rel="canonical" href="https://tic-tac-toe-niranjan.vercel.app/tips.html" />
     <meta property="og:image" content="https://tic-tac-toe-niranjan.vercel.app/images/preview.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Tic Tac Toe Strategy | Niranjan Kumar Singh" />
@@ -43,6 +44,7 @@
             <nav class="site-nav">
                 <a href="index.html">Home</a>
                 <a href="tips.html">Strategy Guide</a>
+                <a href="articles.html">Articles</a>
                 <a href="updates.html">Updates</a>
                 <a href="contact.html">Contact</a>
                 <a href="about.html">About</a>
@@ -114,8 +116,58 @@
                 <div class="card-content">
                     <h2 class="section-title">📖 Advanced Mastery</h2>
                     <div class="pro-tips-grid">
-                        <p>Looking for deeper insights? Keep practicing to discover all the strategies — from opening
-                            patterns to perfect AI logic, we've got you covered.</p>
+                        <section class="pro-tip-section">
+                            <h3>The Art of Perfect Play</h3>
+                            <p>Tic Tac Toe is a "zero-sum" game, meaning that if both players play perfectly, the game
+                                will always end in a draw. To remain unbeatable, you must memorize the key opening
+                                patterns and defensive responses.</p>
+                        </section>
+
+                        <section class="pro-tip-section" style="margin-top: 1.5rem;">
+                            <h3>The Minimax Algorithm</h3>
+                            <p>Our advanced AI uses what's known as the <strong>Minimax Algorithm</strong>. This is a
+                                recursive algorithm used for decision-making and game theory. It provides an optimal
+                                move for the player, assuming that the opponent is also playing optimally.</p>
+                            <p>Essentially, the AI "looks ahead" to all possible future states of the game, assigns a
+                                value to each (Win, Loss, or Draw), and chooses the path that maximizes its own score
+                                while minimizing yours.</p>
+                        </section>
+
+                        <section class="pro-tip-section" style="margin-top: 1.5rem;">
+                            <h3>Winning Combinations (The Fork)</h3>
+                            <p>A "Fork" is a strategic position where you have two ways to win (two non-blocked lines of
+                                two). When you create a fork, your opponent can only block one, ensuring your victory on
+                                the next move. Controlling the corners early is the most effective way to set up a fork.
+                            </p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div class="card-content">
+                    <h2 class="section-title">⚠️ Common Mistakes to Avoid</h2>
+                    <div class="pro-tips-grid">
+                        <section class="pro-tip-section">
+                            <h3 style="color: #ff6b6b;">Ignoring the Corners</h3>
+                            <p>Many beginners focus solely on the middle or the edges. While the center is crucial,
+                                corners provide the highest number of potential winning lines. Neglecting them often
+                                gives your opponent a significant tactical advantage.</p>
+                        </section>
+
+                        <section class="pro-tip-section" style="margin-top: 1.5rem;">
+                            <h3 style="color: #ff6b6b;">Playing Reactively</h3>
+                            <p>If you only respond to your opponent's moves, you will eventually be forced into a
+                                defensive position you can't escape. Try to anticipate their next moves and proactively
+                                set up your own traps (forks) while defending.</p>
+                        </section>
+
+                        <section class="pro-tip-section" style="margin-top: 1.5rem;">
+                            <h3 style="color: #ff6b6b;">Failing to Block Early</h3>
+                            <p>Always scan the board before placing your mark. It's easy to get tunnel vision on your
+                                own winning strategy and miss a blatant three-in-a-row setup by your opponent. A
+                                successful game is 50% offense and 50% defense.</p>
+                        </section>
                     </div>
                 </div>
             </div>
@@ -136,13 +188,13 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4>Tic Tac Toe Master</h4>
-                <p>Your ultimate destination for mastering the classic strategy game. Learn, play, and improve with our
-                    comprehensive platform.</p>
+                <p>Your ultimate destination for mastering the classic strategy game. Learn, play, and improve with our comprehensive platform.</p>
             </div>
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="tips.html">Strategy Guide</a></li>
+                    <li><a href="articles.html">Articles</a></li>
                     <li><a href="updates.html">Updates</a></li>
                     <li><a href="about.html">About</a></li>
                 </ul>
@@ -159,23 +211,17 @@
                 <h4>Connect</h4>
                 <p>&copy; 2026 <strong>Tic Tac Toe Master</strong> by Niranjan Kumar Singh</p>
                 <div class="footer-socials">
-                    <a href="https://instagram.com/niranjan.ks.in" target="_blank" rel="noopener noreferrer"
-                        class="social-btn insta-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <a href="https://instagram.com/niranjan.ks.in" target="_blank" rel="noopener noreferrer" class="social-btn insta-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                         </svg>
                         <span>Instagram</span>
                     </a>
-                    <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank"
-                        rel="noopener noreferrer" class="social-btn github-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                            </path>
+                    <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank" rel="noopener noreferrer" class="social-btn github-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                         </svg>
                         <span>GitHub</span>
                     </a>

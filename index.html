@@ -18,6 +18,7 @@
         content="Developed by Niranjan Kumar Singh (B.Tech CSE 2025). Featuring smart AI, luxury glassmorphism UI, and strategic gameplay. Connect with me: niranjan.ks.in" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tic-tac-toe-niranjan.vercel.app/" />
+    <link rel="canonical" href="https://tic-tac-toe-niranjan.vercel.app/" />
     <meta property="og:image" content="https://tic-tac-toe-niranjan.vercel.app/images/preview.png" />
     <link rel="canonical" href="https://tic-tac-toe-niranjan.vercel.app/" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -71,6 +72,7 @@
             <nav class="site-nav">
                 <a href="index.html">Home</a>
                 <a href="tips.html">Strategy Guide</a>
+                <a href="articles.html">Articles</a>
                 <a href="updates.html">Updates</a>
                 <a href="contact.html">Contact</a>
                 <a href="about.html">About</a>
@@ -124,8 +126,36 @@
         </main>
     </section>
 
-    <!-- Ad Container -->
-    <div class="ad-container" style="margin: 20px auto; text-align: center;">
+    <!-- Brief Intro & Educational Content -->
+    <section class="content-section what-is-section">
+        <div class="content-container">
+            <h2>What is Tic Tac Toe?</h2>
+            <p>A classic strategy game on a 3×3 grid. Two players take turns placing X and O, aiming to get three in a
+                row — horizontally, vertically, or diagonally. Simple to learn, surprisingly deep to master.</p>
+            <p>Known in many cultures as "Noughts and Crosses," this game has been a staple of strategy and logic for
+                centuries. It serves as an excellent introduction to the concepts of sportsmanship and the branch of
+                artificial intelligence that deals with the search of game trees.</p>
+
+            <h2 style="margin-top: 2rem;">Why Play Tic Tac Toe?</h2>
+            <p>Beyond being a fun pastime, Tic Tac Toe offers several developmental and cognitive benefits:</p>
+            <ul style="margin-top: 1rem; line-height: 1.8; color: var(--text-dim);">
+                <li><strong>Logical Thinking:</strong> Players must anticipate their opponent's moves several steps
+                    ahead.</li>
+                <li><strong>Pattern Recognition:</strong> Identifying winning configurations across the grid improves
+                    visual-spatial skills.</li>
+                <li><strong>Introduction to Game Theory:</strong> It is one of the first games children learn where they
+                    can understand "perfect play" and forced draws.</li>
+                <li><strong>Focus and Concentration:</strong> A single slip-up can lead to an immediate loss, demanding
+                    constant attention.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Ad Container - Improved Placement -->
+    <div class="ad-container"
+        style="margin: 60px auto; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px;">
+        <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 15px; letter-spacing: 1px;">ADVERTISEMENT
+        </p>
         <!-- GamePage_Top_Responsive -->
         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4208665414964925"
             data-ad-slot="1712602490" data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -134,12 +164,30 @@
         </script>
     </div>
 
-    <!-- Brief Intro -->
+    <!-- FAQ Section -->
     <section class="content-section what-is-section">
         <div class="content-container">
-            <h2>What is Tic Tac Toe?</h2>
-            <p>A classic strategy game on a 3×3 grid. Two players take turns placing X and O, aiming to get three in a
-                row — horizontally, vertically, or diagonally. Simple to learn, surprisingly deep to master.</p>
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item" style="margin-top: 1.5rem;">
+                <h3 style="color: var(--text-color); margin-bottom: 0.5rem; font-size: 1.2rem;">Is there a trick to
+                    always win at Tic Tac Toe?</h3>
+                <p>If both players play perfectly, every game of Tic Tac Toe will result in a draw. However, if your
+                    opponent makes a mistake, mastering strategies like controlling the center or creating a "fork" will
+                    guarantee a win.</p>
+            </div>
+            <div class="faq-item" style="margin-top: 1.5rem;">
+                <h3 style="color: var(--text-color); margin-bottom: 0.5rem; font-size: 1.2rem;">Why is it called Tic Tac
+                    Toe?</h3>
+                <p>The name "Tic Tac Toe" is derived from a late 19th-century game called "tick-tack-toe" played on a
+                    slate. In the UK and other regions, it is more commonly known as "Noughts and Crosses".</p>
+            </div>
+            <div class="faq-item" style="margin-top: 1.5rem;">
+                <h3 style="color: var(--text-color); margin-bottom: 0.5rem; font-size: 1.2rem;">How does the AI opponent
+                    work?</h3>
+                <p>Our smart AI utilizes the Minimax algorithm, a decision-making approach rooted in game theory. It
+                    analyzes all possible future moves to choose the path that maximizes its chances of winning or
+                    securing a draw against any player strategy.</p>
+            </div>
         </div>
     </section>
 
@@ -174,13 +222,13 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4>Tic Tac Toe Master</h4>
-                <p>Your ultimate destination for mastering the classic strategy game. Learn, play, and improve with our
-                    comprehensive platform.</p>
+                <p>Your ultimate destination for mastering the classic strategy game. Learn, play, and improve with our comprehensive platform.</p>
             </div>
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="tips.html">Strategy Guide</a></li>
+                    <li><a href="articles.html">Articles</a></li>
                     <li><a href="updates.html">Updates</a></li>
                     <li><a href="about.html">About</a></li>
                 </ul>
@@ -197,23 +245,17 @@
                 <h4>Connect</h4>
                 <p>&copy; 2026 <strong>Tic Tac Toe Master</strong> by Niranjan Kumar Singh</p>
                 <div class="footer-socials">
-                    <a href="https://instagram.com/niranjan.ks.in" target="_blank" rel="noopener noreferrer"
-                        class="social-btn insta-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <a href="https://instagram.com/niranjan.ks.in" target="_blank" rel="noopener noreferrer" class="social-btn insta-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                         </svg>
                         <span>Instagram</span>
                     </a>
-                    <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank"
-                        rel="noopener noreferrer" class="social-btn github-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                            </path>
+                    <a href="https://github.com/Niranjan-Kumar-Singh/tic-tac-toe" target="_blank" rel="noopener noreferrer" class="social-btn github-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                         </svg>
                         <span>GitHub</span>
                     </a>

@@ -1,608 +1,610 @@
-const boxes = Array.from(document.querySelectorAll(".box"));
-const resetBtn = document.querySelector("#reset-btn");
-const newGame = document.querySelector("#new-btn");
-const msgContainer = document.querySelector(".msg-container");
-const msg = document.querySelector("#msg");
-const turnIndicator = document.getElementById("turn-indicator");
-const modeToggle = document.getElementById("mode-toggle");
-const themeToggle = document.getElementById("theme-toggle");
+{
+  const boxes = Array.from(document.querySelectorAll(".box"));
+  const resetBtn = document.querySelector("#reset-btn");
+  const newGame = document.querySelector("#new-btn");
+  const msgContainer = document.querySelector(".msg-container");
+  const msg = document.querySelector("#msg");
+  const turnIndicator = document.getElementById("turn-indicator");
+  const modeToggle = document.getElementById("mode-toggle");
+  const themeToggle = document.getElementById("theme-toggle");
 
-let turnO = true;
-let move = 0;
-let vsComputer = false;
-let gameOver = false;
-let computerMoveDelayId = null;
-let computerClickDelayId = null;
+  let turnO = true;
+  let move = 0;
+  let vsComputer = false;
+  let gameOver = false;
+  let computerMoveDelayId = null;
+  let computerClickDelayId = null;
 
-const winPatterns = [
-  [0, 1, 2],
-  [0, 3, 6],
-  [0, 4, 8],
-  [1, 4, 7],
-  [2, 5, 8],
-  [2, 4, 6],
-  [3, 4, 5],
-  [6, 7, 8],
-];
+  const winPatterns = [
+    [0, 1, 2],
+    [0, 3, 6],
+    [0, 4, 8],
+    [1, 4, 7],
+    [2, 5, 8],
+    [2, 4, 6],
+    [3, 4, 5],
+    [6, 7, 8],
+  ];
 
-// Initialize theme based on user preference or system preference
-const initializeTheme = () => {
-  const savedTheme = localStorage.getItem("tic-tac-toe-theme");
-  const systemPrefersDark = window.matchMedia(
-    "(prefers-color-scheme: dark)"
-  ).matches;
+  // Initialize theme based on user preference or system preference
+  const initializeTheme = () => {
+    const savedTheme = localStorage.getItem("tic-tac-toe-theme");
+    const systemPrefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
 
-  if (savedTheme) {
-    document.body.classList.toggle("dark", savedTheme === "dark");
-  } else if (systemPrefersDark) {
-    document.body.classList.add("dark");
-  }
-
-  updateThemeToggleText();
-};
-
-// Luxury Background Particles
-const initParticles = () => {
-  const container = document.getElementById("particles");
-  if (!container) return;
-
-  const count = 20;
-  for (let i = 0; i < count; i++) {
-    const particle = document.createElement("div");
-    particle.className = "particle";
-
-    const size = Math.random() * 10 + 5 + "px";
-    particle.style.width = size;
-    particle.style.height = size;
-
-    particle.style.left = Math.random() * 100 + "vw";
-    particle.style.top = Math.random() * 100 + "vh";
-
-    particle.style.opacity = Math.random() * 0.5 + 0.1;
-    particle.style.animationDelay = Math.random() * 15 + "s";
-    particle.style.animationDuration = Math.random() * 10 + 10 + "s";
-
-    container.appendChild(particle);
-  }
-};
-
-const updateThemeToggleText = () => {
-  if (themeToggle) {
-    const isDark = document.body.classList.contains("dark");
-    themeToggle.innerText = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
-  }
-};
-
-const updateTurnIndicator = () => {
-  if (turnIndicator) {
-    turnIndicator.innerText = turnO ? "O's Turn" : "X's Turn";
-  }
-};
-
-const clearComputerMoveTimers = () => {
-  if (computerMoveDelayId !== null) {
-    clearTimeout(computerMoveDelayId);
-    computerMoveDelayId = null;
-  }
-  if (computerClickDelayId !== null) {
-    clearTimeout(computerClickDelayId);
-    computerClickDelayId = null;
-  }
-};
-
-// Enhanced box click with better visual feedback
-boxes.forEach((box, index) => {
-  box.addEventListener("click", () => boxClick(index));
-  box.addEventListener("mouseenter", () => {
-    // Premium hover handled by CSS
-  });
-  box.addEventListener("mouseleave", () => {
-    // Premium hover handled by CSS
-  });
-});
-
-const boxClick = (i) => {
-  if (boxes[i].innerText !== "" || gameOver) return;
-
-  const currentPlayer = turnO ? "O" : "X";
-  const symbolClass = currentPlayer === "O" ? "o-symbol" : "x-symbol";
-  boxes[i].innerHTML = `<span class="${symbolClass}">${currentPlayer}</span>`;
-  boxes[i].disabled = true;
-  move++;
-
-  // Add click animation
-  boxes[i].style.transform = "scale(1.1)";
-  setTimeout(() => {
-    if (boxes[i]) {
-      boxes[i].style.transform = "scale(1)";
+    if (savedTheme) {
+      document.body.classList.toggle("dark", savedTheme === "dark");
+    } else if (systemPrefersDark) {
+      document.body.classList.add("dark");
     }
-  }, 150);
 
-  if (checkWinner(currentPlayer)) return;
-  if (move === 9) return draw();
+    updateThemeToggleText();
+  };
 
-  turnO = !turnO;
-  updateTurnIndicator();
+  // Luxury Background Particles
+  const initParticles = () => {
+    const container = document.getElementById("particles");
+    if (!container) return;
 
-  if (vsComputer && !turnO && !gameOver) {
-    computerMoveDelayId = setTimeout(() => {
+    const count = 20;
+    for (let i = 0; i < count; i++) {
+      const particle = document.createElement("div");
+      particle.className = "particle";
+
+      const size = Math.random() * 10 + 5 + "px";
+      particle.style.width = size;
+      particle.style.height = size;
+
+      particle.style.left = Math.random() * 100 + "vw";
+      particle.style.top = Math.random() * 100 + "vh";
+
+      particle.style.opacity = Math.random() * 0.5 + 0.1;
+      particle.style.animationDelay = Math.random() * 15 + "s";
+      particle.style.animationDuration = Math.random() * 10 + 10 + "s";
+
+      container.appendChild(particle);
+    }
+  };
+
+  const updateThemeToggleText = () => {
+    if (themeToggle) {
+      const isDark = document.body.classList.contains("dark");
+      themeToggle.innerText = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+    }
+  };
+
+  const updateTurnIndicator = () => {
+    if (turnIndicator) {
+      turnIndicator.innerText = turnO ? "O's Turn" : "X's Turn";
+    }
+  };
+
+  const clearComputerMoveTimers = () => {
+    if (computerMoveDelayId !== null) {
+      clearTimeout(computerMoveDelayId);
       computerMoveDelayId = null;
-      makeComputerMove();
-    }, 300);
-  }
-};
+    }
+    if (computerClickDelayId !== null) {
+      clearTimeout(computerClickDelayId);
+      computerClickDelayId = null;
+    }
+  };
 
-const disableBoxes = () => {
-  for (let box of boxes) {
-    box.disabled = true;
-  }
-};
-
-const enableBoxes = () => {
-  for (let box of boxes) {
-    box.disabled = false;
-    box.innerHTML = "";
-    box.style.backgroundColor = "";
-    box.style.transform = "scale(1)";
-  }
-};
-
-const showWinner = (winner, pattern) => {
-  clearComputerMoveTimers();
-  gameOver = true;
-  disableBoxes();
-
-  if (msg) {
-    msg.innerText = `🎉 Winner: ${winner}`;
-  }
-
-  if (msgContainer) {
-    msgContainer.classList.remove("hide");
-  }
-
-  // Highlight winning pattern with animation
-  pattern.forEach((i, index) => {
-    setTimeout(() => {
-      boxes[i].style.backgroundColor = "rgba(144, 238, 144, 0.2)";
-      boxes[i].style.borderColor = "#90EE90";
-      boxes[i].style.transform = "scale(1.1)";
-    }, index * 100);
+  // Enhanced box click with better visual feedback
+  boxes.forEach((box, index) => {
+    box.addEventListener("click", () => boxClick(index));
+    box.addEventListener("mouseenter", () => {
+      // Premium hover handled by CSS
+    });
+    box.addEventListener("mouseleave", () => {
+      // Premium hover handled by CSS
+    });
   });
 
-  // Trigger confetti if available
-  if (typeof confetti === "function") {
+  const boxClick = (i) => {
+    if (boxes[i].innerText !== "" || gameOver) return;
+
+    const currentPlayer = turnO ? "O" : "X";
+    const symbolClass = currentPlayer === "O" ? "o-symbol" : "x-symbol";
+    boxes[i].innerHTML = `<span class="${symbolClass}">${currentPlayer}</span>`;
+    boxes[i].disabled = true;
+    move++;
+
+    // Add click animation
+    boxes[i].style.transform = "scale(1.1)";
     setTimeout(() => {
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-      });
-    }, 300);
-  }
+      if (boxes[i]) {
+        boxes[i].style.transform = "scale(1)";
+      }
+    }, 150);
 
-  // Update stats if functions exist
-  updateGameStats(winner);
-};
+    if (checkWinner(currentPlayer)) return;
+    if (move === 9) return draw();
 
-const draw = () => {
-  clearComputerMoveTimers();
-  gameOver = true;
-  disableBoxes();
+    turnO = !turnO;
+    updateTurnIndicator();
 
-  if (msg) {
-    msg.innerText = "🤝 It's a Draw!";
-  }
-
-  if (msgContainer) {
-    msgContainer.classList.remove("hide");
-  }
-
-  // Update stats for draw
-  updateGameStats("draw");
-};
-
-const checkWinner = (player) => {
-  for (let pattern of winPatterns) {
-    const [a, b, c] = pattern;
-    if (
-      boxes[a].innerText === player &&
-      boxes[b].innerText === player &&
-      boxes[c].innerText === player
-    ) {
-      showWinner(player, pattern);
-      return true;
+    if (vsComputer && !turnO && !gameOver) {
+      computerMoveDelayId = setTimeout(() => {
+        computerMoveDelayId = null;
+        makeComputerMove();
+      }, 300);
     }
-  }
-  return false;
-};
+  };
 
-const resetGame = () => {
-  clearComputerMoveTimers();
-  turnO = true;
-  move = 0;
-  gameOver = false;
-
-  boxes.forEach((box) => {
-    box.innerHTML = "";
-    box.disabled = false;
-    box.style.backgroundColor = "";
-    box.style.borderColor = "";
-    box.style.transform = "scale(1)";
-  });
-
-  if (msgContainer) {
-    msgContainer.classList.add("hide");
-  }
-
-  updateTurnIndicator();
-};
-
-// Enhanced AI Implementation with better move selection
-const getGameBoard = () => {
-  return boxes.map((box) => box.innerText || null);
-};
-
-const checkGameWinner = (board, player) => {
-  for (let pattern of winPatterns) {
-    const [a, b, c] = pattern;
-    if (board[a] === player && board[b] === player && board[c] === player) {
-      return true;
+  const disableBoxes = () => {
+    for (let box of boxes) {
+      box.disabled = true;
     }
-  }
-  return false;
-};
+  };
 
-const isGameDraw = (board) => {
-  return board.every((cell) => cell !== null);
-};
-
-const getAvailableMoves = (board) => {
-  return board
-    .map((cell, index) => (cell === null ? index : null))
-    .filter((index) => index !== null);
-};
-
-// Enhanced minimax with position value considerations
-const minimax = (
-  board,
-  depth,
-  isMaximizing,
-  alpha = -Infinity,
-  beta = Infinity
-) => {
-  if (checkGameWinner(board, "X")) return 10 - depth;
-  if (checkGameWinner(board, "O")) return depth - 10;
-  if (isGameDraw(board)) return 0;
-
-  const availableMoves = getAvailableMoves(board);
-
-  if (isMaximizing) {
-    let maxEval = -Infinity;
-    for (let move of availableMoves) {
-      board[move] = "X";
-      let score = minimax(board, depth + 1, false, alpha, beta);
-      board[move] = null;
-      maxEval = Math.max(maxEval, score);
-      alpha = Math.max(alpha, score);
-      if (beta <= alpha) break;
+  const enableBoxes = () => {
+    for (let box of boxes) {
+      box.disabled = false;
+      box.innerHTML = "";
+      box.style.backgroundColor = "";
+      box.style.transform = "scale(1)";
     }
-    return maxEval;
-  } else {
-    let minEval = Infinity;
-    for (let move of availableMoves) {
-      board[move] = "O";
-      let score = minimax(board, depth + 1, true, alpha, beta);
-      board[move] = null;
-      minEval = Math.min(minEval, score);
-      beta = Math.min(beta, score);
-      if (beta <= alpha) break;
+  };
+
+  const showWinner = (winner, pattern) => {
+    clearComputerMoveTimers();
+    gameOver = true;
+    disableBoxes();
+
+    if (msg) {
+      msg.innerText = `🎉 Winner: ${winner}`;
     }
-    return minEval;
-  }
-};
 
-const getBestMove = () => {
-  const board = getGameBoard();
-  const availableMoves = getAvailableMoves(board);
+    if (msgContainer) {
+      msgContainer.classList.remove("hide");
+    }
 
-  // Strategic opening moves
-  if (move === 1) {
-    const preferredMoves = [4, 0, 2, 6, 8]; // Center first, then corners
-    for (let move of preferredMoves) {
-      if (availableMoves.includes(move)) {
-        return move;
+    // Highlight winning pattern with animation
+    pattern.forEach((i, index) => {
+      setTimeout(() => {
+        boxes[i].style.backgroundColor = "rgba(144, 238, 144, 0.2)";
+        boxes[i].style.borderColor = "#90EE90";
+        boxes[i].style.transform = "scale(1.1)";
+      }, index * 100);
+    });
+
+    // Trigger confetti if available
+    if (typeof confetti === "function") {
+      setTimeout(() => {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+        });
+      }, 300);
+    }
+
+    // Update stats if functions exist
+    updateGameStats(winner);
+  };
+
+  const draw = () => {
+    clearComputerMoveTimers();
+    gameOver = true;
+    disableBoxes();
+
+    if (msg) {
+      msg.innerText = "🤝 It's a Draw!";
+    }
+
+    if (msgContainer) {
+      msgContainer.classList.remove("hide");
+    }
+
+    // Update stats for draw
+    updateGameStats("draw");
+  };
+
+  const checkWinner = (player) => {
+    for (let pattern of winPatterns) {
+      const [a, b, c] = pattern;
+      if (
+        boxes[a].innerText === player &&
+        boxes[b].innerText === player &&
+        boxes[c].innerText === player
+      ) {
+        showWinner(player, pattern);
+        return true;
       }
     }
-  }
+    return false;
+  };
 
-  let bestMove = availableMoves[0];
-  let bestValue = -Infinity;
+  const resetGame = () => {
+    clearComputerMoveTimers();
+    turnO = true;
+    move = 0;
+    gameOver = false;
 
-  for (let move of availableMoves) {
-    board[move] = "X";
-    let moveValue = minimax(board, 0, false);
-    board[move] = null;
+    boxes.forEach((box) => {
+      box.innerHTML = "";
+      box.disabled = false;
+      box.style.backgroundColor = "";
+      box.style.borderColor = "";
+      box.style.transform = "scale(1)";
+    });
 
-    // Add slight randomness to equal moves for variety
-    if (
-      moveValue > bestValue ||
-      (moveValue === bestValue && Math.random() < 0.3)
-    ) {
-      bestValue = moveValue;
-      bestMove = move;
+    if (msgContainer) {
+      msgContainer.classList.add("hide");
     }
-  }
 
-  return bestMove;
-};
+    updateTurnIndicator();
+  };
 
-const makeComputerMove = () => {
-  if (gameOver || !vsComputer || turnO) return;
+  // Enhanced AI Implementation with better move selection
+  const getGameBoard = () => {
+    return boxes.map((box) => box.innerText || null);
+  };
 
-  const bestMove = getBestMove();
-  if (bestMove === undefined) return;
-
-  // Add visual indication that computer is thinking
-  if (turnIndicator) {
-    turnIndicator.innerText = "🤖 Computer thinking...";
-  }
-
-  computerClickDelayId = setTimeout(() => {
-    computerClickDelayId = null;
-    if (!gameOver && vsComputer && !turnO) {
-      boxClick(bestMove);
+  const checkGameWinner = (board, player) => {
+    for (let pattern of winPatterns) {
+      const [a, b, c] = pattern;
+      if (board[a] === player && board[b] === player && board[c] === player) {
+        return true;
+      }
     }
-  }, 200);
-};
+    return false;
+  };
 
-const toggleMode = () => {
-  vsComputer = !vsComputer;
-  if (modeToggle) {
-    modeToggle.innerText = `Play vs Computer: ${vsComputer ? "ON" : "OFF"}`;
-    modeToggle.style.backgroundColor = vsComputer ? "#4CAF50" : "#f44336";
-  }
-  resetGame();
+  const isGameDraw = (board) => {
+    return board.every((cell) => cell !== null);
+  };
 
-  // Show helpful message
-  if (vsComputer) {
-    // console.log("🤖 Computer mode activated! You are 'O', computer is 'X'");
-  }
-};
+  const getAvailableMoves = (board) => {
+    return board
+      .map((cell, index) => (cell === null ? index : null))
+      .filter((index) => index !== null);
+  };
 
-const toggleTheme = () => {
-  document.body.classList.toggle("dark");
-  const isDark = document.body.classList.contains("dark");
+  // Enhanced minimax with position value considerations
+  const minimax = (
+    board,
+    depth,
+    isMaximizing,
+    alpha = -Infinity,
+    beta = Infinity
+  ) => {
+    if (checkGameWinner(board, "X")) return 10 - depth;
+    if (checkGameWinner(board, "O")) return depth - 10;
+    if (isGameDraw(board)) return 0;
 
-  // Save theme preference
-  localStorage.setItem("tic-tac-toe-theme", isDark ? "dark" : "light");
+    const availableMoves = getAvailableMoves(board);
 
-  updateThemeToggleText();
-
-  // Add smooth transition effect
-  document.body.style.transition = "all 0.3s ease";
-  setTimeout(() => {
-    document.body.style.transition = "";
-  }, 300);
-};
-
-// Simple game statistics tracking
-let gameStats = {
-  playerWins: parseInt(localStorage.getItem("tic-tac-toe-player-wins") || "0"),
-  computerWins: parseInt(
-    localStorage.getItem("tic-tac-toe-computer-wins") || "0"
-  ),
-  draws: parseInt(localStorage.getItem("tic-tac-toe-draws") || "0"),
-  totalGames: parseInt(localStorage.getItem("tic-tac-toe-total-games") || "0"),
-};
-
-const updateGameStats = (result) => {
-  if (result === "O") gameStats.playerWins++;
-  else if (result === "X" && vsComputer) gameStats.computerWins++;
-  else if (result === "draw") gameStats.draws++;
-
-  gameStats.totalGames++;
-
-  // Save to localStorage
-  localStorage.setItem(
-    "tic-tac-toe-player-wins",
-    gameStats.playerWins.toString()
-  );
-  localStorage.setItem(
-    "tic-tac-toe-computer-wins",
-    gameStats.computerWins.toString()
-  );
-  localStorage.setItem("tic-tac-toe-draws", gameStats.draws.toString());
-  localStorage.setItem(
-    "tic-tac-toe-total-games",
-    gameStats.totalGames.toString()
-  );
-};
-
-// Menu toggle functionality with improved UX
-const menuToggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector(".site-nav");
-
-if (menuToggle && nav) {
-  menuToggle.addEventListener("click", (e) => {
-    e.stopPropagation();
-    nav.classList.toggle("nav-open");
-    menuToggle.setAttribute(
-      "aria-expanded",
-      nav.classList.contains("nav-open")
-    );
-  });
-
-  // Close menu when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!menuToggle.contains(e.target) && !nav.contains(e.target)) {
-      nav.classList.remove("nav-open");
-      menuToggle.setAttribute("aria-expanded", "false");
+    if (isMaximizing) {
+      let maxEval = -Infinity;
+      for (let move of availableMoves) {
+        board[move] = "X";
+        let score = minimax(board, depth + 1, false, alpha, beta);
+        board[move] = null;
+        maxEval = Math.max(maxEval, score);
+        alpha = Math.max(alpha, score);
+        if (beta <= alpha) break;
+      }
+      return maxEval;
+    } else {
+      let minEval = Infinity;
+      for (let move of availableMoves) {
+        board[move] = "O";
+        let score = minimax(board, depth + 1, true, alpha, beta);
+        board[move] = null;
+        minEval = Math.min(minEval, score);
+        beta = Math.min(beta, score);
+        if (beta <= alpha) break;
+      }
+      return minEval;
     }
-  });
+  };
 
-  // Close menu when pressing Escape key
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && nav.classList.contains("nav-open")) {
-      nav.classList.remove("nav-open");
-      menuToggle.setAttribute("aria-expanded", "false");
-    }
-  });
+  const getBestMove = () => {
+    const board = getGameBoard();
+    const availableMoves = getAvailableMoves(board);
 
-  // Close menu when window is resized to desktop
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 768) {
-      nav.classList.remove("nav-open");
-      menuToggle.setAttribute("aria-expanded", "false");
-    }
-  });
-}
-
-// Enhanced keyboard support for accessibility
-document.addEventListener("keydown", (e) => {
-  if (gameOver) return;
-
-  // Number keys 1-9 for box selection
-  const key = parseInt(e.key);
-  if (key >= 1 && key <= 9) {
-    const boxIndex = key - 1;
-    if (
-      boxes.length === 9 &&
-      boxes[boxIndex] &&
-      !boxes[boxIndex].disabled &&
-      boxes[boxIndex].innerText === ""
-    ) {
-      boxClick(boxIndex);
-    }
-  }
-
-  // R key for reset
-  if (e.key.toLowerCase() === "r" && (e.ctrlKey || e.metaKey)) {
-    e.preventDefault();
-    resetGame();
-  }
-});
-
-// Event listeners with enhanced error handling
-const setupEventListeners = () => {
-  try {
-    const addBadgeKeyboardSupport = (element, handler) => {
-      if (!element) return;
-      element.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          handler();
+    // Strategic opening moves
+    if (move === 1) {
+      const preferredMoves = [4, 0, 2, 6, 8]; // Center first, then corners
+      for (let move of preferredMoves) {
+        if (availableMoves.includes(move)) {
+          return move;
         }
-      });
-    };
-
-    if (newGame) {
-      newGame.addEventListener("click", resetGame);
-      newGame.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          resetGame();
-        }
-      });
+      }
     }
 
-    if (resetBtn) {
-      resetBtn.addEventListener("click", resetGame);
-      resetBtn.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          resetGame();
-        }
-      });
+    let bestMove = availableMoves[0];
+    let bestValue = -Infinity;
+
+    for (let move of availableMoves) {
+      board[move] = "X";
+      let moveValue = minimax(board, 0, false);
+      board[move] = null;
+
+      // Add slight randomness to equal moves for variety
+      if (
+        moveValue > bestValue ||
+        (moveValue === bestValue && Math.random() < 0.3)
+      ) {
+        bestValue = moveValue;
+        bestMove = move;
+      }
     }
 
+    return bestMove;
+  };
+
+  const makeComputerMove = () => {
+    if (gameOver || !vsComputer || turnO) return;
+
+    const bestMove = getBestMove();
+    if (bestMove === undefined) return;
+
+    // Add visual indication that computer is thinking
+    if (turnIndicator) {
+      turnIndicator.innerText = "🤖 Computer thinking...";
+    }
+
+    computerClickDelayId = setTimeout(() => {
+      computerClickDelayId = null;
+      if (!gameOver && vsComputer && !turnO) {
+        boxClick(bestMove);
+      }
+    }, 200);
+  };
+
+  const toggleMode = () => {
+    vsComputer = !vsComputer;
     if (modeToggle) {
-      modeToggle.addEventListener("click", toggleMode);
-      modeToggle.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          toggleMode();
-        }
-      });
+      modeToggle.innerText = `Play vs Computer: ${vsComputer ? "ON" : "OFF"}`;
+      modeToggle.style.backgroundColor = vsComputer ? "#4CAF50" : "#f44336";
     }
+    resetGame();
 
-    if (themeToggle) {
-      themeToggle.addEventListener("click", toggleTheme);
-      themeToggle.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          toggleTheme();
-        }
-      });
+    // Show helpful message
+    if (vsComputer) {
+      // console.log("🤖 Computer mode activated! You are 'O', computer is 'X'");
     }
+  };
 
-    // Hero Badge Event Listeners
-    const heroAi = document.getElementById("hero-ai");
-    if (heroAi) {
-      const heroAiHandler = () => {
-        if (!vsComputer) toggleMode();
-        const gameSection = document.querySelector(".game-section");
-        if (gameSection) {
-          gameSection.scrollIntoView({ behavior: "smooth" });
-        }
-      };
-      heroAi.addEventListener("click", heroAiHandler);
-      addBadgeKeyboardSupport(heroAi, heroAiHandler);
-    }
+  const toggleTheme = () => {
+    document.body.classList.toggle("dark");
+    const isDark = document.body.classList.contains("dark");
 
-    const heroStrategy = document.getElementById("hero-strategy");
-    if (heroStrategy) {
-      const heroStrategyHandler = () => {
-        window.location.href = "tips.html";
-      };
-      heroStrategy.addEventListener("click", heroStrategyHandler);
-      addBadgeKeyboardSupport(heroStrategy, heroStrategyHandler);
-    }
+    // Save theme preference
+    localStorage.setItem("tic-tac-toe-theme", isDark ? "dark" : "light");
 
-    const heroTheme = document.getElementById("hero-theme");
-    if (heroTheme) {
-      heroTheme.addEventListener("click", toggleTheme);
-      addBadgeKeyboardSupport(heroTheme, toggleTheme);
-    }
+    updateThemeToggleText();
 
-    const heroConfetti = document.getElementById("hero-confetti");
-    if (heroConfetti) {
-      const heroConfettiHandler = () => {
-        if (typeof confetti === "function") {
-          confetti({
-            particleCount: 150,
-            spread: 80,
-            origin: { y: 0.6 },
-          });
-        }
-      };
-      heroConfetti.addEventListener("click", heroConfettiHandler);
-      addBadgeKeyboardSupport(heroConfetti, heroConfettiHandler);
-    }
-
-  } catch (error) {
-    // Silent fail for optional components
-  }
-};
-
-// Initialize the game
-const initializeGame = () => {
-  initializeTheme();
-  initParticles();
-  updateTurnIndicator();
-  setupEventListeners();
-
-  // Show welcome message on first visit
-  if (!localStorage.getItem("tic-tac-toe-visited")) {
+    // Add smooth transition effect
+    document.body.style.transition = "all 0.3s ease";
     setTimeout(() => {
-      // console.log("🎮 Welcome to Tic Tac Toe Master! Use number keys 1-9 to play, or click the squares.");
-      localStorage.setItem("tic-tac-toe-visited", "true");
-    }, 1000);
-  }
-};
+      document.body.style.transition = "";
+    }, 300);
+  };
 
-// Start the game when DOM is loaded
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initializeGame);
-} else {
-  initializeGame();
+  // Simple game statistics tracking
+  let gameStats = {
+    playerWins: parseInt(localStorage.getItem("tic-tac-toe-player-wins") || "0"),
+    computerWins: parseInt(
+      localStorage.getItem("tic-tac-toe-computer-wins") || "0"
+    ),
+    draws: parseInt(localStorage.getItem("tic-tac-toe-draws") || "0"),
+    totalGames: parseInt(localStorage.getItem("tic-tac-toe-total-games") || "0"),
+  };
+
+  const updateGameStats = (result) => {
+    if (result === "O") gameStats.playerWins++;
+    else if (result === "X" && vsComputer) gameStats.computerWins++;
+    else if (result === "draw") gameStats.draws++;
+
+    gameStats.totalGames++;
+
+    // Save to localStorage
+    localStorage.setItem(
+      "tic-tac-toe-player-wins",
+      gameStats.playerWins.toString()
+    );
+    localStorage.setItem(
+      "tic-tac-toe-computer-wins",
+      gameStats.computerWins.toString()
+    );
+    localStorage.setItem("tic-tac-toe-draws", gameStats.draws.toString());
+    localStorage.setItem(
+      "tic-tac-toe-total-games",
+      gameStats.totalGames.toString()
+    );
+  };
+
+  // Menu toggle functionality with improved UX
+  const menuToggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".site-nav");
+
+  if (menuToggle && nav) {
+    menuToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      nav.classList.toggle("nav-open");
+      menuToggle.setAttribute(
+        "aria-expanded",
+        nav.classList.contains("nav-open")
+      );
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!menuToggle.contains(e.target) && !nav.contains(e.target)) {
+        nav.classList.remove("nav-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    // Close menu when pressing Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && nav.classList.contains("nav-open")) {
+        nav.classList.remove("nav-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    // Close menu when window is resized to desktop
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 768) {
+        nav.classList.remove("nav-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+  // Enhanced keyboard support for accessibility
+  document.addEventListener("keydown", (e) => {
+    if (gameOver) return;
+
+    // Number keys 1-9 for box selection
+    const key = parseInt(e.key);
+    if (key >= 1 && key <= 9) {
+      const boxIndex = key - 1;
+      if (
+        boxes.length === 9 &&
+        boxes[boxIndex] &&
+        !boxes[boxIndex].disabled &&
+        boxes[boxIndex].innerText === ""
+      ) {
+        boxClick(boxIndex);
+      }
+    }
+
+    // R key for reset
+    if (e.key.toLowerCase() === "r" && (e.ctrlKey || e.metaKey)) {
+      e.preventDefault();
+      resetGame();
+    }
+  });
+
+  // Event listeners with enhanced error handling
+  const setupEventListeners = () => {
+    try {
+      const addBadgeKeyboardSupport = (element, handler) => {
+        if (!element) return;
+        element.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            handler();
+          }
+        });
+      };
+
+      if (newGame) {
+        newGame.addEventListener("click", resetGame);
+        newGame.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            resetGame();
+          }
+        });
+      }
+
+      if (resetBtn) {
+        resetBtn.addEventListener("click", resetGame);
+        resetBtn.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            resetGame();
+          }
+        });
+      }
+
+      if (modeToggle) {
+        modeToggle.addEventListener("click", toggleMode);
+        modeToggle.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggleMode();
+          }
+        });
+      }
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", toggleTheme);
+        themeToggle.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggleTheme();
+          }
+        });
+      }
+
+      // Hero Badge Event Listeners
+      const heroAi = document.getElementById("hero-ai");
+      if (heroAi) {
+        const heroAiHandler = () => {
+          if (!vsComputer) toggleMode();
+          const gameSection = document.querySelector(".game-section");
+          if (gameSection) {
+            gameSection.scrollIntoView({ behavior: "smooth" });
+          }
+        };
+        heroAi.addEventListener("click", heroAiHandler);
+        addBadgeKeyboardSupport(heroAi, heroAiHandler);
+      }
+
+      const heroStrategy = document.getElementById("hero-strategy");
+      if (heroStrategy) {
+        const heroStrategyHandler = () => {
+          window.location.href = "tips.html";
+        };
+        heroStrategy.addEventListener("click", heroStrategyHandler);
+        addBadgeKeyboardSupport(heroStrategy, heroStrategyHandler);
+      }
+
+      const heroTheme = document.getElementById("hero-theme");
+      if (heroTheme) {
+        heroTheme.addEventListener("click", toggleTheme);
+        addBadgeKeyboardSupport(heroTheme, toggleTheme);
+      }
+
+      const heroConfetti = document.getElementById("hero-confetti");
+      if (heroConfetti) {
+        const heroConfettiHandler = () => {
+          if (typeof confetti === "function") {
+            confetti({
+              particleCount: 150,
+              spread: 80,
+              origin: { y: 0.6 },
+            });
+          }
+        };
+        heroConfetti.addEventListener("click", heroConfettiHandler);
+        addBadgeKeyboardSupport(heroConfetti, heroConfettiHandler);
+      }
+
+    } catch (error) {
+      // Silent fail for optional components
+    }
+  };
+
+  // Initialize the game
+  const initializeGame = () => {
+    initializeTheme();
+    initParticles();
+    updateTurnIndicator();
+    setupEventListeners();
+
+    // Show welcome message on first visit
+    if (!localStorage.getItem("tic-tac-toe-visited")) {
+      setTimeout(() => {
+        // console.log("🎮 Welcome to Tic Tac Toe Master! Use number keys 1-9 to play, or click the squares.");
+        localStorage.setItem("tic-tac-toe-visited", "true");
+      }, 1000);
+    }
+  };
+
+  // Start the game when DOM is loaded
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeGame);
+  } else {
+    initializeGame();
+  }
 }
