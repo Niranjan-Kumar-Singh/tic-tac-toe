@@ -98,15 +98,36 @@ function initNonCriticalScripts() {
   if (window.nonCriticalScriptsInitialized) return;
   window.nonCriticalScriptsInitialized = true;
 
-  // Initialize Adsense
-  const adsenseElements = document.querySelectorAll('.adsbygoogle');
-  if (adsenseElements.length > 0) {
-    try {
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-      console.error('AdSense initialization error:', e);
+  // 1. Inject Google Funding Choices CMP Script
+  const cmpScript1 = document.createElement('script');
+  cmpScript1.async = true;
+  cmpScript1.src = "https://fundingchoicesmessages.google.com/i/pub-4208665414964925?ers=1";
+  cmpScript1.setAttribute("nonce", "YOUR_NONCE");
+  document.head.appendChild(cmpScript1);
+
+  const cmpScript2 = document.createElement('script');
+  cmpScript2.setAttribute("nonce", "YOUR_NONCE");
+  cmpScript2.textContent = `(function () { function signalGooglefcPresent() { if (!window.frames['googlefcPresent']) { if (document.body) { const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe); } else { setTimeout(signalGooglefcPresent, 0); } } } signalGooglefcPresent(); })();`;
+  document.head.appendChild(cmpScript2);
+
+  // 2. Inject Google AdSense Script
+  const adsenseScript = document.createElement('script');
+  adsenseScript.async = true;
+  adsenseScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4208665414964925";
+  adsenseScript.crossOrigin = "anonymous";
+  document.head.appendChild(adsenseScript);
+
+  // 3. Initialize Adsense push
+  adsenseScript.onload = () => {
+    const adsenseElements = document.querySelectorAll('.adsbygoogle');
+    if (adsenseElements.length > 0) {
+      try {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        console.error('AdSense initialization error:', e);
+      }
     }
-  }
+  };
 }
 
 // Attach event listeners to initialize scripts on first user interaction
