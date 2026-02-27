@@ -91,3 +91,25 @@ if ("serviceWorker" in navigator) {
       });
   });
 }
+
+// Lazy load Google AdSense and other non-critical scripts on user interaction
+function initNonCriticalScripts() {
+  // Only run once
+  if (window.nonCriticalScriptsInitialized) return;
+  window.nonCriticalScriptsInitialized = true;
+
+  // Initialize Adsense
+  const adsenseElements = document.querySelectorAll('.adsbygoogle');
+  if (adsenseElements.length > 0) {
+    try {
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {
+      console.error('AdSense initialization error:', e);
+    }
+  }
+}
+
+// Attach event listeners to initialize scripts on first user interaction
+['scroll', 'mousemove', 'touchstart', 'click', 'keydown'].forEach(eventType => {
+  window.addEventListener(eventType, initNonCriticalScripts, { once: true, passive: true });
+});

@@ -66,12 +66,6 @@
   </url>
 
   <url>
-    <loc>https://tic-tac-toe-niranjan.vercel.app/404.html</loc>
-    <lastmod>2026-02-23</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.0</priority>
-  </url>
-  <url>
     <loc>https://tic-tac-toe-niranjan.vercel.app/articles.html</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
